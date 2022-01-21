@@ -1,5 +1,46 @@
 let gameOver = false;		// When True, game is lost.
+let running;				// When true, gameloop runs.
+let select = 0;		// Controls which screen to open
 const winningScore = 50;	// Points needed to win
+
+const title = {
+	x: 40,
+	y: 150,
+	fontSize: 80,
+	spacing: 5,
+}
+
+const titleButton1 = {
+	// text attributes
+	x: 100,
+	y: 350,
+	fontSize: 60,
+	textColor: "black",
+	text: 'NEW GAME',
+	// button attributes
+	x2: 90,
+	y2: 290,
+	width: 410,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+}
+
+const titleButton2 = {
+	// text attributes
+	x: 100,
+	y: 460 ,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Load Game',
+	// button attributes
+	x2: 90,
+	y2: 400,
+	width: 410,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+}
 
 // Update Menu display
 function updateGameStatus(){
@@ -35,3 +76,20 @@ function collision(first, second){
 				first.y + first.height < second.y)
 		) return true;
 }
+
+// Take a button struct. Create draw a button with that button's properties.
+//   Required properties: x, y, fontSize, textColor, text,
+//   x2, y2, width, height, color, borderColor
+function drawButton(button){
+	context.fillStyle = button.color
+	context.fillRect(button.x2,button.y2, button.width, button.height);
+	context.beginPath();
+	context.strokeStyle = button.borderColor;
+	context.lineWidth = "6";
+	context.rect(button.x2, button.y2, button.width, button.height);
+	context.stroke();
+	context.fillStyle = button.textColor;
+	context.font = button.fontSize +'px Orbitron';
+	context.fillText(button.text, button.x, button.y);
+}
+
