@@ -5,8 +5,7 @@ function main(){
 	select = 0;
 	addTitleEvents();
 	titleScreen();
-	//addBoardEvents();
-	//animate();
+	//levelSelectScreen();
 }
 
 // Maintain Level-related game loop.
@@ -43,6 +42,23 @@ function titleScreen(){
 	drawButton(titleButton2);
 
 	if (select === 0) requestAnimationFrame(titleScreen);
+}
+
+// Title Screen game loop
+function levelSelectScreen(){
+	// Draw the Title Screen
+	context.fillStyle = 'blue';
+	context.fillRect(0,0, canvas.width, canvas.height);
+	// Title Display
+	context.fillStyle = 'gold';
+	context.font = levelSelect.fontSize +'px Orbitron';
+	context.fillText('Level Select', levelSelect.x, levelSelect.y);
+	// Button Displays
+	drawButton(levelButton1);
+	drawButton(levelButton2);
+	drawButton(levelButton3);
+
+	if (select === 0) requestAnimationFrame(levelSelectScreen);
 }
 
 // Initiate Event Listeners related to System functions.

@@ -11,13 +11,19 @@ const title = {
 	spacing: 5,
 }
 
+const levelSelect = {
+	x: 160,
+	y: 150,
+	fontSize: 80,
+}
+
 const titleButton1 = {
 	// text attributes
 	x: 100,
 	y: 350,
 	fontSize: 60,
 	textColor: "black",
-	text: 'NEW GAME',
+	text: 'New Game',
 	// button attributes
 	x2: 90,
 	y2: 290,
@@ -39,6 +45,54 @@ const titleButton2 = {
 	y2: 400,
 	width: 410,
 	height: 80,
+	color: "white", 
+	borderColor: "black",
+}
+
+const levelButton1 = {
+	// text attributes
+	x: 50,
+	y: 460 ,
+	fontSize: 50,
+	textColor: "black",
+	text: 'Level 1',
+	// button attributes
+	x2: 40,
+	y2: 210,
+	width: 256,
+	height: 256,
+	color: "white", 
+	borderColor: "black",
+}
+
+const levelButton2 = {
+	// text attributes
+	x: 276 + 50,
+	y: 460 ,
+	fontSize: 50,
+	textColor: "black",
+	text: 'Level 2',
+	// button attributes
+	x2: 276 + 40,
+	y2: 210,
+	width: 256,
+	height: 256,
+	color: "white", 
+	borderColor: "black",
+}
+
+const levelButton3 = {
+	// text attributes
+	x: 276*2 + 50,
+	y: 460 ,
+	fontSize: 50,
+	textColor: "black",
+	text: 'Level 3',
+	// button attributes
+	x2: 276*2 + 40,
+	y2: 210,
+	width: 256,
+	height: 256,
 	color: "white", 
 	borderColor: "black",
 }
