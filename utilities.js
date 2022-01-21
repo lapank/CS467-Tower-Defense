@@ -1,17 +1,22 @@
-let gameOver = false;
-const winningScore = 50;
+let gameOver = false;		// When True, game is lost.
+const winningScore = 50;	// Points needed to win
 
-// utilities
+// Update Menu display
 function handleGameStatus(){
+	// Menu Display
 	context.fillStyle = 'gold';
 	context.font = '30px Orbitron';
-	context.fillText('Score: ' + score, 20, 45);
-	context.fillText('Resources: ' + numberOfResources, 20, 80);
+	// Current Score
+	context.fillText('Score: ' + score, 20, 45);				 
+	// Current Resources
+	context.fillText('Resources: ' + numberOfResources, 20, 80); 
+	// Checks for Game Over
 	if(gameOver){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
 	}
+	// Checks for win condition
 	if (score >= winningScore && enemies.length === 0){
 		console.log('win met');
 		context.fillStyle = 'black';
@@ -22,17 +27,11 @@ function handleGameStatus(){
 	}
 }
 
+// Take two game objects. Return true if they are colliding.
 function collision(first, second){
 	if (	!(	first.x > second.x + second.width ||
 				first.x + first.width < second.x ||
 				first.y > second.y + second.height ||
-				first.y + first.height < second.y
-			 )
-
-		){ return true;}
+				first.y + first.height < second.y)
+		) return true;
 }
-
-//fix mouse offset if browser window is resized
-window.addEventListener('resize', function(){
-	canvasPosition = canvas.getBoundingClientRect();
-});

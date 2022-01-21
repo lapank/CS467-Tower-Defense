@@ -1,8 +1,6 @@
 
 function main(){
 	context.clearRect(0,0,canvas.width,canvas.height);
-	
-	
 }
 
 function animate(){
@@ -24,6 +22,10 @@ function animate(){
 function addEvents(){
 	canvas.addEventListener('mousemove', trackMouse);
 	canvas.addEventListener('mouseleave', disableMouse);
+	// Fix mouse offset when browser window resized
+	window.addEventListener('resize', function(){
+		canvasPosition = canvas.getBoundingClientRect();
+});
 }
 
 function addBoardEvents(){
