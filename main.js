@@ -18,4 +18,15 @@ function animate(){
 	frame++;
 	if(!gameOver)requestAnimationFrame(animate); // creates recursive loop that redraws animation
 }
+
+function addEvents(){
+
+}
+
+function addBoardEvents(){
+	canvas.addEventListener('click', placeTower);
+}
+
+addBoardEvents();
 animate();
+
