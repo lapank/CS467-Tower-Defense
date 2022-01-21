@@ -30,7 +30,7 @@ class Enemy{
 }
 
 // Update existing Enemies
-function handleEnemies(){
+function updateEnemies(){
 	for(let i = 0; i < enemies.length; i++){
 		// Move and Draw enemy
 		enemies[i].update();

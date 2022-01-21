@@ -53,7 +53,7 @@ function createGrid(){
 }
 
 // Draw existing Cells
-function handleGameGrid(){
+function updateGameGrid(){
 	for (let i = 0; i < gameGrid.length; i++) {
 		gameGrid[i].draw();
 	}

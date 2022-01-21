@@ -9,12 +9,12 @@ function animate(){
 	context.fillStyle = 'blue';
 	context.fillRect(0,0,menuBar.width, menuBar.height);
 
-	handleGameGrid();
-	handleTowers();
-	handleProjectiles();
-	handleEnemies();
-	handleResources();
-	handleGameStatus();
+	updateGameGrid();
+	updateTowers();
+	updateProjectiles();
+	updateEnemies();
+	updateResources();
+	updateGameStatus();
 	frame++;
 	if(!gameOver)requestAnimationFrame(animate); // creates recursive loop that redraws animation
 }

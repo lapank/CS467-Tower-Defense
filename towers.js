@@ -57,7 +57,7 @@ function placeTower(){
 }
 
 // Update existing Towers
-function handleTowers(){
+function updateTowers(){
 	for(let i = 0; i < towers.length; i++){
 		towers[i].draw();
 		towers[i].update();

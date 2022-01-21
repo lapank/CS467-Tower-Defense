@@ -2,7 +2,7 @@ let gameOver = false;		// When True, game is lost.
 const winningScore = 50;	// Points needed to win
 
 // Update Menu display
-function handleGameStatus(){
+function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';
 	context.font = '30px Orbitron';

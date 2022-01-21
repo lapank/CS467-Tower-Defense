@@ -24,7 +24,7 @@ class Resource {
 }
 
 // Update Resources
-function handleResources(){
+function updateResources(){
 	// Place Resources at a regular interval
 	if(frame % interval === 0 && score < winningScore){
 		resources.push(new Resource());

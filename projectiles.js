@@ -24,7 +24,7 @@ class Projectile {
 }
 
 // Update existing Projectiles
-function handleProjectiles(){
+function updateProjectiles(){
 	for(let i = 0; i < projectiles.length; i++){
 		projectiles[i].update();
 		projectiles[i].draw();
