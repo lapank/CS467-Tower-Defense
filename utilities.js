@@ -19,14 +19,14 @@ const levelSelect = {
 
 const titleButton1 = {
 	// text attributes
-	x: 100,
-	y: 350,
+	x2: 100,
+	y2: 350,
 	fontSize: 60,
 	textColor: "black",
 	text: 'New Game',
 	// button attributes
-	x2: 90,
-	y2: 290,
+	x: 90,
+	y: 290,
 	width: 410,
 	height: 80,
 	color: "white", 
@@ -35,14 +35,14 @@ const titleButton1 = {
 
 const titleButton2 = {
 	// text attributes
-	x: 100,
-	y: 460 ,
+	x2: 100,
+	y2: 460 ,
 	fontSize: 60,
 	textColor: "black",
 	text: 'Load Game',
 	// button attributes
-	x2: 90,
-	y2: 400,
+	x: 90,
+	y: 400,
 	width: 410,
 	height: 80,
 	color: "white", 
@@ -51,14 +51,14 @@ const titleButton2 = {
 
 const levelButton1 = {
 	// text attributes
-	x: 50,
-	y: 460 ,
+	x2: 50,
+	y2: 460 ,
 	fontSize: 50,
 	textColor: "black",
 	text: 'Level 1',
 	// button attributes
-	x2: 40,
-	y2: 210,
+	x: 40,
+	y: 210,
 	width: 256,
 	height: 256,
 	color: "white", 
@@ -67,14 +67,14 @@ const levelButton1 = {
 
 const levelButton2 = {
 	// text attributes
-	x: 276 + 50,
-	y: 460 ,
+	x2: 276 + 50,
+	y2: 460 ,
 	fontSize: 50,
 	textColor: "black",
 	text: 'Level 2',
 	// button attributes
-	x2: 276 + 40,
-	y2: 210,
+	x: 276 + 40,
+	y: 210,
 	width: 256,
 	height: 256,
 	color: "white", 
@@ -83,14 +83,14 @@ const levelButton2 = {
 
 const levelButton3 = {
 	// text attributes
-	x: 276*2 + 50,
-	y: 460 ,
+	x2: 276*2 + 50,
+	y2: 460 ,
 	fontSize: 50,
 	textColor: "black",
 	text: 'Level 3',
 	// button attributes
-	x2: 276*2 + 40,
-	y2: 210,
+	x: 276*2 + 40,
+	y: 210,
 	width: 256,
 	height: 256,
 	color: "white", 
@@ -142,15 +142,15 @@ function collision(first, second){
 //   x2, y2, width, height, color, borderColor
 function drawButton(button){
 	context.fillStyle = button.color
-	context.fillRect(button.x2,button.y2, button.width, button.height);
+	context.fillRect(button.x,button.y, button.width, button.height);
 	context.beginPath();
 	context.strokeStyle = button.borderColor;
 	context.lineWidth = "6";
-	context.rect(button.x2, button.y2, button.width, button.height);
+	context.rect(button.x, button.y, button.width, button.height);
 	context.stroke();
 	context.fillStyle = button.textColor;
 	context.font = button.fontSize +'px Orbitron';
-	context.fillText(button.text, button.x, button.y);
+	context.fillText(button.text, button.x2, button.y2);
 }
 
 // Delete all existing game objects, reset all values.

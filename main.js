@@ -93,6 +93,9 @@ function removeTitleEvents(){
 
 // Opens selected Level on Click
 function startGame() {
+	
+//	if (collision(mouse, titleButton1)) console.log("newgame");
+//	if (collision(mouse, titleButton2)) console.log("loadgame");
 	select = 1;
 	victory = false;
 	gameOver = false;
