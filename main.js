@@ -1,3 +1,10 @@
+
+function main(){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	
+	
+}
+
 function animate(){
 	context.clearRect(0,0,canvas.width,canvas.height);
 	context.fillStyle = 'blue';
