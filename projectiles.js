@@ -7,7 +7,7 @@ class Projectile {
 		this.y = y;
 		this.width = 10;
 		this.height = 10;
-		this.power = 20;
+		this.power = 100;
 		this.speed = 5;
 	}
 	// Move the projectile

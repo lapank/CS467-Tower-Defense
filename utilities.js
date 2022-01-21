@@ -1,7 +1,8 @@
 let gameOver = false;		// When True, game is lost.
+let victory = false;
 let running;				// When true, gameloop runs.
-let select = 0;		// Controls which screen to open
-const winningScore = 50;	// Points needed to win
+let select = 0;				// Controls which screen to open
+const winningScore = 10;	// Points needed to win
 
 const title = {
 	x: 40,
@@ -53,18 +54,23 @@ function updateGameStatus(){
 	context.fillText('Resources: ' + numberOfResources, 20, 80); 
 	// Checks for Game Over
 	if(gameOver){
+		console.log('gameover');
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
+		setTimeout(goToTitle, 5000);
 	}
 	// Checks for win condition
 	if (score >= winningScore && enemies.length === 0){
 		console.log('win met');
+		victory = true;
 		context.fillStyle = 'black';
 		context.font = '60px Orbitron';
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
+		//resetGameObjects();
+		setTimeout(goToTitle, 5000);
 	}
 }
 
@@ -93,3 +99,24 @@ function drawButton(button){
 	context.fillText(button.text, button.x, button.y);
 }
 
+// Delete all existing game objects, reset all values.
+function resetGameObjects(){
+	enemies.splice(0, enemies.length);
+	enemyPositions.splice(0, enemyPositions.length);
+	projectiles.splice(0, projectiles.length);
+	towers.splice(0, towers.length);
+	resources.splice(0, resources.length);
+	victory = false;
+	gameOver = false;
+	score = 0;
+	numberOfResources = 500;
+}
+
+// Takes a number. Prepares and go to title screen after that many seconds.
+function goToTitle(){
+	select = 0;
+	resetGameObjects();
+	removeBoardEvents();
+	addTitleEvents();
+	titleScreen()
+}

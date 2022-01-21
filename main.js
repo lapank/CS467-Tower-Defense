@@ -2,13 +2,12 @@
 function main(){
 	createGrid();
 	addEvents();
-
-	//canvas.addEventListener('click', startGame);
-	//titleScreen();
-	addBoardEvents();
-	animate();
+	select = 0;
+	addTitleEvents();
+	titleScreen();
+	//addBoardEvents();
+	//animate();
 }
-
 
 // Maintain Level-related game loop.
 function animate(){
@@ -26,7 +25,7 @@ function animate(){
 	// Increment time passing
 	frame++;
 	// Ends game loop at game over. 
-	if(!gameOver)requestAnimationFrame(animate); // creates recursive loop that redraws animation
+	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(animate); // creates recursive loop that redraws animation
 }
 
 // Title Screen game loop
@@ -43,7 +42,7 @@ function titleScreen(){
 	drawButton(titleButton1);
 	drawButton(titleButton2);
 
-	requestAnimationFrame(titleScreen);
+	if (select === 0) requestAnimationFrame(titleScreen);
 }
 
 // Initiate Event Listeners related to System functions.
@@ -61,9 +60,27 @@ function addBoardEvents(){
 	canvas.addEventListener('click', placeTower);
 }
 
+// Remove Event Listeners related to a Level.
+function removeBoardEvents(){
+	canvas.removeEventListener('click', placeTower);
+}
+
+// Initiate Event Listeners for Title Screen
+function addTitleEvents(){
+	canvas.addEventListener('click', startGame);
+}
+
+// Terminate Event Listeners for Title Screen
+function removeTitleEvents(){
+	canvas.removeEventListener('click', startGame);
+}
+
 // Opens selected Level on Click
 function startGame() {
-	canvas.removeEventListener( )
+	select = 1;
+	victory = false;
+	gameOver = false;
+	removeTitleEvents();
 	addBoardEvents();
 	animate();
 }
