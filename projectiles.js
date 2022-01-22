@@ -1,5 +1,6 @@
-const projectiles = [];
+const projectiles = []; // Array to hold existing projectiles
 
+// Projectiles fired by Towers
 class Projectile {
 	constructor(x,y){
 		this.x = x;
@@ -9,9 +10,11 @@ class Projectile {
 		this.power = 20;
 		this.speed = 5;
 	}
+	// Move the projectile
 	update(){
 		this.x += this.speed;
 	}
+	// Draw the projectile
 	draw(){
 		context.fillStyle = 'black';
 		context.beginPath();
@@ -19,24 +22,25 @@ class Projectile {
 		context.fill();
 	}
 }
-function handleProjectiles(){
+
+// Update existing Projectiles
+function updateProjectiles(){
 	for(let i = 0; i < projectiles.length; i++){
 		projectiles[i].update();
 		projectiles[i].draw();
 
-		//projectiles remove enemy health and disappear when they colide.
+		// Handle collision with Enemy
 		for (let j = 0; j < enemies.length; j++){
 			if(enemies[j] && projectiles[i] && collision(projectiles[i], enemies[j])){
-				enemies[j].health -= projectiles[i].power; //projectile hurts enemy
-				projectiles.splice(i, 1); //remove this 
+				enemies[j].health -= projectiles[i].power; 	// damage enemy
+				projectiles.splice(i, 1); 					// remove projectile 
 				i--;
 			}
 		}
-
+		// Remove projectile at end of game screen
 		if(projectiles[i] && projectiles[i].x > canvas.width - cellSize){
 			projectiles.splice(i, 1);
 			i--;
 		}
-		//console.log('projectiles length ' + projectiles.length);
 	}
 }

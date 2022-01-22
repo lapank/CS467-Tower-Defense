@@ -1,7 +1,8 @@
-let towerCost = 100;
-let numberOfResources = 400;
-const towers = [];
+let towerCost = 100;			// required resources to place a tower
+let numberOfResources = 400;	// player's starting resources
+const towers = [];				// array of existing towers
 
+// Tower to shoot projectiles and destroy enemies
 class Tower{
 	constructor(x,y){
 		this.x = x;
@@ -11,7 +12,9 @@ class Tower{
 		this.shooting = false;
 		this.health = 100;
 		this.timer = 0;
+		this.fireSpeed = 100;  // number of timer-frames between shots.
 	}
+	// Draw Tower on board
 	draw(){
 		context.fillStyle = 'gold';
 		context.fillRect(this.x,this.y,this.width,this.height);
@@ -19,48 +22,58 @@ class Tower{
 		context.font = '30px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 	}
+	// Increment timer and fire projectiles
 	update(){
 		if(this.shooting){
 			this.timer++;
-			if(this.timer % 100 === 0){
+			if(this.timer % this.fireSpeed === 0){
 				projectiles.push(new Projectile(this.x + 70, this.y + 50));
 			}
-		}else{
+		}
+		// Reset timer if not shooting
+		else{ 
 			this.timer = 0;
 		}
-		
 	}
 }
-canvas.addEventListener('click',function(){
+
+// Place Tower on Click
+function placeTower(){
 	const gridPositionX = mouse.x - (mouse.x % cellSize) + cellGap;
 	const gridPositionY = mouse.y - (mouse.y % cellSize) + cellGap;
+	// Prevent Tower placement on Menu bar
 	if(gridPositionY < cellSize) return;
+	// Prevent Tower placement on existing Tower.
 	for (let i=0; i<towers.length; i++){
 		if(towers[i].x === gridPositionX && towers[i].y === gridPositionY){
 			return;
 		}
-	}//before placeing tower, check that there already is one with the same coordinates
-	let towerCost = 100;
+	}
+	// Place Tower and deduct Resources
 	if (numberOfResources >= towerCost){
 		towers.push(new Tower(gridPositionX, gridPositionY));
 		numberOfResources -= towerCost;
 	}
-});
-function handleTowers(){
+}
+
+// Update existing Towers
+function updateTowers(){
 	for(let i = 0; i < towers.length; i++){
 		towers[i].draw();
 		towers[i].update();
-		if(enemyPositions.indexOf(towers[i].y) !== -1){//check if enemy is on row, -1 means no value found in array
+		// Disable Tower when no Enemies
+		if(enemyPositions.indexOf(towers[i].y) !== -1){
 			towers[i].shooting = true;
 		}else{
 			towers[i].shooting = false;
 		}
-		
-		for(let j = 0; j < enemies.length; j++){//check for enemy collision
+		// Handle Collision with Enemy
+		for(let j = 0; j < enemies.length; j++){
 			if (towers[i] && collision(towers[i], enemies[j])){
 				enemies[j].movement = 0;
-				towers[i].health -= 0.2; //remove health if enemy collides with tower
+				towers[i].health -= 0.2; 
 			}
+			// Handle Tower Death 
 			if (towers[i] && towers[i].health <= 0){
 				towers.splice(i, 1);
 				i--;

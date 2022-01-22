@@ -1,8 +1,9 @@
-let enemiesInterval = 600;
-let frame = 0; //for periodic enemy spawn, and resource spawn
-const enemies = [];
-const enemyPositions = [];
+let enemiesInterval = 600;		// frames between enemy spawns
+let frame = 0; 					// increment that determines resource/enemy spawns
+const enemies = [];				// array of existing enemies
+const enemyPositions = [];		// array of enemy vertical/row positions
 
+// Enemies that advance on towers
 class Enemy{
 	constructor(verticalPosition){
 		this.x = canvas.width;
@@ -14,9 +15,11 @@ class Enemy{
 		this.health = 100;
 		this.maxHealth = this.health; //will award player resources based on how large the HP was
 	}
+	// Move the enemy
 	update(){
 		this.x -= this.movement; //walking right to left
 	}
+	// Draw the enemy
 	draw(){
 		context.fillStyle = 'red';
 		context.fillRect(this.x, this.y, this.width, this.height);
@@ -25,29 +28,42 @@ class Enemy{
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 	}
 }
-function handleEnemies(){
+
+// Update existing Enemies
+function updateEnemies(){
 	for(let i = 0; i < enemies.length; i++){
-		enemies[i].update(); //move to left
-		enemies[i].draw(); //health and sprite
+		// Move and Draw enemy
+		enemies[i].update();
+		enemies[i].draw();
+		// End game when enemy reaches left boundary
 		if(enemies[i].x < 0){
 			gameOver = true;
 		}
+		// Handle enemy Death
 		if (enemies[i].health <= 0){
+			// Increase player resources and score
 			let gainedResources = enemies[i].maxHealth/10;
 			numberOfResources += gainedResources;
 			score += gainedResources; 
+			// Remove enemy row position from the array 
 			const findThisIndex = enemyPositions.indexOf(enemies[i].y);
 			enemyPositions.splice(findThisIndex, 1);
 			enemies.splice(i, 1);
 			i--;
-			//console.log(enemyPositions);
 		}
 	}
-	if (frame% enemiesInterval === 0 && score < winningScore){ //adding enemies to board
-		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap; //placing enemies on rows
+	spawnNewEnemies();
+}
+
+function spawnNewEnemies(){
+	if (frame% enemiesInterval === 0 && score < winningScore){ 
+		// Determine row position
+		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
+		// Add enemy to enemies array
 		enemies.push(new Enemy(verticalPosition));
+		// Add enemy row position to the array
 		enemyPositions.push(verticalPosition);
+		// Speed up rate that enemies appear.
 		if (enemiesInterval > 120) enemiesInterval -= 100;
-		//console.log(enemyPositions);
 	}
 }
