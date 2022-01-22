@@ -58,7 +58,7 @@ function levelSelectScreen(){
 	drawButton(levelButton2);
 	drawButton(levelButton3);
 
-	if (select === 0) requestAnimationFrame(levelSelectScreen);
+	if (select === -1) requestAnimationFrame(levelSelectScreen);
 }
 
 // Initiate Event Listeners related to System functions.
@@ -83,25 +83,68 @@ function removeBoardEvents(){
 
 // Initiate Event Listeners for Title Screen
 function addTitleEvents(){
-	canvas.addEventListener('click', startGame);
+	canvas.addEventListener('click', newLoadGame);
 }
 
 // Terminate Event Listeners for Title Screen
 function removeTitleEvents(){
+	canvas.removeEventListener('click', newLoadGame);
+}
+
+// Initiate Event Listeners for Level Select Screen
+function addLevelSelectEvents(){
+	canvas.addEventListener('click', startGame);
+}
+
+// Terminate Event Listeners for Level Select Screen
+function removeLevelSelectEvents(){
 	canvas.removeEventListener('click', startGame);
+}
+
+// Opens Level Select Screen on Click
+function newLoadGame() {
+	if (collision(mouse, titleButton1)) {
+		select = -1
+		removeTitleEvents();
+		removeBoardEvents();
+		addLevelSelectEvents();
+		levelSelectScreen();
+	}else if (collision(mouse, titleButton2)) {
+		select = -1;
+		removeTitleEvents();
+		removeBoardEvents();
+		addLevelSelectEvents();
+		levelSelectScreen();
+	};
 }
 
 // Opens selected Level on Click
 function startGame() {
-	
-//	if (collision(mouse, titleButton1)) console.log("newgame");
-//	if (collision(mouse, titleButton2)) console.log("loadgame");
-	select = 1;
-	victory = false;
-	gameOver = false;
-	removeTitleEvents();
-	addBoardEvents();
-	animate();
+	if (collision(mouse, levelButton1)) {
+		select = 1;
+		victory = false;
+		gameOver = false;
+		removeTitleEvents();
+		removeLevelSelectEvents();
+		addBoardEvents();
+		animate();
+	} else if (collision(mouse, levelButton2)) {
+		select = 1;
+		victory = false;
+		gameOver = false;
+		removeTitleEvents();
+		removeLevelSelectEvents();
+		addBoardEvents();
+		animate()
+	} else if (collision(mouse, levelButton3)) {
+		select = 1;
+		victory = false;
+		gameOver = false;
+		removeTitleEvents();
+		removeLevelSelectEvents();
+		addBoardEvents();
+		animate()
+	};
 }
 
 main();
