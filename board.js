@@ -63,10 +63,10 @@ function updateGameGrid(){
 function trackMouse(e){
 	mouse.x = e.x - canvasPosition.left;
 	mouse.y = e.y - canvasPosition.top;
-};
+}
 
 // Stop tracking Mouse position outside game screen
 function disableMouse(){
 	mouse.x = undefined;
 	mouse.y = undefined;
-};
+}
