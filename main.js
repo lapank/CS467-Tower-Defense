@@ -142,7 +142,7 @@ function removeLevelSelectEvents(){
 // Opens Level Select Screen on Click
 function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
-		select = -1
+		select = -1;
 		removeTitleEvents();
 		removeBoardEvents();
 		addLevelSelectEvents();
@@ -153,7 +153,7 @@ function newLoadGame() {
 		removeBoardEvents();
 		addLevelSelectEvents();
 		levelSelectScreen();
-	};
+	}
 }
 
 // Opens selected Level on Click
@@ -173,7 +173,7 @@ function startGame() {
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
-		level2()
+		level2();
 	} else if (collision(mouse, levelButton3)) {
 		select = 1;
 		victory = false;
@@ -182,7 +182,7 @@ function startGame() {
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level3()
-	};
+	}
 }
 
 main();
