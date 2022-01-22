@@ -8,8 +8,8 @@ function main(){
 	//levelSelectScreen();
 }
 
-// Maintain Level-related game loop.
-function animate(){
+// Level 1-related game loop.
+function level1(){
 	context.clearRect(0,0,canvas.width,canvas.height);
 	// Draw the Menu bar
 	context.fillStyle = 'blue';
@@ -24,7 +24,45 @@ function animate(){
 	// Increment time passing
 	frame++;
 	// Ends game loop at game over. 
-	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(animate); // creates recursive loop that redraws animation
+	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(level1); // creates recursive loop that redraws animation
+}
+
+// Level 2-related game loop.
+function level2(){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	// Draw the Menu bar
+	context.fillStyle = 'black';
+	context.fillRect(0,0, menuBar.width, menuBar.height);
+	// Update Game Objects 
+	updateGameGrid();
+	updateTowers();
+	updateProjectiles();
+	updateEnemies();
+	updateResources();
+	updateGameStatus();
+	// Increment time passing
+	frame++;
+	// Ends game loop at game over. 
+	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(level2); // creates recursive loop that redraws animation
+}
+
+// Level 3-related game loop.
+function level3(){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	// Draw the Menu bar
+	context.fillStyle = 'violet';
+	context.fillRect(0,0, menuBar.width, menuBar.height);
+	// Update Game Objects 
+	updateGameGrid();
+	updateTowers();
+	updateProjectiles();
+	updateEnemies();
+	updateResources();
+	updateGameStatus();
+	// Increment time passing
+	frame++;
+	// Ends game loop at game over. 
+	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(level3); // creates recursive loop that redraws animation
 }
 
 // Title Screen game loop
@@ -127,7 +165,7 @@ function startGame() {
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
-		animate();
+		level1();
 	} else if (collision(mouse, levelButton2)) {
 		select = 1;
 		victory = false;
@@ -135,7 +173,7 @@ function startGame() {
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
-		animate()
+		level2()
 	} else if (collision(mouse, levelButton3)) {
 		select = 1;
 		victory = false;
@@ -143,7 +181,7 @@ function startGame() {
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
-		animate()
+		level3()
 	};
 }
 
