@@ -1,7 +1,7 @@
 let score = 0;
 const resources = [];		// array of existing resources
 const amounts = [20,30,40]; // array of possible resource ammounts
-const interval = 500		// How often resources appear
+const interval = 500;		// How often resources appear
 
 // Resource that can be picked up by moving over with a mouse.
 class Resource {
