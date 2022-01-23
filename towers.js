@@ -1,5 +1,5 @@
 let towerCost = 100;			// required resources to place a tower
-let numberOfResources = 400;	// player's starting resources
+let numberOfResources = 500;	// player's starting resources
 const towers = [];				// array of existing towers
 
 // Tower to shoot projectiles and destroy enemies
