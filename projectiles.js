@@ -1,13 +1,13 @@
 const projectiles = []; // Array to hold existing projectiles
 
 // Projectiles fired by Towers
-class Projectile {
+class Arrow {
 	constructor(x,y){
 		this.x = x;
 		this.y = y;
 		this.width = 10;
 		this.height = 10;
-		this.power = 100;
+		this.power = 20;
 		this.speed = 5;
 	}
 	// Move the projectile
@@ -17,6 +17,52 @@ class Projectile {
 	// Draw the projectile
 	draw(){
 		context.fillStyle = 'black';
+		context.beginPath();
+		context.arc(this.x,this.y, this.width, 0, Math.PI * 2);
+		context.fill();
+	}
+}
+
+// Fire Ball projectile for Dragon Towers
+class FireBall {
+	constructor(x,y){
+		this.x = x;
+		this.y = y;
+		this.width = 10;
+		this.height = 10;
+		this.power = 50;
+		this.speed = 5;
+	}
+	// Move the projectile
+	update(){
+		this.x += this.speed;
+	}
+	// Draw the projectile
+	draw(){
+		context.fillStyle = 'darkorange';
+		context.beginPath();
+		context.arc(this.x,this.y, this.width, 0, Math.PI * 2);
+		context.fill();
+	}
+}
+
+// Magic Bolt projectile for Wizard Towers
+class MagicBolt {
+	constructor(x,y){
+		this.x = x;
+		this.y = y;
+		this.width = 10;
+		this.height = 10;
+		this.power = 10;
+		this.speed = 5;
+	}
+	// Move the projectile
+	update(){
+		this.x += this.speed;
+	}
+	// Draw the projectile
+	draw(){
+		context.fillStyle = 'gold';
 		context.beginPath();
 		context.arc(this.x,this.y, this.width, 0, Math.PI * 2);
 		context.fill();
