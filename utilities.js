@@ -2,7 +2,7 @@ let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open
-const winningScore = 10;	// Points needed to win
+const winningScore = 100;	// Points needed to win
 
 const title = {
 	x: 40,

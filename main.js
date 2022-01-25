@@ -181,7 +181,7 @@ function startGame() {
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
-		level3()
+		level3();
 	}
 }
 
