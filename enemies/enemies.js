@@ -13,10 +13,15 @@ class Enemy{
 		this.movement = this.speed;
 		this.health = health;
 		this.maxHealth = this.health; //will award player resources based on how large the HP was
+		this.onFire = false;    //set to true when hit by fireball projectile
 	}
 	// Move the enemy
 	update(){
 		this.x -= this.movement; //walking right to left
+	
+		if (this.onFire){       //damage over time if on fire
+			this.health -= 0.1;
+		}
 	}
 	// Draw the enemy
 	draw(bodyColor, textColor){

@@ -7,6 +7,15 @@ function updateProjectiles(){
 		// Handle collision with Enemy
 		for (let j = 0; j < enemies.length; j++){
 			if(enemies[j] && projectiles[i] && collision(projectiles[i], enemies[j])){
+				
+				// Handle special projectiles
+				if (projectiles[i] instanceof MagicBolt){    	// Magic bolt halves enemy movement speed
+					enemies[j].movement = enemies[j].speed*0.5;
+				}
+				else if (projectiles[i] instanceof FireBall){    // Fireball changes status to on fire
+					enemies[j].onFire = true;
+				}
+				
 				enemies[j].health -= projectiles[i].power; 	// damage enemy
 				projectiles.splice(i, 1); 					// remove projectile 
 				i--;
