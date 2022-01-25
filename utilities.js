@@ -2,20 +2,20 @@ let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open
-const winningScore = 10;	// Points needed to win
+const winningScore = 100;	// Points needed to win
 
 const title = {
 	x: 40,
 	y: 150,
 	fontSize: 80,
 	spacing: 5,
-};
+}
 
 const levelSelect = {
 	x: 160,
 	y: 150,
 	fontSize: 80,
-};
+}
 
 const titleButton1 = {
 	// text attributes
@@ -31,7 +31,7 @@ const titleButton1 = {
 	height: 80,
 	color: "white", 
 	borderColor: "black",
-};
+}
 
 const titleButton2 = {
 	// text attributes
@@ -47,7 +47,7 @@ const titleButton2 = {
 	height: 80,
 	color: "white", 
 	borderColor: "black",
-};
+}
 
 const levelButton1 = {
 	// text attributes
@@ -63,7 +63,7 @@ const levelButton1 = {
 	height: 256,
 	color: "white", 
 	borderColor: "black",
-};
+}
 
 const levelButton2 = {
 	// text attributes
@@ -79,7 +79,7 @@ const levelButton2 = {
 	height: 256,
 	color: "white", 
 	borderColor: "black",
-};
+}
 
 const levelButton3 = {
 	// text attributes
@@ -95,7 +95,7 @@ const levelButton3 = {
 	height: 256,
 	color: "white", 
 	borderColor: "black",
-};
+}
 
 // Update Menu display
 function updateGameStatus(){
@@ -141,7 +141,7 @@ function collision(first, second){
 //   Required properties: x, y, fontSize, textColor, text,
 //   x2, y2, width, height, color, borderColor
 function drawButton(button){
-	context.fillStyle = button.color;
+	context.fillStyle = button.color
 	context.fillRect(button.x,button.y, button.width, button.height);
 	context.beginPath();
 	context.strokeStyle = button.borderColor;
@@ -172,5 +172,5 @@ function goToTitle(){
 	resetGameObjects();
 	removeBoardEvents();
 	addTitleEvents();
-	titleScreen();
+	titleScreen()
 }
