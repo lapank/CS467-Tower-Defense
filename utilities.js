@@ -105,7 +105,7 @@ function updateGameStatus(){
 	// Current Score
 	context.fillText('Score: ' + score, 20, 45);				 
 	// Current Resources
-	context.fillText('Resources: ' + numberOfResources, 20, 80); 
+	context.fillText('Gold: ' + numberOfResources, 20, 80); 
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
