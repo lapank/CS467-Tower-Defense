@@ -99,45 +99,6 @@ function levelSelectScreen(){
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
 }
 
-// Initiate Event Listeners related to System functions.
-function addEvents(){
-	canvas.addEventListener('mousemove', trackMouse);
-	canvas.addEventListener('mouseleave', disableMouse);
-	// Fix mouse offset when browser window resized
-	window.addEventListener('resize', function(){
-		canvasPosition = canvas.getBoundingClientRect();
-	});
-}
-
-// Initiate Event Listeners related to a Level.
-function addBoardEvents(){
-	canvas.addEventListener('click', placeTower);
-}
-
-// Remove Event Listeners related to a Level.
-function removeBoardEvents(){
-	canvas.removeEventListener('click', placeTower);
-}
-
-// Initiate Event Listeners for Title Screen
-function addTitleEvents(){
-	canvas.addEventListener('click', newLoadGame);
-}
-
-// Terminate Event Listeners for Title Screen
-function removeTitleEvents(){
-	canvas.removeEventListener('click', newLoadGame);
-}
-
-// Initiate Event Listeners for Level Select Screen
-function addLevelSelectEvents(){
-	canvas.addEventListener('click', startGame);
-}
-
-// Terminate Event Listeners for Level Select Screen
-function removeLevelSelectEvents(){
-	canvas.removeEventListener('click', startGame);
-}
 
 // Opens Level Select Screen on Click
 function newLoadGame() {
@@ -183,6 +144,46 @@ function startGame() {
 		addBoardEvents();
 		level3();
 	}
+}
+
+// Initiate Event Listeners related to System functions.
+function addEvents(){
+	canvas.addEventListener('mousemove', trackMouse);
+	canvas.addEventListener('mouseleave', disableMouse);
+	// Fix mouse offset when browser window resized
+	window.addEventListener('resize', function(){
+		canvasPosition = canvas.getBoundingClientRect();
+	});
+}
+
+// Initiate Event Listeners related to a Level.
+function addBoardEvents(){
+	canvas.addEventListener('click', placeTower);
+}
+
+// Remove Event Listeners related to a Level.
+function removeBoardEvents(){
+	canvas.removeEventListener('click', placeTower);
+}
+
+// Initiate Event Listeners for Title Screen
+function addTitleEvents(){
+	canvas.addEventListener('click', newLoadGame);
+}
+
+// Terminate Event Listeners for Title Screen
+function removeTitleEvents(){
+	canvas.removeEventListener('click', newLoadGame);
+}
+
+// Initiate Event Listeners for Level Select Screen
+function addLevelSelectEvents(){
+	canvas.addEventListener('click', startGame);
+}
+
+// Terminate Event Listeners for Level Select Screen
+function removeLevelSelectEvents(){
+	canvas.removeEventListener('click', startGame);
 }
 
 main();
