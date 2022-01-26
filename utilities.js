@@ -102,17 +102,17 @@ function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';
 	context.font = '30px Orbitron';
-	// Current Score
+	// Display Current Score
 	context.fillText('Score: ' + score, 20, 45);				 
-	// Current Resources
+	// Display Current Resources
 	context.fillText('Gold: ' + numberOfResources, 20, 80); 
-	// Current Health
+	// Display Current Health
 	context.fillStyle = 'red'
 	context.fillRect(320, 50, 300, 35);
 	context.fillStyle = 'green'
 	context.fillRect(320, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
-	context.fillText('Health: ' + playerHealth, 200, 80);
+	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
