@@ -22,7 +22,7 @@ class Tower{
 		context.font = '30px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 	}
-	// Increment timer and fire projectiles
+	// Take a projectile class. Increment timer and fire projectile.
 	update(projectile){
 		if(this.shooting){
 			this.timer++;

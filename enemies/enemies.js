@@ -30,6 +30,12 @@ class Enemy{
 		context.fillStyle = textColor;
 		context.font = '30px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
+		// Display fire status
+		if (this.onFire)
+		{
+			context.fillStyle = "red";
+			context.fillText("FIRE", this.x + 15, this.y + 60);
+		}
 	}
 }
 
