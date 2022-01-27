@@ -8,8 +8,10 @@ canvas.height = 600;
 const cellSize = 100;
 const cellGap = 3;
 const gameGrid = [];
+const maxPlayerHealth = 200;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
+let playerHealth = maxPlayerHealth;
 
 // Mouse position
 const mouse = {

@@ -4,9 +4,14 @@ function updateEnemies(){
 		// Move and Draw enemy
 		enemies[i].update();
 		enemies[i].draw();
-		// End game when enemy reaches left boundary
+		// Damage player when enemy reaches left boundary
 		if(enemies[i].x < 0){
-			gameOver = true;
+			// Damage player equal to enemy health, mark enemy for destruction.
+			playerHealth -= enemies[i].health;
+			if (playerHealth < 0) playerHealth = 0;
+			enemies[i].health = 0;
+			// End game if playerHealth depleted
+			if (playerHealth <= 0) gameOver = true;
 		}
 		// Handle enemy Death
 		if (enemies[i].health <= 0){
