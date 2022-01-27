@@ -107,9 +107,9 @@ function updateGameStatus(){
 	// Display Current Resources
 	context.fillText('Gold: ' + numberOfResources, 20, 80); 
 	// Display Current Health
-	context.fillStyle = 'red'
+	context.fillStyle = 'red';
 	context.fillRect(320, 50, 300, 35);
-	context.fillStyle = 'green'
+	context.fillStyle = 'green';
 	context.fillRect(320, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
