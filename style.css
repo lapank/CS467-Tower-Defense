@@ -9,6 +9,6 @@ body{
 	transform:  translate(-50%, -50%);
 	width: 900px;
 	height: 600px;
-	background: white;
+	background: lightgray;
 	font-family: 'Orbitron', sans-serif;
 }
