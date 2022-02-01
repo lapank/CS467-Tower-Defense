@@ -97,7 +97,7 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
-// Update Menu display
+// Update Menu display and Handle EndGame
 function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';
@@ -119,6 +119,7 @@ function updateGameStatus(){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
+		// Exit the gameover screen
 		setTimeout(goToTitle, 5000);
 	}
 	// Checks for win condition
@@ -130,7 +131,7 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
-		//resetGameObjects();
+		// Exit the win screen
 		setTimeout(goToTitle, 5000);
 	}
 }
