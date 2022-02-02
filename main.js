@@ -150,12 +150,14 @@ function startGame() {
 function tryAgain_press() {
 	if ( (gameOver || victory) && (collision(mouse, tryAgainButton))) {
 		console.log('try again clicked');
+		goToTitle();
 }}
 
 // Return to Level Select on click
 function quit_press() {
 	if ( (gameOver || victory) && (collision(mouse, quitButton))) {
 		console.log('quit clicked');
+		goToTitle();
 }}
 
 // Initiate Event Listeners related to System functions.
