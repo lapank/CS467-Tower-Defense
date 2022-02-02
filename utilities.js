@@ -104,7 +104,7 @@ function chooseTower(){
 	class TowerButton{
 		constructor(x, bodyColor, fontColor, health){
 			this.x = x;
-			this.y = 510;
+			this.y = 610;
 			this.width = 85;
 			this.height = 85;
 			this.stroke = 'black';
@@ -115,6 +115,7 @@ function chooseTower(){
 			this.health = health;
 		}
 		draw(){
+			// Changes the button's border to highlight the selected tower.
 			if (towerSelector=== 1){
 				tower1.stroke = 'gold';
 				tower2.stroke = 'black';
