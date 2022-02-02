@@ -95,6 +95,7 @@ function levelSelectScreen(){
 	drawButton(levelButton1);
 	drawButton(levelButton2);
 	drawButton(levelButton3);
+	drawButton(mainMenuButton);
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
 }
@@ -152,6 +153,13 @@ function quit_press() {
 		goToLevelSelect()
 }}
 
+// Return to TitleScreen on click
+function titleScreen_press() {
+	if ( collision(mouse, mainMenuButton)) {
+		console.log('mainMenu pressed');
+		goToTitle();
+}}
+
 // Initiate Event Listeners related to System functions.
 function addEvents(){
 	canvas.addEventListener('mousemove', trackMouse);
@@ -189,11 +197,13 @@ function removeTitleEvents(){
 // Initiate Event Listeners for Level Select Screen
 function addLevelSelectEvents(){
 	canvas.addEventListener('click', startGame);
+	canvas.addEventListener('click', titleScreen_press);
 }
 
 // Terminate Event Listeners for Level Select Screen
 function removeLevelSelectEvents(){
 	canvas.removeEventListener('click', startGame);
+	canvas.removeEventListener('click', titleScreen_press);
 }
 
 main();

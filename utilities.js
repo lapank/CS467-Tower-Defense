@@ -129,6 +129,22 @@ const tryAgainButton = {
 	borderColor: "black",
 };
 
+const mainMenuButton = {
+	// text attributes
+	x2: 370 - 150,
+	y2: 515 + 30,
+	fontSize: 40,
+	textColor: "black",
+	text: 'Back to Title Screen',
+	// button attributes
+	x: 360 - 150,
+	y: 470 + 30,
+	width: 480,
+	height: 60,
+	color: "white", 
+	borderColor: "black",
+};
+
 // Update Menu display and Handle EndGame
 function updateGameStatus(){
 	// Menu Display
@@ -216,6 +232,7 @@ function goToTitle(){
 	select = 0;
 	resetGameObjects();
 	removeBoardEvents();
+	removeLevelSelectEvents();
 	addTitleEvents();
 	titleScreen();
 }
