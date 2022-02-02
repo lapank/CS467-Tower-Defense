@@ -2,7 +2,7 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d'); //access to all 2d drawing library tools
 canvas.width = 900;
-canvas.height = 600;
+canvas.height = 700;
 
 // Global Variables
 const cellSize = 100;

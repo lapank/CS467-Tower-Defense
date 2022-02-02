@@ -15,7 +15,7 @@ function level1(){
 	context.fillStyle = 'blue';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
 	context.fillStyle = 'blue';
-	context.fillRect(0,500, menuBar.width, menuBar.height);
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -36,11 +36,14 @@ function level2(){
 	// Draw the Menu bar
 	context.fillStyle = 'black';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = 'black';
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
 	updateEnemies();
+	chooseTower();
 	updateResources();
 	updateGameStatus();
 	// Increment time passing
@@ -55,11 +58,14 @@ function level3(){
 	// Draw the Menu bar
 	context.fillStyle = 'violet';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = 'violet';
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
 	updateEnemies();
+	chooseTower();
 	updateResources();
 	updateGameStatus();
 	// Increment time passing
