@@ -43,7 +43,7 @@ function level2(){
 	// Increment time passing
 	frame++;
 	// Ends game loop at game over. 
-	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(level2); // creates recursive loop that redraws animation
+	if(!(gameOver || victory) && select === 2 )requestAnimationFrame(level2); // creates recursive loop that redraws animation
 }
 
 // Level 3-related game loop.
@@ -62,7 +62,7 @@ function level3(){
 	// Increment time passing
 	frame++;
 	// Ends game loop at game over. 
-	if(!(gameOver || victory) && select === 1 )requestAnimationFrame(level3); // creates recursive loop that redraws animation
+	if(!(gameOver || victory) && select === 3 )requestAnimationFrame(level3); // creates recursive loop that redraws animation
 }
 
 // Title Screen game loop
@@ -121,7 +121,7 @@ function startGame() {
 		addBoardEvents();
 		level1();
 	} else if (collision(mouse, levelButton2)) {
-		select = 1;
+		select = 2;
 		victory = false;
 		gameOver = false;
 		removeTitleEvents();
@@ -129,7 +129,7 @@ function startGame() {
 		addBoardEvents();
 		level2();
 	} else if (collision(mouse, levelButton3)) {
-		select = 1;
+		select = 3;
 		victory = false;
 		gameOver = false;
 		removeTitleEvents();
