@@ -98,6 +98,75 @@ const levelButton3 = {
 };
 
 // Update Menu display and Handle EndGame
+// Creat game menu and elements
+function chooseTower(){
+
+	// Button where users select tower type
+	class TowerButton{
+		constructor(x, bodyColor, fontColor, health){
+			this.x = x;
+			this.y = 610;
+			this.width = 85;
+			this.height = 85;
+			this.stroke = 'black';
+			this.lineWidth = 5;
+			this.bodyColor = bodyColor;
+			this.fontColor = fontColor;
+			this.font = '30px Orbitron';
+			this.health = health;
+		}
+		draw(){
+			// Changes the button's border to highlight the selected tower.
+			if (towerSelector=== 1){
+				tower1.stroke = 'gold';
+				tower2.stroke = 'black';
+				tower3.stroke = 'black';
+			}else if (towerSelector === 2){
+				tower1.stroke = 'black';
+				tower2.stroke = 'gold';
+				tower3.stroke = 'black';
+			}else if (towerSelector === 3){
+				tower1.stroke = 'black';
+				tower2.stroke = 'black';
+				tower3.stroke = 'gold';
+			}else{
+				tower1.stroke = 'black';
+				tower2.stroke = 'black';
+				tower3.stroke = 'black';
+			}
+
+			context.lineWidth = this.lineWidth;
+			context.fillStyle = this.bodyColor;
+			context.fillRect(this.x, this.y, this.width, this.height);
+			context.strokeStyle = this.stroke;
+			context.strokeRect(this.x, this.y, this.width, this.height);
+			context.fillStyle = this.fontColor;
+			context.font = this.font;
+			context.fillText(Math.floor(this.health), this.x + 15, this.y + 30);
+
+		}
+	}
+
+	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100);
+	let tower2 = new TowerButton(400, 'lime', 'black', 150);
+	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75);
+
+	if(collision(mouse, tower1) && mouse.clicked){
+		towerSelector = 1;
+	} else if (collision(mouse, tower2) && mouse.clicked){
+		towerSelector = 2;
+	} else if (collision(mouse, tower3) && mouse.clicked){
+		towerSelector = 3;
+	}
+
+	tower1.draw();
+	tower2.draw();
+	tower3.draw();
+
+
+}
+
+// Update Menu display
 function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';

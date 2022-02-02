@@ -1,6 +1,7 @@
 let towerCost = 100;			// required resources to place a tower
 let numberOfResources = 500;	// player's starting resources
 const towers = [];				// array of existing towers
+let towerSelector = 1;			// initialize variable for menu button
 
 // Tower to shoot projectiles and destroy enemies
 class Tower{
@@ -13,6 +14,7 @@ class Tower{
 		this.health = health;
 		this.timer = timer;
 		this.fireSpeed = fireSpeed;  // number of timer-frames between shots.
+		this.towerSelector = towerSelector;
 	}
 	// Draw Tower on board
 	draw(bodyColor, textColor){

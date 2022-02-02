@@ -14,11 +14,14 @@ function level1(){
 	// Draw the Menu bar
 	context.fillStyle = 'blue';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = 'blue';
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
 	updateEnemies();
+	chooseTower();
 	updateResources();
 	updateGameStatus();
 	// Increment time passing
@@ -33,11 +36,14 @@ function level2(){
 	// Draw the Menu bar
 	context.fillStyle = 'black';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = 'black';
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
 	updateEnemies();
+	chooseTower();
 	updateResources();
 	updateGameStatus();
 	// Increment time passing
@@ -52,11 +58,14 @@ function level3(){
 	// Draw the Menu bar
 	context.fillStyle = 'violet';
 	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = 'violet';
+	context.fillRect(0,600, menuBar.width, menuBar.height);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
 	updateEnemies();
+	chooseTower();
 	updateResources();
 	updateGameStatus();
 	// Increment time passing
@@ -148,6 +157,8 @@ function startGame() {
 
 // Initiate Event Listeners related to System functions.
 function addEvents(){
+	canvas.addEventListener('mousedown', clickDown);
+	canvas.addEventListener('mouseup', clickUp);
 	canvas.addEventListener('mousemove', trackMouse);
 	canvas.addEventListener('mouseleave', disableMouse);
 	// Fix mouse offset when browser window resized
