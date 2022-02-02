@@ -3,7 +3,7 @@ function placeTower(){
 	const gridPositionX = mouse.x - (mouse.x % cellSize) + cellGap;
 	const gridPositionY = mouse.y - (mouse.y % cellSize) + cellGap;
 	// Prevent Tower placement on Menu bar
-	if(gridPositionY < cellSize) return;
+	if(gridPositionY < cellSize || gridPositionY > canvas.height - cellSize) return;
 	// Prevent Tower placement on existing Tower.
 	for (let i=0; i<towers.length; i++){
 		if(towers[i].x === gridPositionX && towers[i].y === gridPositionY){
@@ -13,16 +13,16 @@ function placeTower(){
 	// Place Tower and deduct Resources
 	if (numberOfResources >= towerCost){
 
-		//Randomly select which tower to create (temporary for testing towers until tower menu is implemented)
-		let towerSelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 		if (towerSelector == 1){
 			towers.push(new Archer(gridPositionX, gridPositionY));
 		}
 		else if (towerSelector == 2) {
 			towers.push(new Dragon(gridPositionX, gridPositionY));
 		}
-		else{
+		else if (towerSelector == 3) {
 			towers.push(new Wizard(gridPositionX, gridPositionY));
+		} else {
+			console.log('Error: towerSelector value is not between 1 and 3.');
 		}
 
 		numberOfResources -= towerCost;
