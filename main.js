@@ -143,7 +143,7 @@ function startGame() {
 function tryAgain_press() {
 	if ( (gameOver || victory) && (collision(mouse, tryAgainButton))) {
 		console.log('try again clicked');
-		goToLevelSelect()
+		restartLevel();
 }}
 
 // Return to Level Select on click

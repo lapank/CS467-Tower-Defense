@@ -247,3 +247,19 @@ function goToLevelSelect(){
 	addLevelSelectEvents();
 	levelSelectScreen();
 }
+
+// Prepares and go to Level Select screen.
+function restartLevel(){
+	resetGameObjects();
+	switch (select){
+		case 1:
+			level1();
+			break;
+		case 2:
+			level2();
+			break;
+		case 3:
+			level3();
+			break;
+	}
+}
