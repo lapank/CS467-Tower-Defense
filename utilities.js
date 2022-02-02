@@ -153,10 +153,11 @@ function updateGameStatus(){
 		context.fillText('GAME OVER', 135, 330);
 
 		// Exit the gameover screen
-		//setTimeout(goToTitle, 5000);
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
 	}
 	// Checks for win condition
-	if (score >= winningScore && enemies.length === 0){
+	if ((score >= winningScore) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
 		victory = true;
 		context.fillStyle = 'black';
@@ -164,8 +165,8 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
+		
 		// Exit the win screen
-		//setTimeout(goToTitle, 5000);
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
 	}
