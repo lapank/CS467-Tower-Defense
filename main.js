@@ -103,17 +103,9 @@ function levelSelectScreen(){
 // Opens Level Select Screen on Click
 function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
-		select = -1;
-		removeTitleEvents();
-		removeBoardEvents();
-		addLevelSelectEvents();
-		levelSelectScreen();
+		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
-		select = -1;
-		removeTitleEvents();
-		removeBoardEvents();
-		addLevelSelectEvents();
-		levelSelectScreen();
+		goToLevelSelect()
 	}
 }
 
@@ -150,14 +142,14 @@ function startGame() {
 function tryAgain_press() {
 	if ( (gameOver || victory) && (collision(mouse, tryAgainButton))) {
 		console.log('try again clicked');
-		goToTitle();
+		goToLevelSelect()
 }}
 
 // Return to Level Select on click
 function quit_press() {
 	if ( (gameOver || victory) && (collision(mouse, quitButton))) {
 		console.log('quit clicked');
-		goToTitle();
+		goToLevelSelect()
 }}
 
 // Initiate Event Listeners related to System functions.

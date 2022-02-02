@@ -211,11 +211,21 @@ function resetGameObjects(){
 	playerHealth = maxPlayerHealth;
 }
 
-// Takes a number. Prepares and go to title screen after that many seconds.
+// Prepare and go to title screen.
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
 	removeBoardEvents();
 	addTitleEvents();
 	titleScreen();
+}
+
+// Prepares and go to Level Select screen.
+function goToLevelSelect(){
+	select = -1;
+	resetGameObjects();
+	removeBoardEvents();
+	removeTitleEvents();
+	addLevelSelectEvents();
+	levelSelectScreen();
 }
