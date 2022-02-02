@@ -2,6 +2,7 @@ let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
+							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
 const winningScore = 6;	// Points needed to win
 
 const title = {
