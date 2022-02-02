@@ -47,7 +47,7 @@ class Cell{
 
 // Overlay Canvas with Cells.
 function createGrid(){
-	for (let y = cellSize; y < canvas.height; y+=cellSize){
+	for (let y = cellSize; y < canvas.height - cellSize; y+=cellSize){
 		for (let x=0; x < canvas.width; x += cellSize){
 			gameGrid.push(new Cell(x, y));
 		}
@@ -59,6 +59,16 @@ function updateGameGrid(){
 	for (let i = 0; i < gameGrid.length; i++) {
 		gameGrid[i].draw();
 	}
+}
+
+// Track Mouse click
+function clickDown(e){
+	mouse.clicked = true;
+}
+
+// Track Mouse click release
+function clickUp(e){
+	mouse.clicked = false;
 }
 
 // Track Mouse position on game screen
