@@ -2,7 +2,9 @@ let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
-const winningScore = 100;	// Points needed to win
+							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
+const winningScore = 6;	// Points needed to win
+
 
 const title = {
 	x: 40,
@@ -93,6 +95,54 @@ const levelButton3 = {
 	y: 210,
 	width: 256,
 	height: 256,
+	color: "white", 
+	borderColor: "black",
+};
+
+const quitButton = {
+	// text attributes
+	x2: 370,
+	y2: 530,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Quit',
+	// button attributes
+	x: 360,
+	y: 470,
+	width: 160,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+const tryAgainButton = {
+	// text attributes
+	x2: 370 - 90,
+	y2: 530 - 100,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Try Again',
+	// button attributes
+	x: 360 - 90,
+	y: 470 - 100,
+	width: 345,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+const mainMenuButton = {
+	// text attributes
+	x2: 370 - 150,
+	y2: 515 + 30,
+	fontSize: 40,
+	textColor: "black",
+	text: 'Back to Title Screen',
+	// button attributes
+	x: 360 - 150,
+	y: 470 + 30,
+	width: 480,
+	height: 60,
 	color: "white", 
 	borderColor: "black",
 };
@@ -188,11 +238,14 @@ function updateGameStatus(){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
+
 		// Exit the gameover screen
-		setTimeout(goToTitle, 5000);
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
+
 	}
 	// Checks for win condition
-	if (score >= winningScore && enemies.length === 0){
+	if ((score >= winningScore) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
 		victory = true;
 		context.fillStyle = 'black';
@@ -200,8 +253,11 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
+		
 		// Exit the win screen
-		setTimeout(goToTitle, 5000);
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
+
 	}
 }
 
@@ -244,11 +300,38 @@ function resetGameObjects(){
 	playerHealth = maxPlayerHealth;
 }
 
-// Takes a number. Prepares and go to title screen after that many seconds.
+// Prepare and go to title screen.
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
 	removeBoardEvents();
+	removeLevelSelectEvents();
 	addTitleEvents();
 	titleScreen();
+}
+
+// Prepares and go to Level Select screen.
+function goToLevelSelect(){
+	select = -1;
+	resetGameObjects();
+	removeBoardEvents();
+	removeTitleEvents();
+	addLevelSelectEvents();
+	levelSelectScreen();
+}
+
+// Prepares and go to Level Select screen.
+function restartLevel(){
+	resetGameObjects();
+	switch (select){
+		case 1:
+			level1();
+			break;
+		case 2:
+			level2();
+			break;
+		case 3:
+			level3();
+			break;
+	}
 }
