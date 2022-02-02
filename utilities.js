@@ -1,7 +1,7 @@
 let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
-let select = 0;				// Controls which screen to open
+let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
 const winningScore = 100;	// Points needed to win
 
 const title = {
@@ -97,6 +97,7 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
+// Update Menu display and Handle EndGame
 // Creat game menu and elements
 function chooseTower(){
 
@@ -187,6 +188,7 @@ function updateGameStatus(){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
+		// Exit the gameover screen
 		setTimeout(goToTitle, 5000);
 	}
 	// Checks for win condition
@@ -198,7 +200,7 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
-		//resetGameObjects();
+		// Exit the win screen
 		setTimeout(goToTitle, 5000);
 	}
 }
