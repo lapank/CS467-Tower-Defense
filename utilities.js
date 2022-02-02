@@ -1,8 +1,8 @@
 let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
-let select = 0;				// Controls which screen to open
-const winningScore = 100;	// Points needed to win
+let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
+const winningScore = 6;	// Points needed to win
 
 const title = {
 	x: 40,
@@ -97,7 +97,39 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
-// Update Menu display
+const quitButton = {
+	// text attributes
+	x2: 370,
+	y2: 530,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Quit',
+	// button attributes
+	x: 360,
+	y: 470,
+	width: 160,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+const tryAgainButton = {
+	// text attributes
+	x2: 370 - 90,
+	y2: 530 - 100,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Try Again',
+	// button attributes
+	x: 360 - 90,
+	y: 470 - 100,
+	width: 345,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+// Update Menu display and Handle EndGame
 function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';
@@ -119,7 +151,9 @@ function updateGameStatus(){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
-		setTimeout(goToTitle, 5000);
+
+		// Exit the gameover screen
+		//setTimeout(goToTitle, 5000);
 	}
 	// Checks for win condition
 	if (score >= winningScore && enemies.length === 0){
@@ -130,8 +164,10 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
-		//resetGameObjects();
-		setTimeout(goToTitle, 5000);
+		// Exit the win screen
+		//setTimeout(goToTitle, 5000);
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
 	}
 }
 

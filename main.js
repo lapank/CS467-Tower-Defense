@@ -146,6 +146,18 @@ function startGame() {
 	}
 }
 
+// Restarts current Level on click
+function tryAgain_press() {
+	if ( (gameOver || victory) && (collision(mouse, tryAgainButton))) {
+		console.log('try again clicked');
+}}
+
+// Return to Level Select on click
+function quit_press() {
+	if ( (gameOver || victory) && (collision(mouse, quitButton))) {
+		console.log('quit clicked');
+}}
+
 // Initiate Event Listeners related to System functions.
 function addEvents(){
 	canvas.addEventListener('mousemove', trackMouse);
@@ -159,11 +171,15 @@ function addEvents(){
 // Initiate Event Listeners related to a Level.
 function addBoardEvents(){
 	canvas.addEventListener('click', placeTower);
+	canvas.addEventListener('click', tryAgain_press);
+	canvas.addEventListener('click', quit_press);
 }
 
 // Remove Event Listeners related to a Level.
 function removeBoardEvents(){
 	canvas.removeEventListener('click', placeTower);
+	canvas.removeEventListener('click', tryAgain_press);
+	canvas.removeEventListener('click', quit_press);
 }
 
 // Initiate Event Listeners for Title Screen
