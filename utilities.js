@@ -3,7 +3,8 @@ let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
 							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
-let waves = 3;	// Points needed to win
+const maxWaves = 3			// waves assigned to each level.
+let waves = maxWaves;		// Player can only win when reaches 0.
 
 
 const title = {
@@ -300,6 +301,7 @@ function resetGameObjects(){
 	victory = false;
 	gameOver = false;
 	score = 0;
+	waves = maxWaves;
 	numberOfResources = 500;
 	playerHealth = maxPlayerHealth;
 }

@@ -26,10 +26,69 @@ function updateEnemies(){
 			i--;
 		}
 	}
-	spawnNewEnemies();
+	switch (select){
+		case 1:
+			spawnNewEnemies1();
+			break;
+		case 2:
+			spawnNewEnemies2();
+			break;
+		case 3:
+			spawnNewEnemies3();
+	}
 }
 
-function spawnNewEnemies(){
+function spawnNewEnemies1(){
+	if (frame% enemiesInterval === 0 && waves > 0){ 
+		// Determine row position
+		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
+		
+		// Add random enemy to enemies array
+		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+		if (enemySelector == 1){
+			enemies.push(new Goblin(verticalPosition));
+		}
+		else if (enemySelector == 2) {
+			enemies.push(new Vampire(verticalPosition));
+		}
+		else{
+			enemies.push(new Troll(verticalPosition));
+		}
+		
+		// Add enemy row position to the array
+		enemyPositions.push(verticalPosition);
+		// Speed up rate that enemies appear.
+		if (enemiesInterval > 120) enemiesInterval -= 100;
+		waves -= 1;
+	}
+}
+
+function spawnNewEnemies2(){
+	if (frame% enemiesInterval === 0 && waves > 0){ 
+		// Determine row position
+		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
+		
+		// Add random enemy to enemies array
+		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+		if (enemySelector == 1){
+			enemies.push(new Goblin(verticalPosition));
+		}
+		else if (enemySelector == 2) {
+			enemies.push(new Vampire(verticalPosition));
+		}
+		else{
+			enemies.push(new Troll(verticalPosition));
+		}
+		
+		// Add enemy row position to the array
+		enemyPositions.push(verticalPosition);
+		// Speed up rate that enemies appear.
+		if (enemiesInterval > 120) enemiesInterval -= 100;
+		waves -= 1;
+	}
+}
+
+function spawnNewEnemies3(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
 		// Determine row position
 		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
