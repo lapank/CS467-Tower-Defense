@@ -3,7 +3,7 @@ let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
 							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
-const winningScore = 6;	// Points needed to win
+let waves = 3;	// Points needed to win
 
 
 const title = {
@@ -249,7 +249,7 @@ function updateGameStatus(){
 
 	}
 	// Checks for win condition
-	if ((score >= winningScore) && (enemies.length === 0) && (playerHealth > 0)){
+	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
 		victory = true;
 		context.fillStyle = 'black';

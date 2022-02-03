@@ -30,7 +30,7 @@ function updateEnemies(){
 }
 
 function spawnNewEnemies(){
-	if (frame% enemiesInterval === 0 && score < winningScore){ 
+	if (frame% enemiesInterval === 0 && waves > 0){ 
 		// Determine row position
 		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
 		
@@ -50,5 +50,6 @@ function spawnNewEnemies(){
 		enemyPositions.push(verticalPosition);
 		// Speed up rate that enemies appear.
 		if (enemiesInterval > 120) enemiesInterval -= 100;
+		waves -= 1;
 	}
 }
