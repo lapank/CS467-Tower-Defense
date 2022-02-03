@@ -153,7 +153,7 @@ function chooseTower(){
 
 	// Button where users select tower type
 	class TowerButton{
-		constructor(x, bodyColor, fontColor, health){
+		constructor(x, bodyColor, fontColor, health, cost){
 			this.x = x;
 			this.y = 610;
 			this.width = 85;
@@ -164,6 +164,7 @@ function chooseTower(){
 			this.fontColor = fontColor;
 			this.font = '30px Orbitron';
 			this.health = health;
+			this.cost = cost;
 		}
 		draw(){
 			// Changes the button's border to highlight the selected tower.
@@ -193,13 +194,16 @@ function chooseTower(){
 			context.fillStyle = this.fontColor;
 			context.font = this.font;
 			context.fillText(Math.floor(this.health), this.x + 15, this.y + 30);
+			context.fillStyle = 'gold';
+			context.font = '20px Orbitron';
+			context.fillText(Math.floor(this.cost)  + 'g', this.x + 5, this.y + 75);
 
 		}
 	}
 
-	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100);
-	let tower2 = new TowerButton(400, 'lime', 'black', 150);
-	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75);
+	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100, towerCost);
+	let tower2 = new TowerButton(400, 'lime', 'black', 150, towerCost);
+	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75, towerCost);
 
 	if(collision(mouse, tower1) && mouse.clicked){
 		towerSelector = 1;
