@@ -3,8 +3,8 @@ const goblinImage = new Image();
 goblinImage.src = 'sprites/goblin.png';
 
 class Goblin extends Enemy{
-	constructor(verticalPosition){
-		super(verticalPosition, 0.4, 100);
+	constructor(verticalPosition, delay){
+		super(verticalPosition, 0.4, 100, delay);
 		
 		//info for applying sprite sheet
 		this.sprite = goblinImage;

@@ -3,8 +3,8 @@ const trollImage = new Image();
 trollImage.src = 'sprites/troll.png';
 
 class Troll extends Enemy{
-	constructor(verticalPosition){
-		super(verticalPosition, 0.2, 400);
+	constructor(verticalPosition, delay){
+		super(verticalPosition, 0.2, 400, delay);
 
 		//info for applying sprite sheet
 		this.sprite = trollImage;

@@ -43,17 +43,14 @@ function spawnNewEnemies1(){
 		// Determine row position
 		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
 		
-		// Add random enemy to enemies array
-		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-		if (enemySelector == 1){
-			enemies.push(new Goblin(verticalPosition));
-		}
-		else if (enemySelector == 2) {
-			enemies.push(new Vampire(verticalPosition));
-		}
-		else{
-			enemies.push(new Troll(verticalPosition));
-		}
+		// add one of each enemy
+		enemies.push(new Goblin(verticalPosition, 60 * 3));
+		
+		verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
+		enemies.push(new Vampire(verticalPosition, 60 * 3));
+		
+		verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
+		enemies.push(new Troll(verticalPosition, 60 * 3));
 		
 		// Add enemy row position to the array
 		enemyPositions.push(verticalPosition);
@@ -71,13 +68,13 @@ function spawnNewEnemies2(){
 		// Add random enemy to enemies array
 		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 		if (enemySelector == 1){
-			enemies.push(new Goblin(verticalPosition));
+			enemies.push(new Goblin(verticalPosition, 0));
 		}
 		else if (enemySelector == 2) {
-			enemies.push(new Vampire(verticalPosition));
+			enemies.push(new Vampire(verticalPosition, 0));
 		}
 		else{
-			enemies.push(new Troll(verticalPosition));
+			enemies.push(new Troll(verticalPosition, 0));
 		}
 		
 		// Add enemy row position to the array
@@ -96,13 +93,13 @@ function spawnNewEnemies3(){
 		// Add random enemy to enemies array
 		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 		if (enemySelector == 1){
-			enemies.push(new Goblin(verticalPosition));
+			enemies.push(new Goblin(verticalPosition, 0));
 		}
 		else if (enemySelector == 2) {
-			enemies.push(new Vampire(verticalPosition));
+			enemies.push(new Vampire(verticalPosition, 0));
 		}
 		else{
-			enemies.push(new Troll(verticalPosition));
+			enemies.push(new Troll(verticalPosition, 0));
 		}
 		
 		// Add enemy row position to the array
