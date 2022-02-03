@@ -51,63 +51,193 @@ function spawnNewEnemies1(){
 			enemyPositions.push(eRow(row));
 		}
 
-		// add one of each enemy
-		placeEnemy(Troll, 1, 60*1);
-		placeEnemy(Vampire, 3, 60*2);
-		placeEnemy(Goblin, 5, 60*3);
-		
-		// Speed up rate that enemies appear.
-		if (enemiesInterval > 120) enemiesInterval -= 100;
+		// Divides enemies into waves
+		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+		switch(current_wave){
+			case 1:
+				// Enemies in 1st wave
+				placeEnemy(Goblin, 1, 60*0);
+				placeEnemy(Goblin, 3, 60*1);
+				placeEnemy(Goblin, 5, 60*2);
+				break;
+			case 2:
+				// Enemies in 2nd wave
+				placeEnemy(Vampire, 2, 60*1);
+				placeEnemy(Vampire, 3, 60*0);
+				placeEnemy(Vampire, 4, 60*1);
+				break;
+			case 3:
+				// Enemies in 3rd wave
+				placeEnemy(Troll, 2, 60*0)
+				placeEnemy(Troll, 3, 60*0)
+				placeEnemy(Troll, 2, 60*1)
+				placeEnemy(Troll, 3, 60*1)
+				break;
+			case 4:
+				// Enemies in 4th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 5:
+				// Enemies in 5th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 6:
+				// Enemies in 6th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 7:
+				// Enemies in 7th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 8:
+				// Enemies in 8th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 9:
+				// Enemies in 9th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 10:
+				// Enemies in 10th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+		}
 		waves -= 1;
 	}
 }
 
 function spawnNewEnemies2(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Determine row position
-		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
-		
-		// Add random enemy to enemies array
-		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-		if (enemySelector == 1){
-			enemies.push(new Goblin(verticalPosition, 0));
+		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
+		function eRow(num){
+			if (num < 1 || 5 < num) num = 1;
+			return num * cellSize + cellGap;
 		}
-		else if (enemySelector == 2) {
-			enemies.push(new Vampire(verticalPosition, 0));
+		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
+		function placeEnemy(type, row, delay){
+			enemies.push(new type(eRow(row), delay));
+			enemyPositions.push(eRow(row));
 		}
-		else{
-			enemies.push(new Troll(verticalPosition, 0));
+
+		// Divides enemies into waves
+		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+		switch(current_wave){
+			case 1:
+				// Enemies in 1st wave
+				placeEnemy(Goblin, 1, 60*0);
+				placeEnemy(Goblin, 3, 60*1);
+				placeEnemy(Goblin, 5, 60*2);
+				break;
+			case 2:
+				// Enemies in 2nd wave
+				placeEnemy(Vampire, 2, 60*1);
+				placeEnemy(Vampire, 3, 60*0);
+				placeEnemy(Vampire, 4, 60*1);
+				break;
+			case 3:
+				// Enemies in 3rd wave
+				placeEnemy(Troll, 2, 60*0)
+				placeEnemy(Troll, 3, 60*0)
+				placeEnemy(Troll, 2, 60*1)
+				placeEnemy(Troll, 3, 60*1)
+				break;
+			case 4:
+				// Enemies in 4th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 5:
+				// Enemies in 5th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 6:
+				// Enemies in 6th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 7:
+				// Enemies in 7th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 8:
+				// Enemies in 8th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 9:
+				// Enemies in 9th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 10:
+				// Enemies in 10th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
 		}
-		
-		// Add enemy row position to the array
-		enemyPositions.push(verticalPosition);
-		// Speed up rate that enemies appear.
-		if (enemiesInterval > 120) enemiesInterval -= 100;
 		waves -= 1;
 	}
 }
 
 function spawnNewEnemies3(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Determine row position
-		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
-		
-		// Add random enemy to enemies array
-		let enemySelector = Math.floor(Math.random() * (3 - 1 + 1) + 1);
-		if (enemySelector == 1){
-			enemies.push(new Goblin(verticalPosition, 0));
+		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
+		function eRow(num){
+			if (num < 1 || 5 < num) num = 1;
+			return num * cellSize + cellGap;
 		}
-		else if (enemySelector == 2) {
-			enemies.push(new Vampire(verticalPosition, 0));
+		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
+		function placeEnemy(type, row, delay){
+			enemies.push(new type(eRow(row), delay));
+			enemyPositions.push(eRow(row));
 		}
-		else{
-			enemies.push(new Troll(verticalPosition, 0));
+
+		// Divides enemies into waves
+		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+		switch(current_wave){
+			case 1:
+				// Enemies in 1st wave
+				placeEnemy(Goblin, 1, 60*0);
+				placeEnemy(Goblin, 3, 60*1);
+				placeEnemy(Goblin, 5, 60*2);
+				break;
+			case 2:
+				// Enemies in 2nd wave
+				placeEnemy(Vampire, 2, 60*1);
+				placeEnemy(Vampire, 3, 60*0);
+				placeEnemy(Vampire, 4, 60*1);
+				break;
+			case 3:
+				// Enemies in 3rd wave
+				placeEnemy(Troll, 2, 60*0)
+				placeEnemy(Troll, 3, 60*0)
+				placeEnemy(Troll, 2, 60*1)
+				placeEnemy(Troll, 3, 60*1)
+				break;
+			case 4:
+				// Enemies in 4th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 5:
+				// Enemies in 5th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 6:
+				// Enemies in 6th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 7:
+				// Enemies in 7th wave
+				placeEnemy(Goblin, 5, 60*3);
+				break;
+			case 8:
+				// Enemies in 8th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
+			case 9:
+				// Enemies in 9th wave
+				placeEnemy(Troll, 5, 60*3)
+				break;
+			case 10:
+				// Enemies in 10th wave
+				placeEnemy(Vampire, 2, 60*3);
+				break;
 		}
-		
-		// Add enemy row position to the array
-		enemyPositions.push(verticalPosition);
-		// Speed up rate that enemies appear.
-		if (enemiesInterval > 120) enemiesInterval -= 100;
 		waves -= 1;
 	}
 }
