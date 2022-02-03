@@ -40,20 +40,22 @@ function updateEnemies(){
 
 function spawnNewEnemies1(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Determine row position
-		let verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
-		
+		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
+		function eRow(num){
+			if (num < 1 || 5 < num) num = 1;
+			return num * cellSize + cellGap;
+		}
+		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
+		function placeEnemy(type, row, delay){
+			enemies.push(new type(eRow(row), delay));
+			enemyPositions.push(eRow(row));
+		}
+
 		// add one of each enemy
-		enemies.push(new Goblin(verticalPosition, 60 * 3));
+		placeEnemy(Troll, 1, 60*1);
+		placeEnemy(Vampire, 3, 60*2);
+		placeEnemy(Goblin, 5, 60*3);
 		
-		verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
-		enemies.push(new Vampire(verticalPosition, 60 * 3));
-		
-		verticalPosition = Math.floor(Math.random()*5 +1) * cellSize + cellGap;
-		enemies.push(new Troll(verticalPosition, 60 * 3));
-		
-		// Add enemy row position to the array
-		enemyPositions.push(verticalPosition);
 		// Speed up rate that enemies appear.
 		if (enemiesInterval > 120) enemiesInterval -= 100;
 		waves -= 1;
