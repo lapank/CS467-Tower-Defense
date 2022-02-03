@@ -3,6 +3,7 @@ let frame = 0; 					// increment that determines resource/enemy spawns
 const enemies = [];				// array of existing enemies
 const enemyPositions = [];		// array of enemy vertical/row positions
 
+
 class Enemy{
 	constructor(verticalPosition, speed, health){
 		this.x = canvas.width;
@@ -18,6 +19,12 @@ class Enemy{
 	// Move the enemy
 	update(){
 		this.x -= this.movement; //walking right to left
+
+		// Cycle through sprite
+		if (frame % 10 === 0){
+            if (this.frameX < this.maxFrame) this.frameX++;
+            else this.frameX = this.minFrame;
+        }
 	
 		if (this.onFire){       //damage over time if on fire
 			this.health -= 0.1;
@@ -25,20 +32,18 @@ class Enemy{
 	}
 	// Draw the enemy
 	draw(bodyColor, textColor){
-		context.fillStyle = bodyColor;
-		context.fillRect(this.x, this.y, this.width, this.height);
+		//context.fillStyle = bodyColor;
+		//context.fillRect(this.x, this.y, this.width, this.height);
 		context.fillStyle = textColor;
 		context.font = '30px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
+
 		// Display fire status when on fire
 		if (this.onFire)
 		{
 			context.fillStyle = "red";
 			context.fillText("FIRE", this.x + 15, this.y + 60);
 		}
+
 	}
 }
-
-
-
-
