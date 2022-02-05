@@ -53,7 +53,7 @@ class Resource {
 // Update Resources
 function updateResources(){
 	// Place Resources at a regular interval
-	if(frame % interval === 0 && score < winningScore){
+	if(frame % interval === 0 && !(gameOver || victory)){
 		resources.push(new Resource());
 	}
 	for(let i = 0; i < resources.length; i++){

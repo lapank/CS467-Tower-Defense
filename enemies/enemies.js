@@ -5,8 +5,8 @@ const enemyPositions = [];		// array of enemy vertical/row positions
 
 
 class Enemy{
-	constructor(verticalPosition, speed, health){
-		this.x = canvas.width;
+	constructor(verticalPosition, speed, health, delay){
+		this.x = canvas.width + (delay * speed);
 		this.y = verticalPosition;
 		this.width = cellSize - cellGap * 2;
 		this.height = cellSize - cellGap * 2;

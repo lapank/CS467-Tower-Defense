@@ -3,8 +3,8 @@ const vampireImage = new Image();
 vampireImage.src = 'sprites/vampire.png';
 
 class Vampire extends Enemy{
-	constructor(verticalPosition){
-		super(verticalPosition, 1.2, 60);
+	constructor(verticalPosition, delay){
+		super(verticalPosition, 1.2, 60, delay);
 
 		//info for applying sprite sheet
 		this.sprite = vampireImage;
