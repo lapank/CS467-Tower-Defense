@@ -38,19 +38,20 @@ function updateEnemies(){
 	}
 }
 
-function spawnNewEnemies1(){
-	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
-		function eRow(num){
-			if (num < 1 || 5 < num) num = 1;
-			return num * cellSize + cellGap;
-		}
-		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
-		function placeEnemy(type, row, delay){
+// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
+function eRow(num){
+	if (num < 1 || 5 < num) num = 1;
+	return num * cellSize + cellGap;
+}
+
+// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
+function placeEnemy(type, row, delay){
 			enemies.push(new type(eRow(row), delay));
 			enemyPositions.push(eRow(row));
 		}
 
+function spawnNewEnemies1(){
+	if (frame% enemiesInterval === 0 && waves > 0){ 
 		// Divides enemies into waves
 		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
 		switch(current_wave){
@@ -68,10 +69,10 @@ function spawnNewEnemies1(){
 				break;
 			case 3:
 				// Enemies in 3rd wave
-				placeEnemy(Troll, 2, 60*0)
-				placeEnemy(Troll, 3, 60*0)
-				placeEnemy(Troll, 2, 60*1)
-				placeEnemy(Troll, 3, 60*1)
+				placeEnemy(Troll, 2, 60*0);
+				placeEnemy(Troll, 3, 60*0);
+				placeEnemy(Troll, 2, 60*1);
+				placeEnemy(Troll, 3, 60*1);
 				break;
 			case 4:
 				// Enemies in 4th wave
@@ -83,7 +84,7 @@ function spawnNewEnemies1(){
 				break;
 			case 6:
 				// Enemies in 6th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 7:
 				// Enemies in 7th wave
@@ -95,7 +96,7 @@ function spawnNewEnemies1(){
 				break;
 			case 9:
 				// Enemies in 9th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 10:
 				// Enemies in 10th wave
@@ -108,17 +109,6 @@ function spawnNewEnemies1(){
 
 function spawnNewEnemies2(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
-		function eRow(num){
-			if (num < 1 || 5 < num) num = 1;
-			return num * cellSize + cellGap;
-		}
-		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
-		function placeEnemy(type, row, delay){
-			enemies.push(new type(eRow(row), delay));
-			enemyPositions.push(eRow(row));
-		}
-
 		// Divides enemies into waves
 		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
 		switch(current_wave){
@@ -136,10 +126,10 @@ function spawnNewEnemies2(){
 				break;
 			case 3:
 				// Enemies in 3rd wave
-				placeEnemy(Troll, 2, 60*0)
-				placeEnemy(Troll, 3, 60*0)
-				placeEnemy(Troll, 2, 60*1)
-				placeEnemy(Troll, 3, 60*1)
+				placeEnemy(Troll, 2, 60*0);
+				placeEnemy(Troll, 3, 60*0);
+				placeEnemy(Troll, 2, 60*1);
+				placeEnemy(Troll, 3, 60*1);
 				break;
 			case 4:
 				// Enemies in 4th wave
@@ -151,7 +141,7 @@ function spawnNewEnemies2(){
 				break;
 			case 6:
 				// Enemies in 6th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 7:
 				// Enemies in 7th wave
@@ -163,7 +153,7 @@ function spawnNewEnemies2(){
 				break;
 			case 9:
 				// Enemies in 9th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 10:
 				// Enemies in 10th wave
@@ -176,17 +166,6 @@ function spawnNewEnemies2(){
 
 function spawnNewEnemies3(){
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Take a number between 1-5. Returns the coordinates of the corresponding vertical position of the row.
-		function eRow(num){
-			if (num < 1 || 5 < num) num = 1;
-			return num * cellSize + cellGap;
-		}
-		// Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
-		function placeEnemy(type, row, delay){
-			enemies.push(new type(eRow(row), delay));
-			enemyPositions.push(eRow(row));
-		}
-
 		// Divides enemies into waves
 		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
 		switch(current_wave){
@@ -204,10 +183,10 @@ function spawnNewEnemies3(){
 				break;
 			case 3:
 				// Enemies in 3rd wave
-				placeEnemy(Troll, 2, 60*0)
-				placeEnemy(Troll, 3, 60*0)
-				placeEnemy(Troll, 2, 60*1)
-				placeEnemy(Troll, 3, 60*1)
+				placeEnemy(Troll, 2, 60*0);
+				placeEnemy(Troll, 3, 60*0);
+				placeEnemy(Troll, 2, 60*1);
+				placeEnemy(Troll, 3, 60*1);
 				break;
 			case 4:
 				// Enemies in 4th wave
@@ -219,7 +198,7 @@ function spawnNewEnemies3(){
 				break;
 			case 6:
 				// Enemies in 6th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 7:
 				// Enemies in 7th wave
@@ -231,7 +210,7 @@ function spawnNewEnemies3(){
 				break;
 			case 9:
 				// Enemies in 9th wave
-				placeEnemy(Troll, 5, 60*3)
+				placeEnemy(Troll, 5, 60*3);
 				break;
 			case 10:
 				// Enemies in 10th wave
