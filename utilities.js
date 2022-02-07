@@ -148,6 +148,22 @@ const mainMenuButton = {
 	borderColor: "black",
 };
 
+const inGameQuitButton = {
+	// text attributes
+	x2: 820,
+	y2: 35,
+	fontSize: 20,
+	textColor: "gold",
+	text: 'Quit',
+	// button attributes
+	x: 810,
+	y: 10,
+	width: 70,
+	height: 35,
+	color: "red", 
+	borderColor: "gray",
+};
+
 // Update Menu display and Handle EndGame
 // Creat game menu and elements
 function chooseTower(){

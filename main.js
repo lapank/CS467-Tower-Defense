@@ -16,6 +16,7 @@ function level1(){
 	context.fillRect(0,0, menuBar.width, menuBar.height);
 	context.fillStyle = 'blue';
 	context.fillRect(0,600, menuBar.width, menuBar.height);
+	drawButton(inGameQuitButton);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -38,6 +39,7 @@ function level2(){
 	context.fillRect(0,0, menuBar.width, menuBar.height);
 	context.fillStyle = 'black';
 	context.fillRect(0,600, menuBar.width, menuBar.height);
+	drawButton(inGameQuitButton);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -60,6 +62,7 @@ function level3(){
 	context.fillRect(0,0, menuBar.width, menuBar.height);
 	context.fillStyle = 'violet';
 	context.fillRect(0,600, menuBar.width, menuBar.height);
+	drawButton(inGameQuitButton);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -115,7 +118,7 @@ function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
 		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
-		goToLevelSelect()
+		goToLevelSelect();
 	}
 }
 
@@ -148,6 +151,12 @@ function startGame() {
 	}
 }
 
+// Quits active game and goes to level select on click
+function inGameQuit_press() {
+	if (collision(mouse, inGameQuitButton)) {
+		goToLevelSelect();
+}}
+
 // Restarts current Level on click
 function tryAgain_press() {
 	if ( (gameOver || victory) && (collision(mouse, tryAgainButton))) {
@@ -159,7 +168,7 @@ function tryAgain_press() {
 function quit_press() {
 	if ( (gameOver || victory) && (collision(mouse, quitButton))) {
 		console.log('quit clicked');
-		goToLevelSelect()
+		goToLevelSelect();
 }}
 
 // Return to TitleScreen on click
@@ -184,6 +193,7 @@ function addEvents(){
 // Initiate Event Listeners related to a Level.
 function addBoardEvents(){
 	canvas.addEventListener('click', placeTower);
+	canvas.addEventListener('click', inGameQuit_press);
 	canvas.addEventListener('click', tryAgain_press);
 	canvas.addEventListener('click', quit_press);
 }
@@ -191,6 +201,7 @@ function addBoardEvents(){
 // Remove Event Listeners related to a Level.
 function removeBoardEvents(){
 	canvas.removeEventListener('click', placeTower);
+	canvas.removeEventListener('click', inGameQuit_press);
 	canvas.removeEventListener('click', tryAgain_press);
 	canvas.removeEventListener('click', quit_press);
 }
