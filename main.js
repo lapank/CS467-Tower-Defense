@@ -118,7 +118,7 @@ function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
 		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
-		goToLevelSelect()
+		goToLevelSelect();
 	}
 }
 
@@ -168,7 +168,7 @@ function tryAgain_press() {
 function quit_press() {
 	if ( (gameOver || victory) && (collision(mouse, quitButton))) {
 		console.log('quit clicked');
-		goToLevelSelect()
+		goToLevelSelect();
 }}
 
 // Return to TitleScreen on click
