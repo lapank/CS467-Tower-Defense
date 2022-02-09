@@ -3,7 +3,7 @@ dragonImage.src = 'sprites/dragon.png';
 
 class Dragon extends Tower{
 	constructor(x,y){
-		super(x,y, 150, 0, 200);
+		super(x,y, 150, 0, 25);
 
 		//info for applying sprite sheet
 		this.sprite = dragonImage;
@@ -13,6 +13,8 @@ class Dragon extends Tower{
 		this.maxFrame = 1;
 		this.spriteWidth = 82;
 		this.spriteHeight = 82;
+		this.idleRate = 25; // time between animation frames while idle
+		this.animationRate = this.idleRate; // time between animation frames
 	}
 	draw(){
 		// Draw the sprite
@@ -20,11 +22,30 @@ class Dragon extends Tower{
 		super.draw('lime', 'black');
 	}
 	update(){
-		super.update(FireBall);
-		// Cycle through sprite
-		if (frame % 25  === 0){
+		// Cycle through sprite sheet
+		if (frame % this.animationRate === 0){
             if (this.frameX < this.maxFrame) this.frameX++;
             else this.frameX = this.minFrame;
         }
-	}
+
+		// Cycle through attack animation
+		if(this.shooting){
+			//attack animation frames
+			this.minFrame = 0;
+			this.maxFrame = 7;
+			this.animationRate = this.fireSpeed; //attack animation rate
+
+			//fire projectile on firing frame
+			if( this.frameX == this.maxFrame){
+				projectiles.push(new FireBall(this.x + 55, this.y + 40));
+				this.frameX = this.minFrame;
+			}
+		}
+		// Return to idle animation when not shooting
+		else{ 
+				this.minFrame = 0;
+				this.maxFrame = 1;
+				this.animationRate = this.idleRate; //idle animation rate
+			}
+		}
 }
