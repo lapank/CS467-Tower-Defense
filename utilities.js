@@ -148,6 +148,22 @@ const mainMenuButton = {
 	borderColor: "black",
 };
 
+const inGameQuitButton = {
+	// text attributes
+	x2: 820,
+	y2: 35,
+	fontSize: 20,
+	textColor: "gold",
+	text: 'Quit',
+	// button attributes
+	x: 810,
+	y: 10,
+	width: 70,
+	height: 35,
+	color: "red", 
+	borderColor: "gray",
+};
+
 // Update Menu display and Handle EndGame
 // Creat game menu and elements
 function chooseTower(){
@@ -191,13 +207,15 @@ function chooseTower(){
 			context.lineWidth = this.lineWidth;
 			context.fillStyle = this.bodyColor;
 			context.fillRect(this.x, this.y, this.width, this.height);
-			
-			//sprite
+
+			//Draw the appropriate sprite on the purchase menu button
 			if (this.sprite == archerImage){
 				context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*.45, this.height*.45);
-
 			}
-			else{
+			else if(this.sprite == dragonImage){
+				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
+			}
+			else if(this.sprite == wizardImage){
 				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
 			}
 
