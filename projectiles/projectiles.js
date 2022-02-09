@@ -21,10 +21,9 @@ class Projectile {
 	}
 	// Draw the projectile
 	draw(color){
-		/*context.fillStyle = color;
+		context.fillStyle = color;
 		context.beginPath();
 		context.arc(this.x,this.y, this.width, 0, Math.PI * 2);
 		context.fill();
-		*/
 	}
 }
