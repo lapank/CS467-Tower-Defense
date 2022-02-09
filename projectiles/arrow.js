@@ -17,6 +17,6 @@ class Arrow extends Projectile{
 	draw(){
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x , this.y - 18 , this.width*4, this.height*4);
-		super.draw('black');
+		//super.draw('black');
 	}
 }
