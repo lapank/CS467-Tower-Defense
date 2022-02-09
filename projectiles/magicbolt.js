@@ -17,6 +17,6 @@ class MagicBolt extends Projectile{
 	draw(){
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x , this.y - 15, this.width*4, this.height*4);
-		super.draw('gold');
+		//super.draw('gold');
 	}
 }
