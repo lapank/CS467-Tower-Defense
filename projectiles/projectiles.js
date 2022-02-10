@@ -12,6 +12,12 @@ class Projectile {
 	// Move the projectile
 	update(){
 		this.x += this.speed;
+
+		// Cycle through sprite
+		if (frame % 25  === 0){
+            if (this.frameX < this.maxFrame) this.frameX++;
+            else this.frameX = this.minFrame;
+        }
 	}
 	// Draw the projectile
 	draw(color){

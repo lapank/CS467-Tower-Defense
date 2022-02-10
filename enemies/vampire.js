@@ -24,9 +24,9 @@ class Vampire extends Enemy{
 	}
 
 	draw(){
-		super.draw('red', 'grey');
 		// Draw the sprite
-		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 10, this.y - 10, this.width*1.1, this.height*1.1);
+		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 10, this.y + 18, this.width*1.1, this.height*1.1);
 
+		super.draw('red', 'grey');		
 	}
 }

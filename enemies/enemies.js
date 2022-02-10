@@ -27,7 +27,7 @@ class Enemy{
         }
 	
 		if (this.onFire){       //damage over time if on fire
-			this.health -= 0.1;
+			this.health -= 0.1; 
 		}
 	}
 	// Draw the enemy
@@ -35,14 +35,14 @@ class Enemy{
 		//context.fillStyle = bodyColor;
 		//context.fillRect(this.x, this.y, this.width, this.height);
 		context.fillStyle = textColor;
-		context.font = '30px Orbitron';
+		context.font = '20px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 
 		// Display fire status when on fire
 		if (this.onFire)
 		{
 			context.fillStyle = "red";
-			context.fillText("FIRE", this.x + 15, this.y + 60);
+			context.fillText("FIRE", this.x, this.y + 80);
 		}
 
 	}
