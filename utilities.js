@@ -210,7 +210,7 @@ function chooseTower(){
 
 			//Draw the appropriate sprite on the purchase menu button
 			if (this.sprite == archerImage){
-				context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*.45, this.height*.45);
+				context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*0.45, this.height*0.45);
 			}
 			else if(this.sprite == dragonImage){
 				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
