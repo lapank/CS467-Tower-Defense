@@ -36,9 +36,10 @@ class Resource {
 		}else{
 			context.drawImage(poof, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
 		}
-		context.fillStyle = 'black';
-		context.font = '20px Orbitron';
-		context.fillText(this.amount, this.x+15, this.y+25);
+		//context.fillStyle = 'black';
+		//context.font = '20px Orbitron';
+		//context.fillText(this.amount, this.x+15, this.y+25);
+		strokedText(this.amount.toString(), this.x+15, this.y+25, '20px', 'yellow');
 	}
 
 	update(){

@@ -19,7 +19,7 @@ class Troll extends Enemy{
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 80, this.y - 70, this.width*3.6, this.height*2);
 		
-		super.draw('purple','blue');		
+		super.draw('Cyan');		
 	}
 
 }
