@@ -4,7 +4,6 @@ archerImage.src = 'sprites/archer.png';
 class Archer extends Tower{
 	constructor(x,y){
 		super(x,y, 100, 0, 20);
-
 		//info for applying sprite sheet
 		this.sprite = archerImage;
 		this.frameX = 0;
@@ -16,9 +15,11 @@ class Archer extends Tower{
 		this.idleRate = 20; // time between animation frames while idle
 		this.animationRate = this.idleRate; // time between animation frames
 	}
+	static staticHealth = 100;
+
 	draw(){
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x +25, this.y + 55, this.width * 0.35, this.height *0.45);
-		super.draw('saddlebrown', 'white');
+		super.draw('white');
 	}
 	update(){
 		// Cycle through sprite 

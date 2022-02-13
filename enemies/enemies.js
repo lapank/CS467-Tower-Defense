@@ -31,12 +31,13 @@ class Enemy{
 		}
 	}
 	// Draw the enemy
-	draw(bodyColor, textColor){
+	draw(textColor){
 		//context.fillStyle = bodyColor;
 		//context.fillRect(this.x, this.y, this.width, this.height);
-		context.fillStyle = textColor;
-		context.font = '20px Orbitron';
-		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
+		//context.fillStyle = textColor;
+		//context.font = '20px Orbitron';
+		strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
+		//context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 
 		// Display fire status when on fire
 		if (this.onFire)

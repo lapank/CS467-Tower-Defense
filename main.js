@@ -10,13 +10,8 @@ function main(){
 
 // Level 1-related game loop.
 function level1(){
-	context.clearRect(0,0,canvas.width,canvas.height);
-	// Draw the Menu bar
-	context.fillStyle = 'blue';
-	context.fillRect(0,0, menuBar.width, menuBar.height);
-	context.fillStyle = 'blue';
-	context.fillRect(0,600, menuBar.width, menuBar.height);
-	drawButton(inGameQuitButton);
+	drawMenu('blue');
+	context.drawImage(grassBackground, 0, 100, 900, 500);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -33,13 +28,7 @@ function level1(){
 
 // Level 2-related game loop.
 function level2(){
-	context.clearRect(0,0,canvas.width,canvas.height);
-	// Draw the Menu bar
-	context.fillStyle = 'black';
-	context.fillRect(0,0, menuBar.width, menuBar.height);
-	context.fillStyle = 'black';
-	context.fillRect(0,600, menuBar.width, menuBar.height);
-	drawButton(inGameQuitButton);
+	drawMenu('green');
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -56,13 +45,8 @@ function level2(){
 
 // Level 3-related game loop.
 function level3(){
-	context.clearRect(0,0,canvas.width,canvas.height);
-	// Draw the Menu bar
-	context.fillStyle = 'violet';
-	context.fillRect(0,0, menuBar.width, menuBar.height);
-	context.fillStyle = 'violet';
-	context.fillRect(0,600, menuBar.width, menuBar.height);
-	drawButton(inGameQuitButton);
+	drawMenu('violet');
+	context.drawImage(lavaBackground, 0, 100, 900, 500);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -84,7 +68,7 @@ function titleScreen(){
 	context.fillRect(0,0, canvas.width, canvas.height);
 	// Title Display
 	context.fillStyle = 'gold';
-	context.font = title.fontSize +'px Orbitron';
+	context.font = title.fontSize +'px Arial';
 	context.fillText('HTML5', title.x, title.y);
 	context.fillText('TOWER DEFENSE', title.x, title.y + title.fontSize + title.spacing);
 	// Button Displays
@@ -101,12 +85,18 @@ function levelSelectScreen(){
 	context.fillRect(0,0, canvas.width, canvas.height);
 	// Title Display
 	context.fillStyle = 'gold';
-	context.font = levelSelect.fontSize +'px Orbitron';
+	context.font = levelSelect.fontSize +'px Arial';
 	context.fillText('Level Select', levelSelect.x, levelSelect.y);
 	// Button Displays
+
 	drawButton(levelButton1);
+	context.drawImage(grassBackground, 40, 210, 256, 256);
+	strokedText('Level 1', 50, 460, '70px', 'white');
 	drawButton(levelButton2);
+	strokedText('Level 2', 326, 460, '70px', 'white');
 	drawButton(levelButton3);
+	context.drawImage(lavaBackground, 592, 210, 256, 256);
+	strokedText('Level 3', 602, 460, '70px', 'white');
 	drawButton(mainMenuButton);
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);

@@ -16,10 +16,12 @@ class Wizard extends Tower{
 		this.idleRate = 10; // time between animation frames while idle
 		this.animationRate = this.idleRate; // time between animation frames
 	}
+	static staticHealth = 75;
+
 	draw(){
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 10, this.y + 15, this.width*1.1, this.height*1.1);
-		super.draw('skyblue', 'gold');
+		super.draw('plum');
 	}
 	update(){
 		// Cycle through sprite sheet 

@@ -1,5 +1,5 @@
 body{
-	background: green;
+	background: black;
 }
 
 #game {
@@ -10,5 +10,5 @@ body{
 	width: 900px;
 	height: 700px;
 	background: lightgray;
-	font-family: 'Orbitron', sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }

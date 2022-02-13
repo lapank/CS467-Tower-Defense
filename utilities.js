@@ -6,7 +6,6 @@ let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:G
 const maxWaves = 3;			// waves assigned to each level.
 let waves = maxWaves;		// Player can only win when reaches 0.
 
-
 const title = {
 	x: 40,
 	y: 150,
@@ -53,29 +52,15 @@ const titleButton2 = {
 };
 
 const levelButton1 = {
-	// text attributes
-	x2: 50,
-	y2: 460 ,
-	fontSize: 50,
-	textColor: "black",
-	text: 'Level 1',
 	// button attributes
 	x: 40,
 	y: 210,
 	width: 256,
 	height: 256,
-	color: "white", 
 	borderColor: "black",
 };
 
 const levelButton2 = {
-	// text attributes
-	x2: 276 + 50,
-	y2: 460 ,
-	fontSize: 50,
-	textColor: "black",
-	text: 'Level 2',
-	// button attributes
 	x: 276 + 40,
 	y: 210,
 	width: 256,
@@ -85,13 +70,6 @@ const levelButton2 = {
 };
 
 const levelButton3 = {
-	// text attributes
-	x2: 276*2 + 50,
-	y2: 460 ,
-	fontSize: 50,
-	textColor: "black",
-	text: 'Level 3',
-	// button attributes
 	x: 276*2 + 40,
 	y: 210,
 	width: 256,
@@ -164,78 +142,85 @@ const inGameQuitButton = {
 	borderColor: "gray",
 };
 
-// Update Menu display and Handle EndGame
+// Button where users select tower type
+class TowerButton{
+	constructor(x, bodyColor, fontColor, health, cost, sprite){
+		this.x = x;
+		this.y = 610;
+		this.width = 170;
+		this.height = 85;
+		this.stroke = 'black';
+		this.lineWidth = 5;
+		this.bodyColor = bodyColor;
+		this.fontColor = fontColor;
+		this.font = '22px Orbitron';
+		this.health = health;
+		this.cost = cost;
+		this.sprite = sprite;
+	}
+	draw(){
+		// Changes the button's border to highlight the selected tower.
+		if (towerSelector=== 1){
+			tower1.stroke = 'gold';
+			tower2.stroke = 'black';
+			tower3.stroke = 'black';
+		}else if (towerSelector === 2){
+			tower1.stroke = 'black';
+			tower2.stroke = 'gold';
+			tower3.stroke = 'black';
+		}else if (towerSelector === 3){
+			tower1.stroke = 'black';
+			tower2.stroke = 'black';
+			tower3.stroke = 'gold';
+		}else{
+			tower1.stroke = 'black';
+			tower2.stroke = 'black';
+			tower3.stroke = 'black';
+		}
+
+		context.lineWidth = this.lineWidth;
+		context.fillStyle = 'white';
+		context.fillRect(this.x, this.y, this.width, this.height);
+		context.fillStyle = this.bodyColor;
+		context.fillRect(this.x, this.y, this.width/2, this.height);
+
+		//Draw the appropriate sprite on the purchase menu button
+		if (this.sprite == archerImage){
+			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 15, this.y + 15, 85*0.7, this.height*0.7);
+			plainText('Archer', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+		}
+		else if(this.sprite == dragonImage){
+			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.5, this.height*1.5);
+			plainText('Dragon', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'Effect: Burn', this.x+90, this.y+70,'12px', 'black');
+		}
+		else if(this.sprite == wizardImage){
+			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.8, this.height*1.8);
+			plainText('Wizard', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
+
+		}
+
+
+		context.strokeStyle = this.stroke;
+		context.strokeRect(this.x, this.y, this.width, this.height);
+		
+	}
+}
+
+//Draw buttons
+const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
+const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
+const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
+
 // Creat game menu and elements
 function chooseTower(){
-
-	// Button where users select tower type
-	class TowerButton{
-		constructor(x, bodyColor, fontColor, health, cost, sprite){
-			this.x = x;
-			this.y = 610;
-			this.width = 85;
-			this.height = 85;
-			this.stroke = 'black';
-			this.lineWidth = 5;
-			this.bodyColor = bodyColor;
-			this.fontColor = fontColor;
-			this.font = '22px Orbitron';
-			this.health = health;
-			this.cost = cost;
-			this.sprite = sprite;
-		}
-		draw(){
-			// Changes the button's border to highlight the selected tower.
-			if (towerSelector=== 1){
-				tower1.stroke = 'gold';
-				tower2.stroke = 'black';
-				tower3.stroke = 'black';
-			}else if (towerSelector === 2){
-				tower1.stroke = 'black';
-				tower2.stroke = 'gold';
-				tower3.stroke = 'black';
-			}else if (towerSelector === 3){
-				tower1.stroke = 'black';
-				tower2.stroke = 'black';
-				tower3.stroke = 'gold';
-			}else{
-				tower1.stroke = 'black';
-				tower2.stroke = 'black';
-				tower3.stroke = 'black';
-			}
-
-			context.lineWidth = this.lineWidth;
-			context.fillStyle = this.bodyColor;
-			context.fillRect(this.x, this.y, this.width, this.height);
-
-			//Draw the appropriate sprite on the purchase menu button
-			if (this.sprite == archerImage){
-				context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*0.45, this.height*0.45);
-			}
-			else if(this.sprite == dragonImage){
-				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
-			}
-			else if(this.sprite == wizardImage){
-				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
-			}
-
-
-			context.strokeStyle = this.stroke;
-			context.strokeRect(this.x, this.y, this.width, this.height);
-			context.fillStyle = this.fontColor;
-			context.font = this.font;
-			context.fillText(Math.floor(this.health), this.x + 5, this.y + 20);
-			context.fillStyle = 'gold';
-			context.font = '20px Orbitron';
-			context.fillText(Math.floor(this.cost)  + 'g', this.x + 5, this.y + 75);
-
-		}
-	}
-
-	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100, towerCost, archerImage);
-	let tower2 = new TowerButton(400, 'lime', 'black', 150, towerCost, dragonImage);
-	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75, towerCost, wizardImage);
-
 	if(collision(mouse, tower1) && mouse.clicked){
 		towerSelector = 1;
 	} else if (collision(mouse, tower2) && mouse.clicked){
@@ -243,36 +228,48 @@ function chooseTower(){
 	} else if (collision(mouse, tower3) && mouse.clicked){
 		towerSelector = 3;
 	}
-
 	tower1.draw();
 	tower2.draw();
 	tower3.draw();
+}
 
+// Control Game text style from this function
+function strokedText(text, x, y, fontSize, fontColor) {
+    context.font = fontSize + ' Arial';
+    context.strokeStyle = 'black';
+    context.lineWidth = 8;
+    context.strokeText(text, x, y);
+    context.fillStyle = fontColor;
+    context.fillText(text, x, y);
+}
 
+// Control Game text style from this function
+function plainText(text, x, y, fontSize, fontColor) {
+    context.font = fontSize + ' Arial';
+    context.fillStyle = fontColor;
+    context.fillText(text, x, y);
 }
 
 // Update Menu display
 function updateGameStatus(){
 	// Menu Display
 	context.fillStyle = 'gold';
-	context.font = '30px Orbitron';
+	context.font = '30px Arial';
 	// Display Current Score
 	context.fillText('Score: ' + score, 20, 45);				 
 	// Display Current Resources
 	context.fillText('Gold: ' + numberOfResources, 20, 80); 
 	// Display Current Health
 	context.fillStyle = 'red';
-	context.fillRect(320, 50, 300, 35);
+	context.fillRect(350, 50, 300, 35);
 	context.fillStyle = 'green';
-	context.fillRect(320, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
-		context.fillStyle = 'black';
-		context.font = '90px Orbitron';
-		context.fillText('GAME OVER', 135, 330);
+		strokedText('GAME OVER', 135, 330, '100px', 'white');
 
 		// Exit the gameover screen
 		drawButton(tryAgainButton);
@@ -283,11 +280,8 @@ function updateGameStatus(){
 	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
 		victory = true;
-		context.fillStyle = 'black';
-		context.font = '60px Orbitron';
-		context.fillText('LEVEL COMPLETE', 130, 300);
-		context.font = '30px Orbitron';
-		context.fillText('You win with ' + score + ' points!', 134, 340);
+		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
+		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
 		
 		// Exit the win screen
 		drawButton(tryAgainButton);
@@ -317,7 +311,7 @@ function drawButton(button){
 	context.rect(button.x, button.y, button.width, button.height);
 	context.stroke();
 	context.fillStyle = button.textColor;
-	context.font = button.fontSize +'px Orbitron';
+	context.font = button.fontSize +'px Arial';
 	context.fillText(button.text, button.x2, button.y2);
 }
 
