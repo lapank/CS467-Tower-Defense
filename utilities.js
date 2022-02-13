@@ -1,8 +1,11 @@
 let gameOver = false;		// When True, game is lost.
 let victory = false;
 let running;				// When true, gameloop runs.
-let select = 0;				// Controls which screen to open
-const winningScore = 100;	// Points needed to win
+let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
+							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
+const maxWaves = 3;			// waves assigned to each level.
+let waves = maxWaves;		// Player can only win when reaches 0.
+
 
 const title = {
 	x: 40,
@@ -97,12 +100,77 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
+const quitButton = {
+	// text attributes
+	x2: 370,
+	y2: 530,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Quit',
+	// button attributes
+	x: 360,
+	y: 470,
+	width: 160,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+const tryAgainButton = {
+	// text attributes
+	x2: 370 - 90,
+	y2: 530 - 100,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Try Again',
+	// button attributes
+	x: 360 - 90,
+	y: 470 - 100,
+	width: 345,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
+const mainMenuButton = {
+	// text attributes
+	x2: 370 - 150,
+	y2: 515 + 30,
+	fontSize: 40,
+	textColor: "black",
+	text: 'Back to Title Screen',
+	// button attributes
+	x: 360 - 150,
+	y: 470 + 30,
+	width: 480,
+	height: 60,
+	color: "white", 
+	borderColor: "black",
+};
+
+const inGameQuitButton = {
+	// text attributes
+	x2: 820,
+	y2: 35,
+	fontSize: 20,
+	textColor: "gold",
+	text: 'Quit',
+	// button attributes
+	x: 810,
+	y: 10,
+	width: 70,
+	height: 35,
+	color: "red", 
+	borderColor: "gray",
+};
+
+// Update Menu display and Handle EndGame
 // Creat game menu and elements
 function chooseTower(){
 
 	// Button where users select tower type
 	class TowerButton{
-		constructor(x, bodyColor, fontColor, health){
+		constructor(x, bodyColor, fontColor, health, cost, sprite){
 			this.x = x;
 			this.y = 610;
 			this.width = 85;
@@ -111,8 +179,10 @@ function chooseTower(){
 			this.lineWidth = 5;
 			this.bodyColor = bodyColor;
 			this.fontColor = fontColor;
-			this.font = '30px Orbitron';
+			this.font = '22px Orbitron';
 			this.health = health;
+			this.cost = cost;
+			this.sprite = sprite;
 		}
 		draw(){
 			// Changes the button's border to highlight the selected tower.
@@ -137,18 +207,34 @@ function chooseTower(){
 			context.lineWidth = this.lineWidth;
 			context.fillStyle = this.bodyColor;
 			context.fillRect(this.x, this.y, this.width, this.height);
+
+			//Draw the appropriate sprite on the purchase menu button
+			if (this.sprite == archerImage){
+				context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*0.45, this.height*0.45);
+			}
+			else if(this.sprite == dragonImage){
+				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
+			}
+			else if(this.sprite == wizardImage){
+				context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
+			}
+
+
 			context.strokeStyle = this.stroke;
 			context.strokeRect(this.x, this.y, this.width, this.height);
 			context.fillStyle = this.fontColor;
 			context.font = this.font;
-			context.fillText(Math.floor(this.health), this.x + 15, this.y + 30);
+			context.fillText(Math.floor(this.health), this.x + 5, this.y + 20);
+			context.fillStyle = 'gold';
+			context.font = '20px Orbitron';
+			context.fillText(Math.floor(this.cost)  + 'g', this.x + 5, this.y + 75);
 
 		}
 	}
 
-	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100);
-	let tower2 = new TowerButton(400, 'lime', 'black', 150);
-	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75);
+	let tower1 = new TowerButton(305, 'saddlebrown', 'white', 100, towerCost, archerImage);
+	let tower2 = new TowerButton(400, 'lime', 'black', 150, towerCost, dragonImage);
+	let tower3 = new TowerButton(495, 'skyblue', 'gold', 75, towerCost, wizardImage);
 
 	if(collision(mouse, tower1) && mouse.clicked){
 		towerSelector = 1;
@@ -187,10 +273,14 @@ function updateGameStatus(){
 		context.fillStyle = 'black';
 		context.font = '90px Orbitron';
 		context.fillText('GAME OVER', 135, 330);
-		setTimeout(goToTitle, 5000);
+
+		// Exit the gameover screen
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
+
 	}
 	// Checks for win condition
-	if (score >= winningScore && enemies.length === 0){
+	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
 		victory = true;
 		context.fillStyle = 'black';
@@ -198,8 +288,11 @@ function updateGameStatus(){
 		context.fillText('LEVEL COMPLETE', 130, 300);
 		context.font = '30px Orbitron';
 		context.fillText('You win with ' + score + ' points!', 134, 340);
-		//resetGameObjects();
-		setTimeout(goToTitle, 5000);
+		
+		// Exit the win screen
+		drawButton(tryAgainButton);
+		drawButton(quitButton);
+
 	}
 }
 
@@ -238,15 +331,43 @@ function resetGameObjects(){
 	victory = false;
 	gameOver = false;
 	score = 0;
+	waves = maxWaves;
 	numberOfResources = 500;
 	playerHealth = maxPlayerHealth;
 }
 
-// Takes a number. Prepares and go to title screen after that many seconds.
+// Prepare and go to title screen.
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
 	removeBoardEvents();
+	removeLevelSelectEvents();
 	addTitleEvents();
 	titleScreen();
+}
+
+// Prepares and go to Level Select screen.
+function goToLevelSelect(){
+	select = -1;
+	resetGameObjects();
+	removeBoardEvents();
+	removeTitleEvents();
+	addLevelSelectEvents();
+	levelSelectScreen();
+}
+
+// Prepares and go to Level Select screen.
+function restartLevel(){
+	resetGameObjects();
+	switch (select){
+		case 1:
+			level1();
+			break;
+		case 2:
+			level2();
+			break;
+		case 3:
+			level3();
+			break;
+	}
 }

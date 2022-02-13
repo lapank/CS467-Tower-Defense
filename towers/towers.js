@@ -13,13 +13,13 @@ class Tower{
 		this.shooting = false;
 		this.health = health;
 		this.timer = timer;
-		this.fireSpeed = fireSpeed;  // number of timer-frames between shots.
+		this.fireSpeed = fireSpeed;  // time between animation frames when shooting
 		this.towerSelector = towerSelector;
 	}
 	// Draw Tower on board
 	draw(bodyColor, textColor){
-		context.fillStyle = bodyColor;
-		context.fillRect(this.x,this.y,this.width,this.height);
+		//context.fillStyle = bodyColor; 
+		//context.fillRect(this.x,this.y,this.width,this.height);
 		context.fillStyle = textColor;
 		context.font = '30px Orbitron';
 		context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);

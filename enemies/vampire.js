@@ -1,7 +1,19 @@
 //Vampire Enemy
+const vampireImage = new Image();
+vampireImage.src = 'sprites/vampire.png';
+
 class Vampire extends Enemy{
-	constructor(verticalPosition){
-		super(verticalPosition, 1.2, 60);
+	constructor(verticalPosition, delay){
+		super(verticalPosition, 1.2, 60, delay);
+
+		//info for applying sprite sheet
+		this.sprite = vampireImage;
+		this.frameX = 0;
+		this.frameY = 0; 
+		this.minFrame = 0;
+		this.maxFrame = 3;
+		this.spriteWidth = 74;
+		this.spriteHeight = 74;
 	}
 
 	update(){
@@ -12,6 +24,9 @@ class Vampire extends Enemy{
 	}
 
 	draw(){
-		super.draw('red', 'grey');
+		// Draw the sprite
+		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 10, this.y + 18, this.width*1.1, this.height*1.1);
+
+		super.draw('red', 'grey');		
 	}
 }

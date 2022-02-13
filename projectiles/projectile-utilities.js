@@ -22,7 +22,7 @@ function updateProjectiles(){
 			}
 		}
 		// Remove projectile at end of game screen
-		if(projectiles[i] && projectiles[i].x > canvas.width - cellSize){
+		if(projectiles[i] && projectiles[i].x > canvas.width - projectiles[i].width){
 			projectiles.splice(i, 1);
 			i--;
 		}
