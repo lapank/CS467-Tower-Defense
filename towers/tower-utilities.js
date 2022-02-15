@@ -58,9 +58,15 @@ function updateTowers(){
 			}
 			// Handle Tower Death 
 			if (towers[i] && towers[i].health <= 0){
+				// Reanimate all enemies blocked by tower
+				for (let k = 0; k<enemies.length; k++){
+					if (collision(towers[i], enemies[k])){
+						enemies[k].movement = enemies[k].speed;
+					}
+				}
+				// Remove the tower
 				towers.splice(i, 1);
 				i--;
-				enemies[j].movement = enemies[j].speed;
 			}
 		}
 	}
