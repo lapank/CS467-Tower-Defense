@@ -86,6 +86,7 @@ function explodeTower(i){
 		}			
 	}
 	// Reduce tower health to zero
+	towers[i].health = 0;
 	console.log("explodeTower");
 	console.log(towerHealth);
 }
