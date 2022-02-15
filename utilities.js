@@ -147,7 +147,7 @@ class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){
 		this.x = x;
 		this.y = 610;
-		this.width = 85;
+		this.width = 170;
 		this.height = 85;
 		this.stroke = 'black';
 		this.lineWidth = 5;
@@ -179,36 +179,44 @@ class TowerButton{
 		}
 
 		context.lineWidth = this.lineWidth;
-		context.fillStyle = this.bodyColor;
+		context.fillStyle = 'white';
 		context.fillRect(this.x, this.y, this.width, this.height);
+		context.fillStyle = this.bodyColor;
+		context.fillRect(this.x, this.y, this.width/2, this.height);
 
 		//Draw the appropriate sprite on the purchase menu button
 		if (this.sprite == archerImage){
-			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 20, this.y + 20, this.width*0.45, this.height*0.45);
+			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 15, this.y + 15, 85*0.7, this.height*0.7);
+			plainText('Archer', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 		}
 		else if(this.sprite == dragonImage){
-			context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
+			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.5, this.height*1.5);
+			plainText('Dragon', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'Effect: Burn', this.x+90, this.y+70,'12px', 'black');
 		}
 		else if(this.sprite == wizardImage){
-			context.drawImage(this.sprite, 0, 0, 82, 82, this.x, this.y, this.width*1.1, this.height*1.1);
+			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.8, this.height*1.8);
+			plainText('Wizard', this.x+90, this.y+20, '20px', 'black');
+			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
 		}
-
 
 		context.strokeStyle = this.stroke;
 		context.strokeRect(this.x, this.y, this.width, this.height);
-		context.fillStyle = this.fontColor;
-		context.font = this.font;
-		context.fillText(Math.floor(this.health), this.x + 5, this.y + 20);
-		context.fillStyle = 'gold';
-		context.font = '20px Orbitron';
-		context.fillText(Math.floor(this.cost)  + 'g', this.x + 5, this.y + 75);
+
 	}
 }
 
 //Draw buttons
-const tower1 = new TowerButton(305, 'saddlebrown', 'white', 100, towerCost, archerImage);
-const tower2 = new TowerButton(400, 'lime', 'black', 150, towerCost, dragonImage);
-const tower3 = new TowerButton(495, 'skyblue', 'gold', 75, towerCost, wizardImage);
+const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
+const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
+const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
+
 
 // Creat game menu and elements
 function chooseTower(){
@@ -232,6 +240,14 @@ function strokedText(text, x, y, fontSize, fontColor) {
     context.strokeText(text, x, y);
     context.fillStyle = fontColor;
     context.fillText(text, x, y);
+}
+
+// Control Game text style from this function
+function plainText(text, x, y, fontSize, fontColor) {
+    context.font = fontSize + ' Arial';
+    context.fillStyle = fontColor;
+    context.fillText(text, x, y);
+
 }
 
 // Update Menu display

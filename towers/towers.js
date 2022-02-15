@@ -18,13 +18,7 @@ class Tower{
 	}
 	// Draw Tower on board
 	draw(textColor){
-		//context.fillStyle = bodyColor; 
-		//context.fillRect(this.x,this.y,this.width,this.height);
-		//context.fillStyle = textColor;
-		//context.font = '30px Orbitron';
-		//context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 		strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
-
 	}
 	// Take a projectile class. Increment timer and fire projectile.
 	update(projectile){
