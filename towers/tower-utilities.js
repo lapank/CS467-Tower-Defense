@@ -65,3 +65,26 @@ function updateTowers(){
 		}
 	}
 }
+
+// Sacrifice a tower and damage all enemies in surrounding squares.
+function explodeTower(i){
+	// Retrieve tower stats
+	let towerX = towers[i].x;
+	let towerY = towers[i].y;
+	let towerHealth = Math.floor(towers[i].health); 
+	// Set explosion range to 3*3 square with tower as center
+	let explodeRange = {
+		x:towerX - cellSize, 
+		y:towerY - cellSize, 
+		width:cellSize*3 - cellGap*2, 
+		height:cellSize*3 - cellGap*2
+	};
+	// Damage all enemies within tower range
+	for (let j=0; j<enemies.length; j++){
+		if (collision(explodeRange, enemies[j])){
+			enemies[j].health -= towerHealth;
+		}			
+	}
+	// Reduce tower health to zero
+	towers[i].health = 0;
+}

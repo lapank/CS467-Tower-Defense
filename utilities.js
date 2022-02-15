@@ -153,7 +153,7 @@ class TowerButton{
 		this.lineWidth = 5;
 		this.bodyColor = bodyColor;
 		this.fontColor = fontColor;
-		this.font = '22px Orbitron';
+		this.font = '22px Arial';
 		this.health = health;
 		this.cost = cost;
 		this.sprite = sprite;
@@ -212,13 +212,13 @@ class TowerButton{
 	}
 }
 
-//Draw buttons
+// Draw buttons
 const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
 const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
 const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
 
 
-// Creat game menu and elements
+// Create game menu and elements
 function chooseTower(){
 	if(collision(mouse, tower1) && mouse.clicked){
 		towerSelector = 1;
