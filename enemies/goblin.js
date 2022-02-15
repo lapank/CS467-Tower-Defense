@@ -21,7 +21,7 @@ class Goblin extends Enemy{
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 20, this.y + 8, this.width*1.2, this.height*1.2);
 
-		super.draw('green', 'brown');
+		super.draw('SandyBrown');
 		
 	}
 }

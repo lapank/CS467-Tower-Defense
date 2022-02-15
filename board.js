@@ -3,6 +3,11 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d'); //access to all 2d drawing library tools
 canvas.width = 900;
 canvas.height = 700;
+//Lava Level
+const lavaBackground = new Image();
+lavaBackground.src = 'sprites/lava-background.jpg';
+const grassBackground = new Image();
+grassBackground.src = 'sprites/grass-background.jpg';
 
 // Global Variables
 const cellSize = 100;
@@ -41,7 +46,6 @@ class Cell{
 			context.strokeStyle = "#FF0000";
 			context.strokeRect(this.x, this.y, this.width, this.height);
 		}
-		
 	}
 }
 
@@ -59,6 +63,16 @@ function updateGameGrid(){
 	for (let i = 0; i < gameGrid.length; i++) {
 		gameGrid[i].draw();
 	}
+}
+
+function drawMenu(color){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	// Draw the Menu bar
+	context.fillStyle = color;
+	context.fillRect(0,0, menuBar.width, menuBar.height);
+	context.fillStyle = color;
+	context.fillRect(0,600, menuBar.width, menuBar.height);
+	drawButton(inGameQuitButton);
 }
 
 // Track Mouse click

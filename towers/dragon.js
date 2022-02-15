@@ -19,7 +19,7 @@ class Dragon extends Tower{
 	draw(){
 		// Draw the sprite
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 10, this.y + 15, this.width*1.1, this.height*1.1);
-		super.draw('lime', 'black');
+		super.draw('gold');
 	}
 	update(){
 		// Cycle through sprite sheet

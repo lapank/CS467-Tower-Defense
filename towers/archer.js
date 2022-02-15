@@ -18,7 +18,7 @@ class Archer extends Tower{
 	}
 	draw(){
 		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x +25, this.y + 55, this.width * 0.35, this.height *0.45);
-		super.draw('saddlebrown', 'white');
+		super.draw('white');
 	}
 	update(){
 		// Cycle through sprite 
