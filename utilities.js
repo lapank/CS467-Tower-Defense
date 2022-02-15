@@ -204,13 +204,11 @@ class TowerButton{
 			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
-
 		}
-
 
 		context.strokeStyle = this.stroke;
 		context.strokeRect(this.x, this.y, this.width, this.height);
-		
+
 	}
 }
 
@@ -218,6 +216,7 @@ class TowerButton{
 const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
 const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
 const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
+
 
 // Creat game menu and elements
 function chooseTower(){
@@ -248,6 +247,7 @@ function plainText(text, x, y, fontSize, fontColor) {
     context.font = fontSize + ' Arial';
     context.fillStyle = fontColor;
     context.fillText(text, x, y);
+
 }
 
 // Update Menu display

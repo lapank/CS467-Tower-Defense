@@ -19,7 +19,6 @@ class Tower{
 	// Draw Tower on board
 	draw(textColor){
 		strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
-
 	}
 	// Take a projectile class. Increment timer and fire projectile.
 	update(projectile){
