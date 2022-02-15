@@ -65,3 +65,10 @@ function updateTowers(){
 		}
 	}
 }
+
+// Sacrifice a tower and damage all enemies in surrounding squares.
+function explodeTower(i){
+	// Retrieve tower stats
+	// Damage all enemies within tower range
+	// Reduce tower health to zero
+}
