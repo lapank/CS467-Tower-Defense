@@ -83,11 +83,8 @@ function explodeTower(i){
 	for (let j=0; j<enemies.length; j++){
 		if (collision(explodeRange, enemies[j])){
 			enemies[j].health -= towerHealth;
-			console.log("Enemy Hit");
 		}			
 	}
 	// Reduce tower health to zero
 	towers[i].health = 0;
-	console.log("explodeTower");
-	console.log(towerHealth);
 }
