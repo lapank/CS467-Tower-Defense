@@ -163,10 +163,19 @@ function quit_press() {
 
 // Return to TitleScreen on click
 function titleScreen_press() {
-	if ( collision(mouse, mainMenuButton)) {
+	if (collision(mouse, mainMenuButton)) {
 		console.log('mainMenu pressed');
 		goToTitle();
 }}
+
+// Check whether a tower was triggered to explode
+function checkExplosion(){
+	for (let i =0; i < towers.length; i++){
+		if (collision(mouse, towers[i])){
+			explodeTower(0);
+		}
+	}
+}
 
 // Initiate Event Listeners related to System functions.
 function addEvents(){
@@ -186,6 +195,7 @@ function addBoardEvents(){
 	canvas.addEventListener('click', inGameQuit_press);
 	canvas.addEventListener('click', tryAgain_press);
 	canvas.addEventListener('click', quit_press);
+	canvas.addEventListener('dblclick', checkExplosion);
 }
 
 // Remove Event Listeners related to a Level.
@@ -194,6 +204,7 @@ function removeBoardEvents(){
 	canvas.removeEventListener('click', inGameQuit_press);
 	canvas.removeEventListener('click', tryAgain_press);
 	canvas.removeEventListener('click', quit_press);
+	canvas.removeEventListener('dblclick', checkExplosion);
 }
 
 // Initiate Event Listeners for Title Screen

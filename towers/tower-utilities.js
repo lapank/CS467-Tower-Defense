@@ -71,4 +71,5 @@ function explodeTower(i){
 	// Retrieve tower stats
 	// Damage all enemies within tower range
 	// Reduce tower health to zero
+	console.log("explodeTower");
 }
