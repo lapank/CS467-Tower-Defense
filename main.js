@@ -172,7 +172,7 @@ function titleScreen_press() {
 function checkExplosion(){
 	for (let i =0; i < towers.length; i++){
 		if (collision(mouse, towers[i])){
-			explodeTower(0);
+			explodeTower(i);
 		}
 	}
 }
