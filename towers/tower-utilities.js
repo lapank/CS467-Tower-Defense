@@ -82,6 +82,7 @@ function explodeTower(i){
 	// Damage all enemies within tower range
 	for (let j=0; j<enemies.length; j++){
 		if (collision(explodeRange, enemies[j])){
+			enemies[j].health -= towerHealth;
 			console.log("Enemy Hit");
 		}			
 	}
