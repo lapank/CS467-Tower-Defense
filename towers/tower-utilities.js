@@ -63,9 +63,15 @@ function updateTowers(){
 			// Handle Tower Death  
 			//Trigger dying state (death animation)
 			if (towers[i] && towers[i].health <= 0){
+				// Reanimate all enemies blocked by tower
+				for (let k = 0; k<enemies.length; k++){
+					if (collision(towers[i], enemies[k])){
+						enemies[k].movement = enemies[k].speed;
+					}
+				}
+				// Start Death animation
 				towers[i].dying = true;
 				towers[i].shooting = false;
-				enemies[j].movement = enemies[j].speed;
 			}
 			//Finally remove defeated tower from the towers array
 			if (towers[i] && towers[i].dead){
