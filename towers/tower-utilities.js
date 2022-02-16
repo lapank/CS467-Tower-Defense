@@ -34,8 +34,8 @@ function updateTowers(){
 	for(let i = 0; i < towers.length; i++){
 		towers[i].draw();
 		towers[i].update();
-		// Disable Tower when no Enemies
-		if(enemyPositions.indexOf(towers[i].y) !== -1){
+		// Disable Tower when no Enemies (and when dying)
+		if(enemyPositions.indexOf(towers[i].y) !== -1 && !towers[i].dying){
 			towers[i].shooting = true;
 		}else{
 			towers[i].shooting = false;
@@ -45,22 +45,32 @@ function updateTowers(){
 			if (towers[i] && collision(towers[i], enemies[j])){
 				enemies[j].movement = 0;
 
-				// Damage dealt varies by enemy
-				if (enemies[j] instanceof Goblin){
-					towers[i].health -= 0.2; 
+				//Only deal damage to living towers
+				if (towers[i].health > 0){
+					// Damage dealt varies by enemy
+					if (enemies[j] instanceof Goblin){
+						towers[i].health -= 0.2; 
+					}
+					else if (enemies[j] instanceof Vampire){
+						towers[i].health -= 0.4; 
+					}
+					else if (enemies[j] instanceof Troll){
+						towers[i].health -= 0.8; 
+					}
 				}
-				else if (enemies[j] instanceof Vampire){
-					towers[i].health -= 0.4; 
-				}
-				else if (enemies[j] instanceof Troll){
-					towers[i].health -= 0.8; 
-				}
+				
 			}
-			// Handle Tower Death 
+			// Handle Tower Death  
+			//Trigger dying state (death animation)
 			if (towers[i] && towers[i].health <= 0){
+				towers[i].dying = true;
+				towers[i].shooting = false;
+				enemies[j].movement = enemies[j].speed;
+			}
+			//Finally remove defeated tower from the towers array
+			if (towers[i] && towers[i].dead){
 				towers.splice(i, 1);
 				i--;
-				enemies[j].movement = enemies[j].speed;
 			}
 		}
 	}
