@@ -282,6 +282,8 @@ function updateGameStatus(){
 	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
+	// Display Game Timer
+	drawTimer(0, 0);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
@@ -314,6 +316,21 @@ function collision(first, second){
 				first.y + first.height < second.y)
 		) return true;
 }
+
+// Pads an integer with zeros to two places
+function pad2 (num){
+	return String(num).padStart(2, '0');
+}
+
+// Draws the timer on the board
+function drawTimer(mins, secs){
+	context.font = 'bold 35px Arial';
+	context.fillStyle = 'gold';
+	if (mins < 2) context.fillStyle = 'red';
+	if (mins < 1 && secs < 1) context.fillText('Time Out', 200, 40);
+	else context.fillText(pad2(mins) + ':' + pad2(secs), 200, 40);
+}
+
 
 // Take a button struct. Create draw a button with that button's properties.
 //   Required properties: x, y, fontSize, textColor, text,

@@ -20,6 +20,8 @@ let playerHealth = maxPlayerHealth;
 let waveMessageDisplay = 0;
 let rushWave = false;
 let adjustInterval = 0;
+let mins = 0;
+let secs = 0;
 
 // Mouse position
 const mouse = {
