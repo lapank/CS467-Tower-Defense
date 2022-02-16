@@ -52,9 +52,15 @@ function placeEnemy(type, row, delay){
 
 // Takes a message and displays that message on the screen.
 function displayBanner(msg){
-	context.fillStyle = 'black';
 	context.font = 'bold 80px Arial';
+	// Add glow so readable on dark backgrounds 
+	context.shadowColor="white";
+	context.shadowBlur=15;
+	// Write the Message
+	context.fillStyle = 'black';
 	context.fillText(msg, cellSize*3, cellSize*3);
+	// Remove glow effect
+	context.shadowBlur = 0;
 }
 
 function spawnNewEnemies1(){
