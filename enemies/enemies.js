@@ -1,4 +1,4 @@
-let enemiesInterval = 600;		// frames between enemy spawns
+let enemiesInterval = 1000;		// frames between enemy spawns
 let frame = 0; 					// increment that determines resource/enemy spawns
 const enemies = [];				// array of existing enemies
 const enemyPositions = [];		// array of enemy vertical/row positions

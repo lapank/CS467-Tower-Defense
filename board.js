@@ -19,6 +19,7 @@ let gridSelect = true;
 let playerHealth = maxPlayerHealth;
 let waveMessageDisplay = 0;
 let rushWave = false;
+let adjustInterval = 0;
 
 // Mouse position
 const mouse = {

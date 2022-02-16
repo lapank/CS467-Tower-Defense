@@ -116,24 +116,21 @@ function newLoadGame() {
 function startGame() {
 	if (collision(mouse, levelButton1)) {
 		select = 1;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level1();
 	} else if (collision(mouse, levelButton2)) {
 		select = 2;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level2();
 	} else if (collision(mouse, levelButton3)) {
 		select = 3;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();

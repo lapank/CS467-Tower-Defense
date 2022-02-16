@@ -346,6 +346,8 @@ function resetGameObjects(){
 	playerHealth = maxPlayerHealth;
 	waveMessageDisplay = 0;
 	rushWave = false;
+	adjustInterval = 0;
+	frame = 0;
 }
 
 // Prepare and go to title screen.

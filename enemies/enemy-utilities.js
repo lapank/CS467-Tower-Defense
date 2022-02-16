@@ -65,11 +65,16 @@ function displayBanner(msg){
 
 function spawnNewEnemies1(){
 	let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+	let timeIntoWave = ((frame + adjustInterval) % enemiesInterval);
+	
 	// Display a message when a new wave begins
 	waveMessageDisplay--; 
-	if (waveMessageDisplay > 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
+	if (waveMessageDisplay > 0 && waves >= 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
 	
-	if ((frame% enemiesInterval === 0 && waves > 0) || rushWave){ 
+	// Trigger next Wave
+	if ((waves > 0) && (timeIntoWave === 0 || rushWave)){ 
+		// Adjust timing of next wave to happen at the next enemiesInterval.
+		if (rushWave) adjustInterval += enemiesInterval - timeIntoWave;
 		rushWave = false;
 		// Set Wave banner to display
 		waveMessageDisplay = 60*3;
