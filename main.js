@@ -16,9 +16,9 @@ function level1(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
@@ -33,9 +33,9 @@ function level2(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
@@ -51,9 +51,9 @@ function level3(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
