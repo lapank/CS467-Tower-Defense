@@ -43,6 +43,24 @@ class Wizard extends Tower{
 				this.frameX = this.minFrame;
 			}
 		}
+		// Cycle through death animation
+		else if(this.dying){
+			this.minFrame = 10;
+			this.maxFrame = 14;
+			
+			//start death animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
+			}
+
+			this.animationRate = this.idleRate;
+
+			//Set dead to true when end of death animation is reached
+			if( this.frameX == this.maxFrame){
+				this.dead = true;
+			}
+			
+		}
 		// Return to idle animation when not shooting
 		else{ 
 				this.minFrame = 0;
