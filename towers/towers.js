@@ -1,7 +1,7 @@
-let towerCost = 100;			// required resources to place a tower
-let numberOfResources = 500;	// player's starting resources
-const towers = [];				// array of existing towers
-let towerSelector = 1;			// initialize variable for menu button
+let towerCost = 100;					// required resources to place a tower
+let numberOfResources = MAX_RESOURCES;	// player's starting resources
+const towers = [];						// array of existing towers
+let towerSelector = 1;					// initialize variable for menu button
 
 // Tower to shoot projectiles and destroy enemies
 class Tower{

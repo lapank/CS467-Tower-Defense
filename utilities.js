@@ -375,7 +375,7 @@ function resetGameObjects(){
 	gameOver = false;
 	score = 0;
 	waves = maxWaves;
-	numberOfResources = 500;
+	numberOfResources = MAX_RESOURCES;
 	playerHealth = maxPlayerHealth;
 	waveMessageDisplay = 0;
 	rushWave = false;
