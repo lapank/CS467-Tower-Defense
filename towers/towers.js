@@ -13,8 +13,10 @@ class Tower{
 		this.shooting = false;
 		this.health = health;
 		this.timer = timer;
-		this.fireSpeed = fireSpeed;  // time between animation frames when shooting
+		this.fireSpeed = fireSpeed;  // time between animation frames when shooting 
 		this.towerSelector = towerSelector;
+		this.dying = false;
+		this.dead = false;
 	}
 	// Draw Tower on board
 	draw(textColor){
