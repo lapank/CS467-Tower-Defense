@@ -278,7 +278,8 @@ function updateGameStatus(){
 	// Display Current Health
 	drawHealth();
 	// Display Game Timer
-	drawTimer(0, 0);
+	updateTimes();
+	drawTimer(mins, secs);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
@@ -306,6 +307,18 @@ function collision(first, second){
 				first.y > second.y + second.height ||
 				first.y + first.height < second.y)
 		) return true;
+}
+
+// Update the minutes and seconds of the current times
+function updateTimes(){
+	// Get time elapsed so far.
+	let currentTime = performance.now();
+	let secsElapsed = (currentTime - startTime) / 1000;
+	// Determine time left in the level
+	let remaining = levelTime - secsElapsed;
+	// Calculate remaining seconds and minutes
+	secs = Math.floor( remaining % 60 );
+	mins = Math.floor( (remaining - secs) / 60 );
 }
 
 // Pads an integer with zeros to two places
@@ -366,6 +379,8 @@ function resetGameObjects(){
 	rushWave = false;
 	adjustInterval = 0;
 	frame = 0;
+	startTime = performance.now();
+	levelTime = TIME_LIMIT;
 }
 
 // Prepare and go to title screen.

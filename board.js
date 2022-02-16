@@ -14,14 +14,17 @@ const cellSize = 100;
 const cellGap = 3;
 const gameGrid = [];
 const maxPlayerHealth = 10;
+const TIME_LIMIT = 60 * 2 + 30;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
 let playerHealth = maxPlayerHealth;
 let waveMessageDisplay = 0;
 let rushWave = false;
 let adjustInterval = 0;
+let levelTime = TIME_LIMIT;
 let mins = 0;
 let secs = 0;
+let startTime = performance.now();
 
 // Mouse position
 const mouse = {
