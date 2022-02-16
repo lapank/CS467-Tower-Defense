@@ -316,6 +316,8 @@ function updateTimes(){
 	let secsElapsed = (currentTime - startTime) / 1000;
 	// Determine time left in the level
 	let remaining = levelTime - secsElapsed;
+	// End game if no time left
+	if (remaining <= 0.) gameOver = true;
 	// Calculate remaining seconds and minutes
 	secs = Math.floor( remaining % 60 );
 	mins = Math.floor( (remaining - secs) / 60 );
