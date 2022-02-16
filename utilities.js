@@ -189,13 +189,13 @@ class TowerButton{
 			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 15, this.y + 15, 85*0.7, this.height*0.7);
 			plainText('Archer', this.x+90, this.y+20, '20px', 'black');
 			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
-			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'HP: ' + Archer.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 		}
 		else if(this.sprite == dragonImage){
 			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.5, this.height*1.5);
 			plainText('Dragon', this.x+90, this.y+20, '20px', 'black');
 			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
-			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
+			plainText( 'HP: ' + Dragon.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Burn', this.x+90, this.y+70,'12px', 'black');
 		}
 		else if(this.sprite == wizardImage){
