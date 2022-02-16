@@ -10,8 +10,22 @@ function placeTower(){
 			return;
 		}
 	}
+	// Determine cost of tower;
+	cost = TOWER_COST;
+	switch (towerSelector){
+		case 1:
+			cost = ARCHER_COST;
+			break;
+		case 2: 
+			cost = DRAGON_COST;
+			break;
+		case 3:
+			cost = WIZARD_COST;
+			break;
+	}
+
 	// Place Tower and deduct Resources
-	if (numberOfResources >= towerCost){
+	if (numberOfResources >= cost){
 
 		if (towerSelector == 1){
 			towers.push(new Archer(gridPositionX, gridPositionY));
@@ -25,7 +39,7 @@ function placeTower(){
 			console.log('Error: towerSelector value is not between 1 and 3.');
 		}
 
-		numberOfResources -= towerCost;
+		numberOfResources -= cost;
 	}
 }
 

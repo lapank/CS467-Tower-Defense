@@ -204,20 +204,20 @@ class TowerButton{
 		if (this.sprite == archerImage){
 			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 15, this.y + 15, 85*0.7, this.height*0.7);
 			plainText('Archer', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + ARCHER_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Archer.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 		}
 		else if(this.sprite == dragonImage){
 			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.5, this.height*1.5);
 			plainText('Dragon', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + DRAGON_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Dragon.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Burn', this.x+90, this.y+70,'12px', 'black');
 		}
 		else if(this.sprite == wizardImage){
 			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.8, this.height*1.8);
 			plainText('Wizard', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + WIZARD_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
 		}
@@ -229,9 +229,9 @@ class TowerButton{
 }
 
 // Draw buttons
-const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
-const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
-const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
+const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, ARCHER_COST, archerImage);
+const tower2 = new TowerButton(370, 'lime', 'black', 150, DRAGON_COST, dragonImage);
+const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, WIZARD_COST, wizardImage);
 
 
 // Create game menu and elements
