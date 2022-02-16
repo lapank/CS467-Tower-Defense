@@ -18,6 +18,11 @@ let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
 let playerHealth = maxPlayerHealth;
 
+let highscore1 = 0; // Stored high scores for each level
+let highscore2 = 0;
+let highscore3 = 0;
+let rank = 1;		// Rank must be >= Level-Number to play.
+
 // Mouse position
 const mouse = {
 	x: 10,
