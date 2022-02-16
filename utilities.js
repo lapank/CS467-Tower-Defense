@@ -270,8 +270,8 @@ function updateGameStatus(){
 	if(gameOver){
 		console.log('gameover');
 		strokedText('GAME OVER', 135, 330, '100px', 'white');
-
 		// Exit the gameover screen
+		saveHighScore();
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
 
@@ -284,9 +284,9 @@ function updateGameStatus(){
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
 		
 		// Exit the win screen
+		saveHighScore();
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
-
 	}
 }
 
