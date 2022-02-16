@@ -177,6 +177,13 @@ function checkExplosion(){
 	}
 }
 
+// Starts the next wave on click
+function rushWave_press(){
+	if (collision(mouse, rushButton)) {
+		rushWave = true;
+	}
+}
+
 // Initiate Event Listeners related to System functions.
 function addEvents(){
 	canvas.addEventListener('mousedown', clickDown);
@@ -195,6 +202,7 @@ function addBoardEvents(){
 	canvas.addEventListener('click', inGameQuit_press);
 	canvas.addEventListener('click', tryAgain_press);
 	canvas.addEventListener('click', quit_press);
+	canvas.addEventListener('click', rushWave_press);
 	canvas.addEventListener('dblclick', checkExplosion);
 }
 
@@ -204,6 +212,7 @@ function removeBoardEvents(){
 	canvas.removeEventListener('click', inGameQuit_press);
 	canvas.removeEventListener('click', tryAgain_press);
 	canvas.removeEventListener('click', quit_press);
+	canvas.removeEventListener('click', rushWave_press);
 	canvas.removeEventListener('dblclick', checkExplosion);
 }
 

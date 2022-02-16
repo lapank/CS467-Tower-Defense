@@ -69,7 +69,8 @@ function spawnNewEnemies1(){
 	waveMessageDisplay--; 
 	if (waveMessageDisplay > 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
 	
-	if (frame% enemiesInterval === 0 && waves > 0){ 
+	if ((frame% enemiesInterval === 0 && waves > 0) || rushWave){ 
+		rushWave = false;
 		// Set Wave banner to display
 		waveMessageDisplay = 60*3;
 		// Divides enemies into waves
