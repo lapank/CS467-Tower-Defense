@@ -88,7 +88,6 @@ function levelSelectScreen(){
 	context.font = levelSelect.fontSize +'px Arial';
 	context.fillText('Level Select', levelSelect.x, levelSelect.y);
 	// Button Displays
-
 	drawButton(levelButton1);
 	context.drawImage(grassBackground, 40, 210, 256, 256);
 	strokedText('Level 1', 50, 460, '70px', 'white');
@@ -98,8 +97,19 @@ function levelSelectScreen(){
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
 	drawButton(mainMenuButton);
+	// Display High Scores
+	drawHighScores();
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
+}
+
+// Displays current high scores on the level screen
+function drawHighScores(){
+	strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
+
+	strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
+
+	strokedText('Best: ' + highscore1, 50, 250, 30, 'gold');
 }
 
 
