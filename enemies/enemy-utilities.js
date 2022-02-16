@@ -153,13 +153,11 @@ function spawnNewEnemies2(){
 				placeEnemy(Goblin, 3, 60*1);
 				placeEnemy(Goblin, 4, 60*2);
 				placeEnemy(Goblin, 3, 60*6);
-				placeEnemy(Goblin, 3, 60*6);
-				placeEnemy(Goblin, 4, 60*10);
-				placeEnemy(Goblin, 4, 60*10);
-				placeEnemy(Goblin, 1, 60*14);
-				placeEnemy(Goblin, 3, 60*14);
-				placeEnemy(Goblin, 4, 60*16);
-				placeEnemy(Goblin, 1, 60*16);
+				placeEnemy(Goblin, 3, 60*8);
+				placeEnemy(Goblin, 4, 60*12);
+				placeEnemy(Goblin, 4, 60*14);
+				placeEnemy(Goblin, 1, 60*18);
+				placeEnemy(Goblin, 3, 60*20);
 				break;
 			case 2:
 				// Enemies in 2nd wave
