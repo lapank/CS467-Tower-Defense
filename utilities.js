@@ -328,6 +328,8 @@ function resetGameObjects(){
 	waves = maxWaves;
 	numberOfResources = 500;
 	playerHealth = maxPlayerHealth;
+	waveMessageDisplay = 0;
+	rushWave = false;
 }
 
 // Prepare and go to title screen.
