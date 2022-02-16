@@ -17,6 +17,7 @@ const maxPlayerHealth = 10;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
 let playerHealth = maxPlayerHealth;
+let waveMessageDisplay = 0;
 
 // Mouse position
 const mouse = {

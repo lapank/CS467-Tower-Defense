@@ -50,10 +50,23 @@ function placeEnemy(type, row, delay){
 			enemyPositions.push(eRow(row));
 		}
 
+// Takes a message and displays that message on the screen.
+function displayBanner(msg){
+	context.fillStyle = 'black';
+	context.font = 'bold 80px Arial';
+	context.fillText(msg, cellSize*3, cellSize*3);
+}
+
 function spawnNewEnemies1(){
+	let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+	// Display a message when a new wave begins
+	waveMessageDisplay--; 
+	if (waveMessageDisplay > 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
+	
 	if (frame% enemiesInterval === 0 && waves > 0){ 
+		// Set Wave banner to display
+		waveMessageDisplay = 60*3;
 		// Divides enemies into waves
-		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
@@ -108,9 +121,14 @@ function spawnNewEnemies1(){
 }
 
 function spawnNewEnemies2(){
+	let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+	// Display a message when a new wave begins
+	waveMessageDisplay--; 
+	if (waveMessageDisplay > 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
+	
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Divides enemies into waves
-		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+		// Set Wave banner to display
+		waveMessageDisplay = 60*3;
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
@@ -165,9 +183,14 @@ function spawnNewEnemies2(){
 }
 
 function spawnNewEnemies3(){
+	let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+	// Display a message when a new wave begins
+	waveMessageDisplay--; 
+	if (waveMessageDisplay > 0)	displayBanner("Wave " + (current_wave-1)); // Adjusts for wave decrease after trigger
+	
 	if (frame% enemiesInterval === 0 && waves > 0){ 
-		// Divides enemies into waves
-		let current_wave = maxWaves + 1 - waves; // determines value of count wave 
+		// Set Wave banner to display
+		waveMessageDisplay = 60*3;
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
