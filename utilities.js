@@ -276,23 +276,16 @@ function updateGameStatus(){
 	// Display Current Resources
 	context.fillText('Gold: ' + numberOfResources, 20, 80); 
 	// Display Current Health
-	context.fillStyle = 'red';
-	context.fillRect(350, 50, 300, 35);
-	context.fillStyle = 'green';
-	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
-	context.fillStyle= 'gold';
-	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
+	drawHealth();
 	// Display Game Timer
 	drawTimer(0, 0);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
 		strokedText('GAME OVER', 135, 330, '100px', 'white');
-
 		// Exit the gameover screen
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
-
 	}
 	// Checks for win condition
 	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
@@ -300,11 +293,9 @@ function updateGameStatus(){
 		victory = true;
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
-		
 		// Exit the win screen
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
-
 	}
 }
 
@@ -331,6 +322,16 @@ function drawTimer(mins, secs){
 	else context.fillText(pad2(mins) + ':' + pad2(secs), 200, 40);
 }
 
+// Draws the player's health bar
+function drawHealth(){
+	context.font = '30px Arial';
+	context.fillStyle = 'red';
+	context.fillRect(350, 50, 300, 35);
+	context.fillStyle = 'green';
+	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillStyle= 'gold';
+	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
+}
 
 // Take a button struct. Create draw a button with that button's properties.
 //   Required properties: x, y, fontSize, textColor, text,
