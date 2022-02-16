@@ -142,6 +142,22 @@ const inGameQuitButton = {
 	borderColor: "gray",
 };
 
+const rushButton = {
+	// text attributes
+	x2: 820 - 60,
+	y2: 35 + 45,
+	fontSize: 20,
+	textColor: "red",
+	text: 'RUSH WAVE',
+	// button attributes
+	x: 810 - 60,
+	y: 10 + 45,
+	width: 140,
+	height: 35,
+	color: "black", 
+	borderColor: "red",
+};
+
 // Button where users select tower type
 class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){

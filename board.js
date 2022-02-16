@@ -75,6 +75,7 @@ function drawMenu(color){
 	context.fillStyle = color;
 	context.fillRect(0,600, menuBar.width, menuBar.height);
 	drawButton(inGameQuitButton);
+	drawButton(rushButton);
 }
 
 // Track Mouse click
