@@ -161,9 +161,27 @@ function spawnNewEnemies2(){
 				break;
 			case 2:
 				// Enemies in 2nd wave
-				placeEnemy(Vampire, 2, 60*1);
 				placeEnemy(Vampire, 3, 60*0);
+				placeEnemy(Vampire, 2, 60*1);
+				placeEnemy(Vampire, 3, 60*1);
 				placeEnemy(Vampire, 4, 60*1);
+				placeEnemy(Vampire, 2, 60*2);
+				placeEnemy(Vampire, 3, 60*2);
+				placeEnemy(Vampire, 4, 60*2);
+
+				placeEnemy(Vampire, 1, 60*10);
+				placeEnemy(Vampire, 2, 60*10);
+				placeEnemy(Vampire, 3, 60*10);
+				placeEnemy(Vampire, 1, 60*11);
+				placeEnemy(Vampire, 2, 60*11);
+				placeEnemy(Vampire, 3, 60*11);
+
+				placeEnemy(Vampire, 3, 60*20);
+				placeEnemy(Vampire, 4, 60*20);
+				placeEnemy(Vampire, 5, 60*20);
+				placeEnemy(Vampire, 3, 60*21);
+				placeEnemy(Vampire, 4, 60*21);
+				placeEnemy(Vampire, 5, 60*21);
 				break;
 			case 3:
 				// Enemies in 3rd wave
@@ -194,7 +212,7 @@ function spawnNewEnemies2(){
 				break;
 			case 9:
 				// Enemies in 9th wave
-				placeEnemy(Troll, 5, 60*3);
+				placeEnemy(Goblin, 3, 60*6);
 				break;
 			case 10:
 				// Enemies in 10th wave
