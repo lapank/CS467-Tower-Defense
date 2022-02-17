@@ -15,10 +15,16 @@ class Enemy{
 		this.health = health;
 		this.maxHealth = this.health; //will award player resources based on how large the HP was
 		this.onFire = false;    //set to true when hit by fireball projectile
+		this.dying = false;
+		this.dead = false;
 	}
 	// Move the enemy
 	update(){
-		this.x -= this.movement; //walking right to left
+		
+		//Enemy moves towards left of screen until dying
+		if (!this.dying){
+			this.x -= this.movement; //walking right to left
+		}
 
 		// Cycle through sprite
 		if (frame % 10 === 0){
@@ -26,7 +32,7 @@ class Enemy{
             else this.frameX = this.minFrame;
         }
 	
-		if (this.onFire){       //damage over time if on fire
+		if (this.onFire && !this.dying){       //damage over time if on fire
 			this.health -= 0.1; 
 		}
 	}
