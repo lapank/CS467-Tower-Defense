@@ -14,7 +14,14 @@ function updateEnemies(){
 			if (playerHealth <= 0) gameOver = true;
 		}
 		// Handle enemy Death
-		if (enemies[i].health <= 0){
+		//Handle Enemy Death
+		if(enemies[i] && enemies[i].health <=0){
+			// Start Death animation
+			enemies[i].dying = true;
+		
+		}
+
+		if(enemies[i] && enemies[i].dead){
 			// Increase player resources and score
 			let gainedResources = enemies[i].maxHealth/10;
 			numberOfResources += gainedResources;
@@ -25,6 +32,7 @@ function updateEnemies(){
 			enemies.splice(i, 1);
 			i--;
 		}
+		
 	}
 	switch (select){
 		case 1:
