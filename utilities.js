@@ -110,17 +110,33 @@ const tryAgainButton = {
 	borderColor: "black",
 };
 
-const mainMenuButton = {
+const saveQuitButton = {
 	// text attributes
 	x2: 370 - 150,
 	y2: 515 + 30,
 	fontSize: 40,
 	textColor: "black",
-	text: 'Back to Title Screen',
+	text: 'Save & Quit',
 	// button attributes
 	x: 360 - 150,
 	y: 470 + 30,
-	width: 480,
+	width: 480 - 200,
+	height: 60,
+	color: "white", 
+	borderColor: "black",
+};
+
+const noSaveQuitButton = {
+	// text attributes
+	x2: 370 - 150,
+	y2: 515 + 120,
+	fontSize: 40,
+	textColor: "black",
+	text: 'Quit without Saving',
+	// button attributes
+	x: 360 - 150,
+	y: 470 + 120,
+	width: 390,
 	height: 60,
 	color: "white", 
 	borderColor: "black",

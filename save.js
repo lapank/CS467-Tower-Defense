@@ -40,7 +40,6 @@ function setCookie(){
     let cookieExpire = 'expires=' + expireDate + ';'
     // Store cookie
     document.cookie = 'saveHS1=' + JSON.stringify(saveData) + '; ' + cookieExpire;
-    console.log(document.cookie);
 }
 
 // Loads the cookie data

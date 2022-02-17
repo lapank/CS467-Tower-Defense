@@ -95,7 +95,8 @@ function levelSelectScreen(){
 	drawButton(levelButton3);
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
-	drawButton(mainMenuButton);
+	drawButton(saveQuitButton);
+	drawButton(noSaveQuitButton);
 	// Display High Scores
 	drawHighScores();
 
@@ -174,11 +175,14 @@ function quit_press() {
 
 // Return to TitleScreen on click
 function titleScreen_press() {
-	if (collision(mouse, mainMenuButton)) {
-		console.log('mainMenu pressed');
-		setCookie();
+	if (collision(mouse, saveQuitButton)) {
+		setCookie(); // Save game data
 		goToTitle();
-}}
+	}
+	else if (collision(mouse, noSaveQuitButton)){
+		goToTitle();
+	}
+}
 
 // Check whether a tower was triggered to explode
 function checkExplosion(){
