@@ -39,14 +39,14 @@ function setCookie(){
     expireDate.setDate(expireDate.getDate() + 365);
     let cookieExpire = 'expires=' + expireDate + ';'
     // Store cookie
-    document.cookie = 'saveHS1=' + JSON.stringify(saveData) + '; ' + cookieExpire;
+    document.cookie = 'saveHS1=' + '&' + JSON.stringify(saveData) + '&; ' + cookieExpire;
 }
 
 // Loads the cookie data
 function getCookie(){
     if (document.cookie.length != 0){
         // Parse data from cookie
-        let dataArray = document.cookie.split('=');
+        let dataArray = document.cookie.split('&');
         let saveData = JSON.parse(dataArray[1]);
         // Restore data from save
         highscore1 = saveData.saveHS1;
