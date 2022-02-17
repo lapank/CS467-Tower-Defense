@@ -60,7 +60,8 @@ function updateTowers(){
 				enemies[j].movement = 0;
 
 				//Only deal damage to living towers
-				if (towers[i].health > 0){
+				//And only allow living enemies to deal damage
+				if (towers[i].health > 0 && !enemies[j].dying){
 					// Damage dealt varies by enemy
 					if (enemies[j] instanceof Goblin){
 						towers[i].health -= 0.2; 
