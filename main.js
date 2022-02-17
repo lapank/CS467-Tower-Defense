@@ -115,8 +115,11 @@ function drawHighScores(){
 // Opens Level Select Screen on Click
 function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
+		// Reset data for new game
+		resetScores();
 		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
+		// Load stored data, if any.
 		getCookie();
 		goToLevelSelect();
 	}
