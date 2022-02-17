@@ -32,7 +32,7 @@ class Enemy{
             else this.frameX = this.minFrame;
         }
 	
-		if (this.onFire){       //damage over time if on fire
+		if (this.onFire && !this.dying){       //damage over time if on fire
 			this.health -= 0.1; 
 		}
 	}
