@@ -16,9 +16,9 @@ function level1(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
@@ -33,9 +33,9 @@ function level2(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
@@ -51,9 +51,9 @@ function level3(){
 	updateGameGrid();
 	updateTowers();
 	updateProjectiles();
+	updateResources();
 	updateEnemies();
 	chooseTower();
-	updateResources();
 	updateGameStatus();
 	// Increment time passing
 	frame++;
@@ -116,24 +116,22 @@ function newLoadGame() {
 function startGame() {
 	if (collision(mouse, levelButton1)) {
 		select = 1;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level1();
 	} else if (collision(mouse, levelButton2)) {
 		select = 2;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
+		levelTime = 2 * 60;	// Reduced level time for level 2
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level2();
 	} else if (collision(mouse, levelButton3)) {
 		select = 3;
-		victory = false;
-		gameOver = false;
+		resetGameObjects();
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
@@ -177,6 +175,13 @@ function checkExplosion(){
 	}
 }
 
+// Starts the next wave on click
+function rushWave_press(){
+	if (collision(mouse, rushButton)) {
+		rushWave = true;
+	}
+}
+
 // Initiate Event Listeners related to System functions.
 function addEvents(){
 	canvas.addEventListener('mousedown', clickDown);
@@ -195,6 +200,7 @@ function addBoardEvents(){
 	canvas.addEventListener('click', inGameQuit_press);
 	canvas.addEventListener('click', tryAgain_press);
 	canvas.addEventListener('click', quit_press);
+	canvas.addEventListener('click', rushWave_press);
 	canvas.addEventListener('dblclick', checkExplosion);
 }
 
@@ -204,6 +210,7 @@ function removeBoardEvents(){
 	canvas.removeEventListener('click', inGameQuit_press);
 	canvas.removeEventListener('click', tryAgain_press);
 	canvas.removeEventListener('click', quit_press);
+	canvas.removeEventListener('click', rushWave_press);
 	canvas.removeEventListener('dblclick', checkExplosion);
 }
 

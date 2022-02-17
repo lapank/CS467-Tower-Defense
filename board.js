@@ -13,10 +13,23 @@ grassBackground.src = 'sprites/grass-background.jpg';
 const cellSize = 100;
 const cellGap = 3;
 const gameGrid = [];
-const maxPlayerHealth = 10;
+const maxPlayerHealth = 10;			// Health player starts the level with.
+const TIME_LIMIT = 60 * 4;			// Default time limit for a level
+const MAX_RESOURCES = 200;
+const TOWER_COST = 100;				// Tower Costs
+const ARCHER_COST = 50;
+const WIZARD_COST = 75;
+const DRAGON_COST = 100;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
-let playerHealth = maxPlayerHealth;
+let playerHealth = maxPlayerHealth;  // Player's current health
+let waveMessageDisplay = 0;			 // Displays current wave when >0 
+let rushWave = false;                // Sends next enemy wave when true
+let adjustInterval = 0;				 // Accelerates next wave this many frames
+let levelTime = TIME_LIMIT;			 // The actual time limit for the current level
+let mins = 0;						 // Minute value on timer display
+let secs = 0;              			 // Second value on timer display
+let startTime = performance.now();   // The start time of the level
 
 // Mouse position
 const mouse = {
@@ -73,6 +86,7 @@ function drawMenu(color){
 	context.fillStyle = color;
 	context.fillRect(0,600, menuBar.width, menuBar.height);
 	drawButton(inGameQuitButton);
+	drawButton(rushButton);
 }
 
 // Track Mouse click

@@ -3,7 +3,7 @@ let victory = false;
 let running;				// When true, gameloop runs.
 let select = 0;				// Controls which screen to open 0:Title, -1:LevelSelect, 1:GameRunning
 							// Positive 'select' values correspond to each level (eg select = 3; Level 3 screen)
-const maxWaves = 3;			// waves assigned to each level.
+const maxWaves = 10;		// waves assigned to each level.
 let waves = maxWaves;		// Player can only win when reaches 0.
 
 const title = {
@@ -142,6 +142,22 @@ const inGameQuitButton = {
 	borderColor: "gray",
 };
 
+const rushButton = {
+	// text attributes
+	x2: 820 - 60,
+	y2: 35 + 45,
+	fontSize: 20,
+	textColor: "red",
+	text: 'RUSH WAVE',
+	// button attributes
+	x: 810 - 60,
+	y: 10 + 45,
+	width: 140,
+	height: 35,
+	color: "black", 
+	borderColor: "red",
+};
+
 // Button where users select tower type
 class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){
@@ -188,20 +204,20 @@ class TowerButton{
 		if (this.sprite == archerImage){
 			context.drawImage(this.sprite, 0, 0, 32, 34, this.x + 15, this.y + 15, 85*0.7, this.height*0.7);
 			plainText('Archer', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + ARCHER_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Archer.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 		}
 		else if(this.sprite == dragonImage){
 			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.5, this.height*1.5);
 			plainText('Dragon', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + DRAGON_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Dragon.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Burn', this.x+90, this.y+70,'12px', 'black');
 		}
 		else if(this.sprite == wizardImage){
 			context.drawImage(this.sprite, 0, 0, 82, 82, this.x-20, this.y-20, 85*1.8, this.height*1.8);
 			plainText('Wizard', this.x+90, this.y+20, '20px', 'black');
-			plainText( 'Cost: ' + towerCost.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
+			plainText( 'Cost: ' + WIZARD_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
 			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
 		}
@@ -213,9 +229,9 @@ class TowerButton{
 }
 
 // Draw buttons
-const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, towerCost, archerImage);
-const tower2 = new TowerButton(370, 'lime', 'black', 150, towerCost, dragonImage);
-const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, towerCost, wizardImage);
+const tower1 = new TowerButton(180, 'saddlebrown', 'white', 100, ARCHER_COST, archerImage);
+const tower2 = new TowerButton(370, 'lime', 'black', 150, DRAGON_COST, dragonImage);
+const tower3 = new TowerButton(550, 'skyblue', 'gold', 75, WIZARD_COST, wizardImage);
 
 
 // Create game menu and elements
@@ -260,21 +276,17 @@ function updateGameStatus(){
 	// Display Current Resources
 	context.fillText('Gold: ' + numberOfResources, 20, 80); 
 	// Display Current Health
-	context.fillStyle = 'red';
-	context.fillRect(350, 50, 300, 35);
-	context.fillStyle = 'green';
-	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
-	context.fillStyle= 'gold';
-	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
+	drawHealth();
+	// Display Game Timer
+	updateTimes();
+	drawTimer(mins, secs);
 	// Checks for Game Over
 	if(gameOver){
 		console.log('gameover');
 		strokedText('GAME OVER', 135, 330, '100px', 'white');
-
 		// Exit the gameover screen
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
-
 	}
 	// Checks for win condition
 	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
@@ -282,11 +294,9 @@ function updateGameStatus(){
 		victory = true;
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
-		
 		// Exit the win screen
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
-
 	}
 }
 
@@ -297,6 +307,45 @@ function collision(first, second){
 				first.y > second.y + second.height ||
 				first.y + first.height < second.y)
 		) return true;
+}
+
+// Update the minutes and seconds of the current times
+function updateTimes(){
+	// Get time elapsed so far.
+	let currentTime = performance.now();
+	let secsElapsed = (currentTime - startTime) / 1000;
+	// Determine time left in the level
+	let remaining = levelTime - secsElapsed;
+	// End game if no time left
+	if (remaining <= 0.) gameOver = true;
+	// Calculate remaining seconds and minutes
+	secs = Math.floor( remaining % 60 );
+	mins = Math.floor( (remaining - secs) / 60 );
+}
+
+// Pads an integer with zeros to two places
+function pad2 (num){
+	return String(num).padStart(2, '0');
+}
+
+// Draws the timer on the board
+function drawTimer(mins, secs){
+	context.font = 'bold 35px Arial';
+	context.fillStyle = 'gold';
+	if (mins < 2) context.fillStyle = 'red';
+	if (mins < 1 && secs < 1) context.fillText('Time Out', 200, 40);
+	else context.fillText(pad2(mins) + ':' + pad2(secs), 200, 40);
+}
+
+// Draws the player's health bar
+function drawHealth(){
+	context.font = '30px Arial';
+	context.fillStyle = 'red';
+	context.fillRect(350, 50, 300, 35);
+	context.fillStyle = 'green';
+	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillStyle= 'gold';
+	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 }
 
 // Take a button struct. Create draw a button with that button's properties.
@@ -326,8 +375,14 @@ function resetGameObjects(){
 	gameOver = false;
 	score = 0;
 	waves = maxWaves;
-	numberOfResources = 500;
+	numberOfResources = MAX_RESOURCES;
 	playerHealth = maxPlayerHealth;
+	waveMessageDisplay = 0;
+	rushWave = false;
+	adjustInterval = 0;
+	frame = 0;
+	startTime = performance.now();
+	levelTime = TIME_LIMIT;
 }
 
 // Prepare and go to title screen.

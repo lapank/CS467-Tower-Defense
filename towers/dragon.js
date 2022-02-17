@@ -15,6 +15,7 @@ class Dragon extends Tower{
 		this.spriteHeight = 82;
 		this.idleRate = 25; // time between animation frames while idle
 		this.animationRate = this.idleRate; // time between animation frames
+		this.cost = DRAGON_COST;
 	}
 	static staticHealth = 150;
 
