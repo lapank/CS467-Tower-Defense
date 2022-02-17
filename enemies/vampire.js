@@ -18,8 +18,25 @@ class Vampire extends Enemy{
 
 	update(){
 		super.update();
-		if (this.health < this.maxHealth){     //vampire's regain health over time
+		if (this.health < this.maxHealth && !this.dying){     //vampire's regain health over time
 			this.health += 0.1;
+		}
+
+		// Cycle through death animation
+		if(this.dying){
+			this.minFrame = 7;
+			this.maxFrame = 14;
+			
+			//start death animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
+			}
+
+			//Set dead to true when end of death animation is reached
+			if( this.frameX == this.maxFrame){
+				this.dead = true;
+			}
+			
 		}
 	}
 
