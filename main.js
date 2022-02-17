@@ -5,7 +5,7 @@ function main(){
 	select = 0;
 	addTitleEvents();
 	titleScreen();
-	//levelSelectScreen();
+	setCookie();
 }
 
 // Level 1-related game loop.

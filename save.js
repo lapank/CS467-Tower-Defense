@@ -14,7 +14,10 @@ function saveHighScore(){
 
 // Creates a cookie with current rank and high scores
 function setCookie(){
-    // Retrieve needed values
     // Calculate expiration date
+    let expireDate = new Date();
+    console.log(expireDate);
+    expireDate.setDate(expireDate.getDate() + 365);
+    console.log(expireDate);
     // Save cookie
 }
