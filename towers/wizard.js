@@ -15,6 +15,7 @@ class Wizard extends Tower{
 		this.spriteHeight = 66;
 		this.idleRate = 10; // time between animation frames while idle
 		this.animationRate = this.idleRate; // time between animation frames
+		this.cost = WIZARD_COST;
 	}
 	static staticHealth = 75;
 

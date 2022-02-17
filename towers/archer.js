@@ -14,6 +14,7 @@ class Archer extends Tower{
 		this.spriteHeight = 34;
 		this.idleRate = 20; // time between animation frames while idle
 		this.animationRate = this.idleRate; // time between animation frames
+		this.cost = ARCHER_COST;
 	}
 	static staticHealth = 100;
 
