@@ -6,7 +6,7 @@ function updateProjectiles(){
 
 		// Handle collision with Enemy
 		for (let j = 0; j < enemies.length; j++){
-			if(enemies[j] && projectiles[i] && collision(projectiles[i], enemies[j])){
+			if(enemies[j] && !enemies[j].dying && projectiles[i] && collision(projectiles[i], enemies[j])){
 				
 				// Handle special projectiles
 				if (projectiles[i] instanceof MagicBolt){    	// Magic bolt halves enemy movement speed
