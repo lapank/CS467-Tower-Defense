@@ -5,7 +5,6 @@ function main(){
 	select = 0;
 	addTitleEvents();
 	titleScreen();
-	setCookie();
 }
 
 // Level 1-related game loop.
@@ -118,6 +117,7 @@ function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
 		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
+		getCookie();
 		goToLevelSelect();
 	}
 }
@@ -173,6 +173,7 @@ function quit_press() {
 function titleScreen_press() {
 	if (collision(mouse, mainMenuButton)) {
 		console.log('mainMenu pressed');
+		setCookie();
 		goToTitle();
 }}
 
