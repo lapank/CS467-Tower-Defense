@@ -20,6 +20,7 @@ const TOWER_COST = 100;				// Tower Costs
 const ARCHER_COST = 50;
 const WIZARD_COST = 75;
 const DRAGON_COST = 100;
+const SLOW_TIME = 60 * 2;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
 let playerHealth = maxPlayerHealth;  // Player's current health

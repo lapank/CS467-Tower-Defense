@@ -134,7 +134,7 @@ function startGame() {
 	} else if (collision(mouse, levelButton2)) {
 		select = 2;
 		resetGameObjects();
-		levelTime = 2 * 60;	// Reduced level time for level 2
+		levelTime = SLOW_TIME;	// Reduced level time for level 2
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();

@@ -415,9 +415,11 @@ function restartLevel(){
 			level1();
 			break;
 		case 2:
+			levelTime = SLOW_TIME;
 			level2();
 			break;
 		case 3:
+
 			level3();
 			break;
 	}
