@@ -20,6 +20,7 @@ const TOWER_COST = 100;				// Tower Costs
 const ARCHER_COST = 50;
 const WIZARD_COST = 75;
 const DRAGON_COST = 100;
+const SLOW_TIME = 60 * 2;
 let canvasPosition = canvas.getBoundingClientRect();
 let gridSelect = true;
 let playerHealth = maxPlayerHealth;  // Player's current health
@@ -30,6 +31,11 @@ let levelTime = TIME_LIMIT;			 // The actual time limit for the current level
 let mins = 0;						 // Minute value on timer display
 let secs = 0;              			 // Second value on timer display
 let startTime = performance.now();   // The start time of the level
+
+let highscore1 = 0; // Stored high scores for each level
+let highscore2 = 0;
+let highscore3 = 0;
+let rank = 1;		// Rank must be >= Level-Number to play.
 
 // Mouse position
 const mouse = {

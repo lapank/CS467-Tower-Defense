@@ -5,7 +5,6 @@ function main(){
 	select = 0;
 	addTitleEvents();
 	titleScreen();
-	//levelSelectScreen();
 }
 
 // Level 1-related game loop.
@@ -88,7 +87,6 @@ function levelSelectScreen(){
 	context.font = levelSelect.fontSize +'px Arial';
 	context.fillText('Level Select', levelSelect.x, levelSelect.y);
 	// Button Displays
-
 	drawButton(levelButton1);
 	context.drawImage(grassBackground, 40, 210, 256, 256);
 	strokedText('Level 1', 50, 460, '70px', 'white');
@@ -97,17 +95,33 @@ function levelSelectScreen(){
 	drawButton(levelButton3);
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
-	drawButton(mainMenuButton);
+	drawButton(saveQuitButton);
+	drawButton(noSaveQuitButton);
+	// Display High Scores
+	drawHighScores();
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
+}
+
+// Displays current high scores on the level screen
+function drawHighScores(){
+	strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
+
+	strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
+
+	strokedText('Best: ' + highscore1, 50, 250, 30, 'gold');
 }
 
 
 // Opens Level Select Screen on Click
 function newLoadGame() {
 	if (collision(mouse, titleButton1)) {
+		// Reset data for new game
+		resetScores();
 		goToLevelSelect();
 	}else if (collision(mouse, titleButton2)) {
+		// Load stored data, if any.
+		getCookie();
 		goToLevelSelect();
 	}
 }
@@ -124,7 +138,7 @@ function startGame() {
 	} else if (collision(mouse, levelButton2)) {
 		select = 2;
 		resetGameObjects();
-		levelTime = 2 * 60;	// Reduced level time for level 2
+		levelTime = SLOW_TIME;	// Reduced level time for level 2
 		removeTitleEvents();
 		removeLevelSelectEvents();
 		addBoardEvents();
@@ -161,10 +175,14 @@ function quit_press() {
 
 // Return to TitleScreen on click
 function titleScreen_press() {
-	if (collision(mouse, mainMenuButton)) {
-		console.log('mainMenu pressed');
+	if (collision(mouse, saveQuitButton)) {
+		setCookie(); // Save game data
 		goToTitle();
-}}
+	}
+	else if (collision(mouse, noSaveQuitButton)){
+		goToTitle();
+	}
+}
 
 // Check whether a tower was triggered to explode
 function checkExplosion(){
