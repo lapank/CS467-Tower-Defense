@@ -37,7 +37,7 @@ function setCookie(){
     // Calculate an expiration date 1 year in the future.
     let expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 365);
-    let cookieExpire = 'expires=' + expireDate + ';'
+    let cookieExpire = 'expires=' + expireDate + ';';
     // Store cookie
     document.cookie = 'saveHS1=' + '&' + JSON.stringify(saveData) + '&; ' + cookieExpire;
 }
