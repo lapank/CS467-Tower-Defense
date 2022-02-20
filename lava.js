@@ -2,6 +2,8 @@ lavaInterval = 600;
 const lavaTarget = [];
 const lavaBall = [];
 const lavaPosition = [];
+const lava = new Image();
+lava.src = 'sprites/lava.png';
 
 class Lava{
 	constructor(horizontalPosition){
@@ -12,22 +14,36 @@ class Lava{
 		this.height = cellSize - cellGap * 2;
 		this.speed = 0.4;
 		this.movement = this.speed;
+
+		this.frameX = 0;//# of frames in sprite sheet
+		this.frameY = 0; //1st row of sprite sheet
+		this.minFrame = 0;
+		this.maxFrame = 1;
+		this.spriteWidth = 136;
+		this.spriteHeight = 136;
 	}
 	update(){
 		this.y += this.movement; //walking right to left
+		if(frame % 5 === 0){
+			if (this.frameX < this.maxFrame) this.frameX++;
+			else this.frameX = this.minFrame;
+		}
 	}
 	draw(){
 		context.fillStyle = 'rgba(255, 0, 0, 0.5)';
 		context.fillRect(this.x, this.y, this.width, this.height);
+		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight);
+		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
+
+		context.drawImage(lava, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
 	}
 }
 
 function updateLava(){
 	for( let i = 0; i < lavaTarget.length; i++){
-		lavaTarget[i].update();
 		lavaTarget[i].draw();
-		console.log(i + ' ' + lavaTarget[i].y);
-		console.log(i + ' ' + lavaTarget[i].targetY);
+		lavaTarget[i].update();
+		
 			if (lavaTarget[i].y > lavaTarget[i].targetY){
 			// Remove lava row position from the array 
 			const findThisIndex = lavaPosition.indexOf(lavaTarget[i].x);
