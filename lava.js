@@ -7,9 +7,11 @@ lava.src = 'sprites/lava.png';
 
 class Lava{
 	constructor(horizontalPosition){
-		this.x = Math.random() * (canvas.width - cellSize);
+		//this.x = Math.random() * (canvas.width - cellSize);
+		this.x = 100 * Math.floor(Math.random() * 9);
 		this.y = 100;
-		this.targetY = (Math.floor(Math.random() *5)+1) *cellSize+25;
+		//this.targetY = (Math.floor(Math.random() *5)+1) *cellSize+25;
+		this.targetY = 100 * Math.floor(Math.random() * 6);
 		this.width = cellSize - cellGap * 2;
 		this.height = cellSize - cellGap * 2;
 		this.speed = 0.4;
@@ -31,11 +33,11 @@ class Lava{
 	}
 	draw(){
 		context.fillStyle = 'rgba(255, 0, 0, 0.5)';
-		context.fillRect(this.x, this.y, this.width, this.height);
+		context.fillRect(this.x, this.targetY, this.width, this.height);
 		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight);
 		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
-
-		context.drawImage(lava, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
+		//console.log(this.targetY);
+		context.drawImage(lava, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x +15, this.y +15, this.spriteWidth * 0.5, this.spriteHeight * 0.5);
 	}
 }
 
