@@ -1,6 +1,6 @@
 lavaInterval = 600; 	
 const lavaTarget = [];
-const lavaBall = [];
+//const lavaBall = [];
 const lavaPosition = [];
 const lava = new Image();
 lava.src = 'sprites/lava.png';
@@ -32,11 +32,8 @@ class Lava{
 		}
 	}
 	draw(){
-		context.fillStyle = 'rgba(255, 0, 0, 0.5)';
+		context.fillStyle = 'rgba(255, 0, 0, 0.4)';
 		context.fillRect(this.x, this.targetY, this.width, this.height);
-		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight);
-		//context.drawImage(lava, this.x, this.y, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
-		//console.log(this.targetY);
 		context.drawImage(lava, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x +15, this.y +15, this.spriteWidth * 0.5, this.spriteHeight * 0.5);
 	}
 }
@@ -46,11 +43,22 @@ function updateLava(){
 		lavaTarget[i].draw();
 		lavaTarget[i].update();
 		
-			if (lavaTarget[i].y > lavaTarget[i].targetY){
+		if (lavaTarget[i].y > lavaTarget[i].targetY){
+			for(let j = 0; j < enemies.length; j++){
+				if(collision(lavaTarget[i], enemies[j])){
+					enemies[j].health = 0;
+				}
+			}
+			for(let k = 0; k < towers.length; k++){
+				if(collision(lavaTarget[i], towers[k])){
+					towers[k].health = 0;
+				}
+			}
 			// Remove lava row position from the array 
 			const findThisIndex = lavaPosition.indexOf(lavaTarget[i].x);
 			lavaPosition.splice(findThisIndex, 1);
 			lavaTarget.splice(i, 1);
+			console.log(lavaTarget);
 			i--;
 		}
 	}
@@ -63,7 +71,7 @@ function spawnLava(){
 		// Determine column position
 		let horizontalPosition = Math.floor(Math.random()*9 +1) * cellSize + cellGap;
 		// Add random lava to lava array
-			lavaBall.push(new FireBall(this.x + 55, this.y + 40));
+			//lavaBall.push(new FireBall(this.x + 55, this.y + 40));
 			lavaTarget.push(new Lava(horizontalPosition));
 
 	
