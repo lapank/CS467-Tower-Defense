@@ -341,6 +341,8 @@ function updateGameStatus(){
 		victory = true;
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
+		// Updates rank to  according to level defeated
+		if (rank < select + 1 ) rank = select +1;
 		// Exit the win screen
 		saveHighScore();
 		drawButton(tryAgainButton);
