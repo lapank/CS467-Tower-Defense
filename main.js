@@ -110,9 +110,9 @@ function levelSelectScreen(){
 
 // Displays current high scores on the level screen
 function drawHighScores(){
-	strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
+	if (rank > 2) strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
 
-	strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
+	if (rank > 1) strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
 
 	strokedText('Best: ' + highscore1, 50, 250, 30, 'gold');
 }
