@@ -81,7 +81,13 @@ function detectCheat(e){
             if (e.code === 'KeyT') cheatCount++;
             else cheatCount = 0;
             break;
+        case 5:
+            cheatCount++;
+            break;
     }
     // Activate when all keys pressed in correct order
-    if (cheatCount === 5) cheat = true;
+    if (cheatCount === 5) {
+        cheat = true;
+        waveMessageDisplay = 300;
+    }
 }

@@ -102,10 +102,29 @@ function levelSelectScreen(){
 	// Save &/or Quit buttons
 	drawButton(saveQuitButton);
 	drawButton(noSaveQuitButton);
-	// Display High Scores
+	// Other Displays
 	drawHighScores();
+	drawCheatBanner();
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
+}
+
+// Displays a banner for a while after using cheat code.
+function drawCheatBanner(){
+	if (waveMessageDisplay > 0) {
+		context.font = 'bold 120px Arial';
+		// Add glow so readable on dark backgrounds 
+		context.shadowColor = 'red';
+		context.shadowBlur = 20;
+		// Write the Message
+		context.fillStyle = 'orange';
+		context.fillText("Cheater,", 25, cellSize*2);
+		context.fillText("Cheater,", 25, cellSize*4);
+		context.fillText("Pumpkin Eater.", 25, cellSize*6);
+		// Remove glow effect
+		context.shadowBlur = 0;
+		waveMessageDisplay--;
+	}
 }
 
 // Displays current high scores on the level screen
