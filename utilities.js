@@ -78,6 +78,36 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
+const level2Lock = {
+	// text attributes
+	x2: 276 + 45,
+	y2: 210 + 150,
+	fontSize: 60,
+	textColor: "white",
+	text: 'LOCKED',
+	x: 276 + 40,
+	y: 210,
+	width: 256,
+	height: 256,
+	color: "gray", 
+	borderColor: "black",
+};
+
+const level3Lock = {
+	// text attributes
+	x2: 276*2 + 45,
+	y2: 210 + 150,
+	fontSize: 60,
+	textColor: "white",
+	text: 'LOCKED',
+	x: 276*2 + 40,
+	y: 210,
+	width: 256,
+	height: 256,
+	color: "gray", 
+	borderColor: "black",
+};
+
 const quitButton = {
 	// text attributes
 	x2: 370,
@@ -311,6 +341,8 @@ function updateGameStatus(){
 		victory = true;
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
+		// Updates rank to  according to level defeated
+		if (rank < select + 1 ) rank = select +1;
 		// Exit the win screen
 		saveHighScore();
 		drawButton(tryAgainButton);
@@ -416,6 +448,8 @@ function goToTitle(){
 // Prepares and go to Level Select screen.
 function goToLevelSelect(){
 	select = -1;
+	cheatCount = 0;
+	cheat = false;
 	resetGameObjects();
 	removeBoardEvents();
 	removeTitleEvents();
