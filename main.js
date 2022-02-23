@@ -96,6 +96,10 @@ function levelSelectScreen(){
 	drawButton(levelButton3);
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
+	// Hide Locked buttons
+	drawButton(level2Lock);
+	drawButton(level3Lock);
+	// Save &/or Quit buttons
 	drawButton(saveQuitButton);
 	drawButton(noSaveQuitButton);
 	// Display High Scores

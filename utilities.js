@@ -78,6 +78,36 @@ const levelButton3 = {
 	borderColor: "black",
 };
 
+const level2Lock = {
+	// text attributes
+	x2: 276 + 45,
+	y2: 210 + 150,
+	fontSize: 60,
+	textColor: "white",
+	text: 'LOCKED',
+	x: 276 + 40,
+	y: 210,
+	width: 256,
+	height: 256,
+	color: "gray", 
+	borderColor: "black",
+};
+
+const level3Lock = {
+	// text attributes
+	x2: 276*2 + 45,
+	y2: 210 + 150,
+	fontSize: 60,
+	textColor: "white",
+	text: 'LOCKED',
+	x: 276*2 + 40,
+	y: 210,
+	width: 256,
+	height: 256,
+	color: "gray", 
+	borderColor: "black",
+};
+
 const quitButton = {
 	// text attributes
 	x2: 370,
