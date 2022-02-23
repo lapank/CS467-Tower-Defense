@@ -27,11 +27,12 @@ function instructionScreen(){
 			context.fillText("to pay its cost!", 50, cellSize*1.5 + 45 * 8);
 			break;
 		case 1:
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("Collect GOLD COINS that appear by touching them ", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("with your mouse.", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("You also get GOLD by defeating ENEMIES.", 50, cellSize*1.5 + 45 * 3);
+			context.fillText("Need to get rid of a tower or some extra", 50, cellSize*1.5 + 45 * 5);
+			context.fillText("destructive power?", 50, cellSize*1.5 + 45 * 6);
+			context.fillText("DOUBLE_CLICK on a DEFENDER to make it SELF DESTRUCT.", 50, cellSize*1.5 + 45 * 8);
 			break;
 		case 2:
 			context.fillText("", 50, cellSize*1.5) + 45 * 0;
