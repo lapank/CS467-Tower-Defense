@@ -57,8 +57,31 @@ function getCookie(){
 }
 
 // Detects key strokes to trigger cheat activation 
-function detectCheat(){
-    cheatCount = 5;
+function detectCheat(e){
+    switch(cheatCount){
+        case 0:
+            // Increase count if correct key is pressed
+            if (e.code === 'KeyC') cheatCount++;
+            // Reset count if wrong key
+            else cheatCount = 0;
+            break;
+        case 1:
+            if (e.code === 'KeyH') cheatCount++;
+            else cheatCount = 0;
+            break;
+        case 2:
+            if (e.code === 'KeyE') cheatCount++;
+            else cheatCount = 0;
+            break;
+        case 3:
+            if (e.code === 'KeyA') cheatCount++;
+            else cheatCount = 0;
+            break;
+        case 4:
+            if (e.code === 'KeyT') cheatCount++;
+            else cheatCount = 0;
+            break;
+    }
     // Activate when all keys pressed in correct order
     if (cheatCount === 5) cheat = true;
 }
