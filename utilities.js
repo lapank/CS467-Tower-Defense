@@ -359,9 +359,9 @@ function drawTimer(mins, secs){
 function drawHealth(){
 	context.font = '30px Arial';
 	context.fillStyle = 'red';
-	context.fillRect(350, 50, 300, 35);
+	context.fillRect(300, 50, 300, 35);
 	context.fillStyle = 'green';
-	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillRect(300, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 }
