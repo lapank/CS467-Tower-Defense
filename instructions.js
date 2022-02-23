@@ -1,5 +1,8 @@
 // Instructions Screen game loop
 function instructionScreen(){
+	// Prevents pages from increasing infinitely
+	let maxPage = 3;
+	if (waveMessageDisplay > maxPage) waveMessageDisplay = maxPage;
 	// Draw the Title Screen
 	context.fillStyle = 'blue';
 	context.fillRect(0,0, canvas.width, canvas.height);
@@ -47,6 +50,10 @@ function instructionScreen(){
 	// Display the page number
 	context.fillText("" + (waveMessageDisplay + 1), 430, cellSize*7 - 20);
 
+	// Next/Previous buttons
+	if (waveMessageDisplay != maxPage) drawButton(nextButton);
+	if (waveMessageDisplay != 0) drawButton(previousButton);
+
 	if (select === -2) requestAnimationFrame(instructionScreen);
 }
 
@@ -71,12 +78,31 @@ function goToInstructionScreen(){
     instructionScreen();    
 }
 
+// Goes to next page on click
+function next_press(){
+	if (collision(mouse, nextButton)){
+		waveMessageDisplay++;
+	}
+}
+
+// Goes to previous page on click
+function previous_press(){
+	if (collision(mouse, previousButton)){
+		waveMessageDisplay--;
+		if (waveMessageDisplay < 0) waveMessageDisplay = 0;
+	}
+}
+
 // Initiate Event Listeners for Instructions Screen
 function addInstructionEvents(){
     canvas.addEventListener('click', back_press);
+	canvas.addEventListener('click', next_press);
+	canvas.addEventListener('click', previous_press);
 }
 
 // Terminate Event Listeners for Instructions Screen
 function removeInstructionEvents(){
-    canvas.removeEventListener('click', back_press);
+    canvas.removeEventListener('click', back_press);	
+    canvas.removeEventListener('click', next_press);
+    canvas.removeEventListener('click', previous_press);
 }

@@ -236,6 +236,38 @@ const backButton = {
 	borderColor: "black",
 };
 
+const nextButton = {
+	// text attributes
+	x2: 20 + 800 - 50,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '>>',
+	// button attributes
+	x: 10 + 800 - 50,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
+};
+
+const previousButton = {
+	// text attributes
+	x2: 40,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '<<',
+	// button attributes
+	x: 30,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
+};
+
 // Button where users select tower type
 class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){
