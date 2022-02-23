@@ -6,22 +6,17 @@ function instructionScreen(){
 	// Title Display
 	context.fillStyle = 'gold';
 	context.font = levelSelect.fontSize +'px Arial';
-	context.fillText('Level Select', levelSelect.x, levelSelect.y);
-	// Button Displays
-	drawButton(levelButton1);
-	context.drawImage(grassBackground, 40, 210, 256, 256);
-	strokedText('Level 1', 50, 460, '70px', 'white');
-	drawButton(levelButton2);
-	strokedText('Level 2', 326, 460, '70px', 'white');
-	drawButton(levelButton3);
-	context.drawImage(lavaBackground, 592, 210, 256, 256);
-	strokedText('Level 3', 602, 460, '70px', 'white');
-	drawButton(saveQuitButton);
-	drawButton(noSaveQuitButton);
-	// Display High Scores
-	drawHighScores();
+	context.fillText('How to Play', 210, 75);
+	drawButton(backButton);
+	// Instruction Text
+	
 
-	if (select === -2) requestAnimationFrame(levelSelectScreen);
+	if (select === -2) requestAnimationFrame(instructionScreen);
+}
+
+// Goes to title screen on click
+function back_press(){
+	if (collision(mouse, backButton)) goToTitle();
 }
 
 // Goes to Instructions Screen on Click
@@ -42,10 +37,10 @@ function goToInstructionScreen(){
 
 // Initiate Event Listeners for Instructions Screen
 function addInstructionEvents(){
-    
+    canvas.addEventListener('click', back_press);
 }
 
 // Terminate Event Listeners for Instructions Screen
 function removeInstructionEvents(){
-
+    canvas.removeEventListener('click', back_press);
 }

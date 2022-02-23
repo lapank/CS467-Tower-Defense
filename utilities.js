@@ -220,6 +220,22 @@ const rushButton = {
 	borderColor: "red",
 };
 
+const backButton = {
+	// text attributes
+	x2: 20,
+	y2: 35,
+	fontSize: 20,
+	textColor: "black",
+	text: 'Back to Title',
+	// button attributes
+	x: 10,
+	y: 10,
+	width: 140,
+	height: 35,
+	color: "red", 
+	borderColor: "black",
+};
+
 // Button where users select tower type
 class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){
