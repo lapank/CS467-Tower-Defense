@@ -9,7 +9,21 @@ function instructionScreen(){
 	context.fillText('How to Play', 210, 75);
 	drawButton(backButton);
 	// Instruction Text
-	
+	context.font = 'bold 40px Arial';
+	context.fillStyle = 'gold';
+	switch(waveMessageDisplay){
+		case 0:
+			context.fillText("Page 1,", 100, cellSize*1.5);
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+	}
+	// Display the page number
+	context.fillText("" + (waveMessageDisplay + 1), 430, cellSize*7 - 20);
 
 	if (select === -2) requestAnimationFrame(instructionScreen);
 }
