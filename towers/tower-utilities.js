@@ -59,6 +59,8 @@ function updateTowers(){
 			if (towers[i] && collision(towers[i], enemies[j])){
 				enemies[j].movement = 0;
 
+				enemies[j].attacking = true; //Enemy will switch to attack animation
+
 				//Only deal damage to living towers
 				//And only allow living enemies to deal damage
 				if (towers[i].health > 0 && !enemies[j].dying){
@@ -82,6 +84,8 @@ function updateTowers(){
 				for (let k = 0; k<enemies.length; k++){
 					if (collision(towers[i], enemies[k])){
 						enemies[k].movement = enemies[k].speed;
+						enemies[k].attacking = false;
+						enemies[k].walking = true;
 					}
 				}
 				// Start Death animation
