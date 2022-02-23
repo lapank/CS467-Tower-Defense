@@ -97,8 +97,8 @@ function levelSelectScreen(){
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
 	// Hide Locked buttons
-	if (rank > 1 || !cheat) drawButton(level2Lock);
-	if (rank > 2 || !cheat) drawButton(level3Lock);
+	if (rank < 2 && !cheat) drawButton(level2Lock);
+	if (rank < 3 && !cheat) drawButton(level3Lock);
 	// Save &/or Quit buttons
 	drawButton(saveQuitButton);
 	drawButton(noSaveQuitButton);
