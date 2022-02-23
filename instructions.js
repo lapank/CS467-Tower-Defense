@@ -13,13 +13,35 @@ function instructionScreen(){
 	context.fillStyle = 'gold';
 	switch(waveMessageDisplay){
 		case 0:
-			context.fillText("Page 1,", 100, cellSize*1.5);
+			context.fillText("Click on an option at the bottom of ", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("the screen to select the type of ", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("DEFENDER you want to place. ", 50, cellSize*1.5 + 45 * 2);
+
+			context.fillText("Then click on the field to place your  ", 50, cellSize*1.5 + 45 * 4);
+			context.fillText("DEFENDER. ", 50, cellSize*1.5 + 45 * 5);
+
+			context.fillText("Make sure that you have enough GOLD ", 50, cellSize*1.5 + 45 * 7);
+			context.fillText("to pay its cost!", 50, cellSize*1.5 + 45 * 8);
 			break;
 		case 1:
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
 			break;
 		case 2:
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
 			break;
 		case 3:
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("", 50, cellSize*1.5) + 45 * 0;
 			break;
 	}
 	// Display the page number
