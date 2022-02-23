@@ -402,6 +402,7 @@ function resetGameObjects(){
 	frame = 0;
 	startTime = performance.now();
 	levelTime = TIME_LIMIT;
+	lavaInterval = START_LAVA_INTERVAL;
 }
 
 // Prepare and go to title screen.
