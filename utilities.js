@@ -51,6 +51,22 @@ const titleButton2 = {
 	borderColor: "black",
 };
 
+const titleButton3 = {
+	// text attributes
+	x2: 100,
+	y2: 570 ,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Instructions',
+	// button attributes
+	x: 90,
+	y: 510,
+	width: 410,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
 const levelButton1 = {
 	// button attributes
 	x: 40,

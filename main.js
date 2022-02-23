@@ -74,11 +74,12 @@ function titleScreen(){
 	// Button Displays
 	drawButton(titleButton1);
 	drawButton(titleButton2);
+	drawButton(titleButton3);
 
 	if (select === 0) requestAnimationFrame(titleScreen);
 }
 
-// Title Screen game loop
+// Level Select Screen game loop
 function levelSelectScreen(){
 	// Draw the Title Screen
 	context.fillStyle = 'blue';
