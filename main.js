@@ -53,10 +53,7 @@ function level3(){
 	updateResources();
 	updateEnemies();
 	chooseTower();
-<<<<<<< HEAD
 	updateLava();
-=======
->>>>>>> 1c093453e76ac538a3480593bfcbd60a891c10c5
 	updateGameStatus();
 	// Increment time passing
 	frame++;
