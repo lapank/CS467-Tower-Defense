@@ -55,3 +55,10 @@ function getCookie(){
         rank = saveData.saveRank;
     }
 }
+
+// Detects key strokes to trigger cheat activation 
+function detectCheat(){
+    cheatCount = 5;
+    // Activate when all keys pressed in correct order
+    if (cheatCount === 5) cheat = true;
+}

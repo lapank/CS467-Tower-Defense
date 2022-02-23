@@ -448,6 +448,8 @@ function goToTitle(){
 // Prepares and go to Level Select screen.
 function goToLevelSelect(){
 	select = -1;
+	cheatCount = 0;
+	cheat = false;
 	resetGameObjects();
 	removeBoardEvents();
 	removeTitleEvents();

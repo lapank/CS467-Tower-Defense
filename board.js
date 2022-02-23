@@ -36,6 +36,8 @@ let highscore1 = 0; // Stored high scores for each level
 let highscore2 = 0;
 let highscore3 = 0;
 let rank = 1;		// Rank must be >= Level-Number to play.
+let cheatCount = 0; // Activates cheat when = 5.
+let cheat = false;  // All levels are accessible regardless of rank when true.
 
 // Mouse position
 const mouse = {
