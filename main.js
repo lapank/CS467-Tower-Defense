@@ -27,7 +27,7 @@ function level1(){
 
 // Level 2-related game loop.
 function level2(){
-	drawMenu('green');
+	drawMenu('gray');
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
