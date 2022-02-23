@@ -17,6 +17,8 @@ class Enemy{
 		this.onFire = false;    //set to true when hit by fireball projectile
 		this.dying = false;
 		this.dead = false;
+		this.attacking = false;
+		this.walking = true;
 	}
 	// Move the enemy
 	update(){
