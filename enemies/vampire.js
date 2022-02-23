@@ -22,6 +22,18 @@ class Vampire extends Enemy{
 			this.health += 0.1;
 		}
 
+		// Cycle through walking animation
+		if(this.walking && !this.dying){
+			this.minFrame = 0;
+			this.maxFrame = 3;
+			
+			//start walk animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
+			}
+			
+		}
+
 		// Cycle through death animation
 		if(this.dying){
 			this.minFrame = 7;
@@ -35,6 +47,18 @@ class Vampire extends Enemy{
 			//Set dead to true when end of death animation is reached
 			if( this.frameX == this.maxFrame){
 				this.dead = true;
+			}
+			
+		}
+
+		// Cycle through attack animation
+		if(this.attacking && !this.dying){
+			this.minFrame = 4;
+			this.maxFrame = 6;
+			
+			//start attack animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
 			}
 			
 		}
