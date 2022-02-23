@@ -423,8 +423,7 @@ function resetGameObjects(){
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
-	removeBoardEvents();
-	removeLevelSelectEvents();
+	clearEvents();
 	addTitleEvents();
 	titleScreen();
 }
@@ -433,8 +432,7 @@ function goToTitle(){
 function goToLevelSelect(){
 	select = -1;
 	resetGameObjects();
-	removeBoardEvents();
-	removeTitleEvents();
+	clearEvents();
 	addLevelSelectEvents();
 	levelSelectScreen();
 }
