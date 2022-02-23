@@ -22,6 +22,18 @@ class Troll extends Enemy{
 	update(){
 		super.update();
 
+		// Cycle through walking animation
+		if(this.walking && !this.dying){
+			this.minFrame = 0;
+			this.maxFrame = 9;
+			
+			//start walk animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
+			}
+			
+		}
+
 		// Cycle through death animation
 		if(this.dying){
 			this.minFrame = 0;
@@ -39,11 +51,29 @@ class Troll extends Enemy{
 			}
 			
 		}
+
+		// Cycle through attack animation
+		if(this.attacking && !this.dying){
+			this.minFrame = 15;
+			this.maxFrame = 19;
+			
+			//start attack animation immediately
+			if (this.frameX < this.minFrame){
+				this.frameX = this.minFrame;
+			}
+			
+		}
 	}
 
 	draw(){
 		// Draw the sprite
-		context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 80, this.y - 70, this.width*3.6, this.height*2);
+		if(this.frameX < 15 || this.frameX > 19){ //If not attacking, could not use this.attacking, caused sprite update to lag
+			context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 80, this.y - 70, this.width*3.6, this.height*2);
+		}
+		//Stops sprite from jumping around when switching to attack animation
+		else{
+			context.drawImage(this.sprite, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x - 50, this.y - 70, this.width*3.6, this.height*2);
+		}
 		
 		super.draw('Cyan');		
 	}
