@@ -26,9 +26,9 @@ function updateEnemies(){
 			let gainedResources = enemies[i].maxHealth/10;
 			numberOfResources += gainedResources;
 			score += gainedResources; 
-			// Remove enemy row position from the array 
-			const findThisIndex = enemyPositions.indexOf(enemies[i].y);
-			enemyPositions.splice(findThisIndex, 1);
+			// Decrease count of enemies in row 
+			enemyPositions[enemies[i].y] -= 1;
+			// Remove Enemy from the array
 			enemies.splice(i, 1);
 			i--;
 		}
@@ -55,7 +55,7 @@ function eRow(num){
 // Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
 function placeEnemy(type, row, delay){
 			enemies.push(new type(eRow(row), delay));
-			enemyPositions.push(eRow(row));
+			enemyPositions[eRow(row)] += 1;
 		}
 
 // Takes a message and displays that message on the screen.
