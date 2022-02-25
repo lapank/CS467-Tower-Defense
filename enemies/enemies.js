@@ -40,14 +40,21 @@ class Enemy{
 	}
 	// Draw the enemy
 	draw(textColor){
-		//context.fillStyle = bodyColor;
-		//context.fillRect(this.x, this.y, this.width, this.height);
-		//context.fillStyle = textColor;
-		//context.font = '20px Orbitron';
+		// display health bar when damaged 
 		if (this.health < this.maxHealth){
-			strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
+			// Prevent from showing negative bar value
+			if (this.health < 0) this.health = 0;
+			// Fill with percentage health
+			context.fillStyle = 'red';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30);
+			context.fillStyle = 'green';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30*(this.health/this.maxHealth));
+			// Outline in black
+			context.strokeStyle = 'black';
+			context.lineWidth = '1';
+			context.rect(this.x + 15, this.y + 40, 10, -30);
+			context.stroke();
 		}
-		//context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
 
 		// Display fire status when on fire
 		if (this.onFire)
