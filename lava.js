@@ -1,4 +1,4 @@
-let lavaInterval = START_LAVA_INTERVAL;; 	
+let lavaInterval = START_LAVA_INTERVAL;	
 const lavaTarget = [];
 const lavaPosition = [];
 const lava = new Image();
@@ -78,6 +78,6 @@ function spawnLava(){
 		lavaPosition.push(horizontalPosition);
 
 		// Randomize rate that lava appears.
-		lavaInterval = lavaSpawnTimes[Math.floor(Math.random()*lavaSpawnTimes.length)];;
+		lavaInterval = lavaSpawnTimes[Math.floor(Math.random()*lavaSpawnTimes.length)];
 	}
 }
