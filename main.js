@@ -95,19 +95,42 @@ function levelSelectScreen(){
 	drawButton(levelButton3);
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
 	strokedText('Level 3', 602, 460, '70px', 'white');
+	// Hide Locked buttons
+	if (rank > 1 || !cheat) drawButton(level2Lock);
+	if (rank > 2 || !cheat) drawButton(level3Lock);
+	// Save &/or Quit buttons
 	drawButton(saveQuitButton);
 	drawButton(noSaveQuitButton);
-	// Display High Scores
+	// Other Displays
 	drawHighScores();
+	drawCheatBanner();
 
 	if (select === -1) requestAnimationFrame(levelSelectScreen);
 }
 
+// Displays a banner for a while after using cheat code.
+function drawCheatBanner(){
+	if (waveMessageDisplay > 0) {
+		context.font = 'bold 120px Arial';
+		// Add glow so readable on dark backgrounds 
+		context.shadowColor = 'red';
+		context.shadowBlur = 20;
+		// Write the Message
+		context.fillStyle = 'orange';
+		context.fillText("Cheater,", 25, cellSize*2);
+		context.fillText("Cheater,", 25, cellSize*4);
+		context.fillText("Pumpkin Eater.", 25, cellSize*6);
+		// Remove glow effect
+		context.shadowBlur = 0;
+		waveMessageDisplay--;
+	}
+}
+
 // Displays current high scores on the level screen
 function drawHighScores(){
-	strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
+	if (rank > 2 || cheat) strokedText('Best: ' + highscore3, 600, 250, 30, 'gold');
 
-	strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
+	if (rank > 1 || cheat) strokedText('Best: ' + highscore2, 330, 250, 30, 'gold');
 
 	strokedText('Best: ' + highscore1, 50, 250, 30, 'gold');
 }
@@ -135,7 +158,7 @@ function startGame() {
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level1();
-	} else if (collision(mouse, levelButton2)) {
+	} else if (collision(mouse, levelButton2) && (rank > 1 || cheat)) {
 		select = 2;
 		resetGameObjects();
 		levelTime = SLOW_TIME;	// Reduced level time for level 2
@@ -143,7 +166,7 @@ function startGame() {
 		removeLevelSelectEvents();
 		addBoardEvents();
 		level2();
-	} else if (collision(mouse, levelButton3)) {
+	} else if (collision(mouse, levelButton3) && (rank > 2 || cheat)) {
 		select = 3;
 		resetGameObjects();
 		removeTitleEvents();
@@ -246,12 +269,14 @@ function removeTitleEvents(){
 function addLevelSelectEvents(){
 	canvas.addEventListener('click', startGame);
 	canvas.addEventListener('click', titleScreen_press);
+	document.addEventListener('keydown', detectCheat);
 }
 
 // Terminate Event Listeners for Level Select Screen
 function removeLevelSelectEvents(){
 	canvas.removeEventListener('click', startGame);
 	canvas.removeEventListener('click', titleScreen_press);
+	document.removeEventListener('keydown', detectCheat);
 }
 
 main();
