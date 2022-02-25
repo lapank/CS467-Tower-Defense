@@ -11,6 +11,7 @@ class Tower{
 		this.height = cellSize - cellGap * 2;
 		this.shooting = false;
 		this.health = health;
+		this.maxHealth = health;
 		this.timer = timer;
 		this.fireSpeed = fireSpeed;  // time between animation frames when shooting 
 		this.towerSelector = towerSelector;
@@ -20,7 +21,21 @@ class Tower{
 	}
 	// Draw Tower on board
 	draw(textColor){
-		strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
+		//strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
+		if ((this.health < this.maxHealth) && (this.health != 0)){
+			// Prevent from showing negative bar value
+			if (this.health < 0) this.health = 0;
+			// Fill with percentage health
+			context.fillStyle = 'red';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30);
+			context.fillStyle = 'darkcyan';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30*(this.health/this.maxHealth));
+			// Outline in black
+			context.strokeStyle = 'black';
+			context.lineWidth = '1';
+			context.rect(this.x + 15, this.y + 40, 10, -30);
+			context.stroke();
+		}
 	}
 	// Take a projectile class. Increment timer and fire projectile.
 	update(projectile){
