@@ -41,7 +41,7 @@ class Enemy{
 	// Draw the enemy
 	draw(textColor){
 		// display health bar when damaged 
-		if (this.health < this.maxHealth){
+		if ((this.health < this.maxHealth) && (this.health != 0)){
 			// Prevent from showing negative bar value
 			if (this.health < 0) this.health = 0;
 			// Fill with percentage health
