@@ -74,7 +74,6 @@ function titleScreen(){
 	// Button Displays
 	drawButton(titleButton1);
 	drawButton(titleButton2);
-
 	if (select === 0) requestAnimationFrame(titleScreen);
 }
 

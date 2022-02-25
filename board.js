@@ -31,6 +31,8 @@ let levelTime = TIME_LIMIT;			 // The actual time limit for the current level
 let mins = 0;						 // Minute value on timer display
 let secs = 0;              			 // Second value on timer display
 let startTime = performance.now();   // The start time of the level
+let timeBonus = 0;
+let healthBonus = 0;
 
 let highscore1 = 0; // Stored high scores for each level
 let highscore2 = 0;
