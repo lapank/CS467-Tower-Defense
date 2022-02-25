@@ -27,7 +27,7 @@ function updateEnemies(){
 			numberOfResources += gainedResources;
 			score += gainedResources; 
 			// Decrease count of enemies in row 
-			enemyPositions[enemies[i].y] -= 1;
+			if (enemies[i].visible) enemyPositions[enemies[i].y] -= 1;
 			// Remove Enemy from the array
 			enemies.splice(i, 1);
 			i--;
@@ -55,7 +55,6 @@ function eRow(num){
 // Take an enemytype, row, and delay. Place an enemy record their position in enemy Positions.
 function placeEnemy(type, row, delay){
 			enemies.push(new type(eRow(row), delay));
-			enemyPositions[eRow(row)] += 1;
 		}
 
 // Takes a message and displays that message on the screen.
@@ -90,9 +89,9 @@ function spawnNewEnemies1(){
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
-				placeEnemy(Goblin, 1, 60*0);
-				placeEnemy(Goblin, 3, 60*1);
-				placeEnemy(Goblin, 5, 60*2);
+				placeEnemy(Goblin, 1, 60*5);
+				placeEnemy(Goblin, 3, 60*7);
+				placeEnemy(Goblin, 5, 60*10);
 				break;
 			case 2:
 				// Enemies in 2nd wave
