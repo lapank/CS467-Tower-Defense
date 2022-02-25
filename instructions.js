@@ -1,7 +1,7 @@
 // Instructions Screen game loop
 function instructionScreen(){
 	// Prevents pages from increasing infinitely
-	let maxPage = 3;
+	let maxPage = 4;
 	if (waveMessageDisplay > maxPage) waveMessageDisplay = maxPage;
 	// Draw the Title Screen
 	context.fillStyle = 'blue';
@@ -27,25 +27,48 @@ function instructionScreen(){
 			context.fillText("to pay its cost!", 50, cellSize*1.5 + 45 * 8);
 			break;
 		case 1:
-			context.fillText("Collect GOLD COINS that appear by touching them ", 50, cellSize*1.5 + 45 * 0);
-			context.fillText("with your mouse.", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("Collect GOLD COINS that appear by ", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("touching them with your mouse.", 50, cellSize*1.5 + 45 * 1);
 			context.fillText("You also get GOLD by defeating ENEMIES.", 50, cellSize*1.5 + 45 * 3);
-			context.fillText("Need to get rid of a tower or some extra", 50, cellSize*1.5 + 45 * 5);
-			context.fillText("destructive power?", 50, cellSize*1.5 + 45 * 6);
-			context.fillText("DOUBLE_CLICK on a DEFENDER to make it SELF DESTRUCT.", 50, cellSize*1.5 + 45 * 8);
+			
 			break;
 		case 2:
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("Need to get rid of a tower or some extra", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("destructive power?", 50, cellSize*1.5 + 45 * 1);
+			
+			context.fillText("DOUBLE_CLICK on a DEFENDER to make ", 50, cellSize*1.5 + 45 * 3);
+			context.fillText("it SELF DESTRUCT.", 50, cellSize*1.5 + 45 * 4);
+			
+			context.fillText("This will remove the DEFENDER from", 50, cellSize*1.5 + 45 * 6);
+			context.fillText("the field and damage nearby ENEMIES", 50, cellSize*1.5 + 45 * 7);
+			context.fillText("for the DEFENDER's remaining health.", 50, cellSize*1.5 + 45 * 8);
 			break;
 		case 3:
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
-			context.fillText("", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("Each LEVEL consists of 10 WAVES of", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("ENEMIES. A new WAVE will spawn after", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("a certain amount of time, but ", 50, cellSize*1.5 + 45 * 2);
+			context.fillText("clicking the RUSH WAVE button will", 50, cellSize*1.5 + 45 * 3);
+			context.fillText("make the next wave come right away!", 50, cellSize*1.5 + 45 * 4);
+			
+			context.fillText("Be careful, because if you run out", 50, cellSize*1.5 + 45 * 6);
+			context.fillText("of health or the timer runs out,", 50, cellSize*1.5 + 45 * 7);
+			context.fillText("it's GAME OVER.", 50, cellSize*1.5 + 45 * 8);
+			break;
+		case 4:
+			context.fillText("You score points based on how many", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("enemies you defeat, and how much ", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("time and health you have remaining", 50, cellSize*1.5 + 45 * 2);
+			
+			context.fillText("Defeat all 10 WAVES to win!", 50, cellSize*1.5 + 45 * 4);
+			context.fillText("", 50, cellSize*1.5 + 45 * 5);
+			break;
+			
+		case 5:
+			context.fillText("", 50, cellSize*1.5 + 45 * 0);
+			context.fillText("", 50, cellSize*1.5 + 45 * 1);
+			context.fillText("", 50, cellSize*1.5 + 45 * 2);
+			context.fillText("", 50, cellSize*1.5 + 45 * 3);
+			context.fillText("", 50, cellSize*1.5 + 45 * 4);
 			break;
 	}
 	// Display the page number
