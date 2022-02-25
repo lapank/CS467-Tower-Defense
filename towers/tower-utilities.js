@@ -75,28 +75,26 @@ function updateTowers(){
 						towers[i].health -= 0.8; 
 					}
 				}
-				
 			}
-			// Handle Tower Death  
-			//Trigger dying state (death animation)
-			if (towers[i] && towers[i].health <= 0){
-				// Reanimate all enemies blocked by tower
-				for (let k = 0; k<enemies.length; k++){
-					if (collision(towers[i], enemies[k])){
-						enemies[k].movement = enemies[k].speed;
-						enemies[k].attacking = false;
-						enemies[k].walking = true;
-					}
+		}
+		// Handle Tower Death  
+		if (towers[i] && towers[i].health <= 0){
+			// Reanimate all enemies blocked by tower
+			for (let k = 0; k<enemies.length; k++){
+				if (collision(towers[i], enemies[k])){
+					enemies[k].movement = enemies[k].speed;
+					enemies[k].attacking = false;
+					enemies[k].walking = true;
 				}
-				// Start Death animation
-				towers[i].dying = true;
-				towers[i].shooting = false;
 			}
-			//Finally remove defeated tower from the towers array
-			if (towers[i] && towers[i].dead){
-				towers.splice(i, 1);
-				i--;
-			}
+			// Start Death animation
+			towers[i].dying = true;
+			towers[i].shooting = false;
+		}
+		//Finally remove defeated tower from the towers array
+		if (towers[i] && towers[i].dead){
+			towers.splice(i, 1);
+			i--;
 		}
 	}
 }
