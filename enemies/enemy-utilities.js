@@ -13,7 +13,7 @@ function updateEnemies(){
 			// End game if playerHealth depleted
 			if (playerHealth <= 0) gameOver = true;
 		}
-		// Handle enemy Death
+
 		//Handle Enemy Death
 		if(enemies[i] && enemies[i].health <=0){
 			// Start Death animation

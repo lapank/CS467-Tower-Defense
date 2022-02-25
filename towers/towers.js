@@ -21,7 +21,7 @@ class Tower{
 	}
 	// Draw Tower on board
 	draw(textColor){
-		//strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
+		// Draw health bar
 		if ((this.health < this.maxHealth) && (this.health != 0)){
 			// Prevent from showing negative bar value
 			if (this.health < 0) this.health = 0;
