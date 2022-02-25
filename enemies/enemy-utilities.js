@@ -23,9 +23,9 @@ function updateEnemies(){
 
 		if(enemies[i] && enemies[i].dead){
 			// Increase player resources and score
-			let gainedResources = enemies[i].maxHealth/10;
+			let gainedResources = enemies[i].goldValue;
 			numberOfResources += gainedResources;
-			score += gainedResources; 
+			score += enemies[i].pointValue; 
 			// Remove enemy row position from the array 
 			const findThisIndex = enemyPositions.indexOf(enemies[i].y);
 			enemyPositions.splice(findThisIndex, 1);

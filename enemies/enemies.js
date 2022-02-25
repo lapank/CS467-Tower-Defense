@@ -19,6 +19,8 @@ class Enemy{
 		this.dead = false;
 		this.attacking = false;
 		this.walking = true;
+		this.goldValue = 10;
+		this.pointValue = 10;
 	}
 	// Move the enemy
 	update(){
