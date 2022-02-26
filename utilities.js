@@ -367,7 +367,7 @@ function updateTimes(){
 	// Determine time left in the level
 	let remaining = levelTime - secsElapsed;
 	// End game if no time left
-	if (remaining <= 0.) gameOver = true;
+	if (remaining <= 0) gameOver = true;
 	// Calculate remaining seconds and minutes
 	secs = Math.floor( remaining % 60 );
 	mins = Math.floor( (remaining - secs) / 60 );
@@ -391,9 +391,9 @@ function drawTimer(mins, secs){
 function drawHealth(){
 	context.font = '30px Arial';
 	context.fillStyle = 'red';
-	context.fillRect(350, 50, 300, 35);
+	context.fillRect(300, 50, 300, 35);
 	context.fillStyle = 'green';
-	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillRect(300, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 }
@@ -420,7 +420,8 @@ function resetGameObjects(){
 	enemyPositions.splice(0, enemyPositions.length);
 	projectiles.splice(0, projectiles.length);
 	towers.splice(0, towers.length);
-	resources.splice(0, resources.length);
+	lavaTarget.splice(0, lavaTarget.length);
+	lavaPosition.splice(0, lavaPosition.length);
 	victory = false;
 	gameOver = false;
 	score = 0;
@@ -433,6 +434,7 @@ function resetGameObjects(){
 	frame = 0;
 	startTime = performance.now();
 	levelTime = TIME_LIMIT;
+	lavaInterval = START_LAVA_INTERVAL;
 }
 
 // Prepare and go to title screen.
