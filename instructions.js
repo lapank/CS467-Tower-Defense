@@ -16,7 +16,7 @@ function instructionScreen(){
 	context.fillStyle = 'gold';
 	switch(waveMessageDisplay){
 		case 0:
-			context.fillText("Click on an option at the bottom of ", 50, cellSize*1.5) + 45 * 0;
+			context.fillText("Click on an option at the bottom of ", 50, cellSize*1.5);
 			context.fillText("the screen to select the type of ", 50, cellSize*1.5 + 45 * 1);
 			context.fillText("DEFENDER you want to place. ", 50, cellSize*1.5 + 45 * 2);
 
