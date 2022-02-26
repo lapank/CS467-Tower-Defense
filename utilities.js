@@ -493,7 +493,9 @@ function drawButton(button){
 // Delete all existing game objects, reset all values.
 function resetGameObjects(){
 	enemies.splice(0, enemies.length);
-	enemyPositions.splice(0, enemyPositions.length);
+	for (let key in enemyPositions){
+		enemyPositions[key] = 0;
+	}
 	projectiles.splice(0, projectiles.length);
 	towers.splice(0, towers.length);
 	lavaTarget.splice(0, lavaTarget.length);
@@ -550,3 +552,4 @@ function restartLevel(){
 			break;
 	}
 }
+
