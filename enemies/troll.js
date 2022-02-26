@@ -7,7 +7,7 @@ trollDeath.src = 'sprites/trollDeath.png'
 
 class Troll extends Enemy{
 	constructor(verticalPosition, delay){
-		super(verticalPosition, 0.3, 400, delay);
+		super(verticalPosition, 0.2, 400, delay);
 
 		//info for applying sprite sheet
 		this.sprite = trollImage;
@@ -17,8 +17,6 @@ class Troll extends Enemy{
 		this.maxFrame = 9;
 		this.spriteWidth = 1602;
 		this.spriteHeight = 1002;
-		this.goldValue = 40;
-		this.pointValue = 40;
 	}
 
 	update(){
