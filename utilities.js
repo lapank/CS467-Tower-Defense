@@ -442,11 +442,11 @@ function updateTimes(){
 	// Determine time left in the level
 	let remaining = levelTime - secsElapsed;
 	// End game if no time left
-	if (remaining <= 0) gameOver = true;
+	if (remaining <= 0.) gameOver = true;
 	// Calculate remaining seconds and minutes
 	secs = Math.floor( remaining % 60 );
 	mins = Math.floor( (remaining - secs) / 60 );
-	return remaining;
+	return remaining
 }
 
 // Pads an integer with zeros to two places
