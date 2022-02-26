@@ -127,13 +127,13 @@ const level3Lock = {
 const quitButton = {
 	// text attributes
 	x2: 370,
-	y2: 530,
+	y2: 530 + 20,
 	fontSize: 60,
 	textColor: "black",
 	text: 'Quit',
 	// button attributes
 	x: 360,
-	y: 470,
+	y: 470 + 20,
 	width: 160,
 	height: 80,
 	color: "white", 
@@ -143,13 +143,13 @@ const quitButton = {
 const tryAgainButton = {
 	// text attributes
 	x2: 370 - 90,
-	y2: 530 - 100,
+	y2: 530 - 80,
 	fontSize: 60,
 	textColor: "black",
 	text: 'Try Again',
 	// button attributes
 	x: 360 - 90,
-	y: 470 - 100,
+	y: 470 - 80,
 	width: 345,
 	height: 80,
 	color: "white", 
@@ -388,7 +388,8 @@ function updateGameStatus(){
 	// Display Current Health
 	drawHealth();
 	// Display Game Timer
-	updateTimes();
+	//updateTimes();
+	let timeRemaining = updateTimes();
 	drawTimer(mins, secs);
 	// Checks for Game Over
 	if(gameOver){
@@ -402,12 +403,22 @@ function updateGameStatus(){
 	// Checks for win condition
 	if ((waves <= 0) && (enemies.length === 0) && (playerHealth > 0)){
 		console.log('win met');
+		// Calculate bonuses at moment of victory
+		if (victory == false)
+		{
+			timeBonus = Math.floor(timeRemaining * 1.1);
+			healthBonus = Math.floor(playerHealth * 1.5);
+			score += timeBonus + healthBonus;
+		}
 		victory = true;
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
-		// Updates rank to  according to level defeated
-		if (rank < select + 1 ) rank = select +1;
-		// Exit the win screen
+		strokedText('Time Bonus:  ' + timeBonus + '   Health Bonus:  ' + healthBonus, 340, 370, '16px', 'white');
+
+    // Updates rank to  according to level defeated
+    if (rank < select + 1 ) rank = select +1;
+
+    // Exit the win screen
 		saveHighScore();
 		drawButton(tryAgainButton);
 		drawButton(quitButton);
@@ -435,6 +446,7 @@ function updateTimes(){
 	// Calculate remaining seconds and minutes
 	secs = Math.floor( remaining % 60 );
 	mins = Math.floor( (remaining - secs) / 60 );
+	return remaining;
 }
 
 // Pads an integer with zeros to two places
