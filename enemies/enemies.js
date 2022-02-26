@@ -44,6 +44,9 @@ class Enemy{
 		if (this.onFire && !this.dying){       //damage over time if on fire
 			this.health -= 0.1; 
 		}
+
+		// Makes enemy visible to towers when it moves onto the screen
+		if (!(this.visible) && this.x < canvas.width) this.makeVisible();
 	}
 	// Draw the enemy
 	draw(textColor){
@@ -70,5 +73,10 @@ class Enemy{
 			context.fillText("FIRE", this.x, this.y + 80);
 		}
 
+	}
+	// Makes the enemy visible to towers when they move onto the screen.
+	makeVisible(){
+		this.visible = true;
+		enemyPositions[this.y] += 1;
 	}
 }
