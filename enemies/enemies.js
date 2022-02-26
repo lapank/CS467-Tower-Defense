@@ -1,7 +1,11 @@
 let enemiesInterval = 2000;		// frames between enemy spawns
 let frame = 0; 					// increment that determines resource/enemy spawns
 const enemies = [];				// array of existing enemies
-const enemyPositions = [];		// array of enemy vertical/row positions
+const enemyPositions = {};		// map of enemy vertical/row positions
+// fill pre-fill vertical coordinates for enemy positions in the map.
+for (let i = 1; i <= 5; i++){
+	enemyPositions[i * cellSize + cellGap] = 0;
+}
 
 
 class Enemy{
