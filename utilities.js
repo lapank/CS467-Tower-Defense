@@ -51,6 +51,22 @@ const titleButton2 = {
 	borderColor: "black",
 };
 
+const titleButton3 = {
+	// text attributes
+	x2: 100,
+	y2: 570 ,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Instructions',
+	// button attributes
+	x: 90,
+	y: 510,
+	width: 410,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
 const levelButton1 = {
 	// button attributes
 	x: 40,
@@ -204,6 +220,54 @@ const rushButton = {
 	borderColor: "red",
 };
 
+const backButton = {
+	// text attributes
+	x2: 20,
+	y2: 35,
+	fontSize: 20,
+	textColor: "black",
+	text: 'Back to Title',
+	// button attributes
+	x: 10,
+	y: 10,
+	width: 140,
+	height: 35,
+	color: "red", 
+	borderColor: "black",
+};
+
+const nextButton = {
+	// text attributes
+	x2: 20 + 800 - 50,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '>>',
+	// button attributes
+	x: 10 + 800 - 50,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
+};
+
+const previousButton = {
+	// text attributes
+	x2: 40,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '<<',
+	// button attributes
+	x: 30,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
+};
+
 // Button where users select tower type
 class TowerButton{
 	constructor(x, bodyColor, fontColor, health, cost, sprite){
@@ -324,6 +388,7 @@ function updateGameStatus(){
 	// Display Current Health
 	drawHealth();
 	// Display Game Timer
+	//updateTimes();
 	let timeRemaining = updateTimes();
 	drawTimer(mins, secs);
 	// Checks for Game Over
@@ -349,10 +414,10 @@ function updateGameStatus(){
 		strokedText('LEVEL COMPLETE', 130, 300, '70px', 'white');
 		strokedText('You win with ' + score + ' points!', 280, 340, '30px', 'white');
 		strokedText('Time Bonus:  ' + timeBonus + '   Health Bonus:  ' + healthBonus, 340, 370, '16px', 'white');
-		
+
     // Updates rank to  according to level defeated
     if (rank < select + 1 ) rank = select +1;
-		
+
     // Exit the win screen
 		saveHighScore();
 		drawButton(tryAgainButton);
@@ -402,9 +467,9 @@ function drawTimer(mins, secs){
 function drawHealth(){
 	context.font = '30px Arial';
 	context.fillStyle = 'red';
-	context.fillRect(350, 50, 300, 35);
+	context.fillRect(300, 50, 300, 35);
 	context.fillStyle = 'green';
-	context.fillRect(350, 50, 300*(playerHealth/maxPlayerHealth), 35);
+	context.fillRect(300, 50, 300*(playerHealth/maxPlayerHealth), 35);
 	context.fillStyle= 'gold';
 	context.fillText('Health: ' + Math.floor(playerHealth), 200, 80);
 }
@@ -431,7 +496,8 @@ function resetGameObjects(){
 	enemyPositions.splice(0, enemyPositions.length);
 	projectiles.splice(0, projectiles.length);
 	towers.splice(0, towers.length);
-	resources.splice(0, resources.length);
+	lavaTarget.splice(0, lavaTarget.length);
+	lavaPosition.splice(0, lavaPosition.length);
 	victory = false;
 	gameOver = false;
 	score = 0;
@@ -444,14 +510,14 @@ function resetGameObjects(){
 	frame = 0;
 	startTime = performance.now();
 	levelTime = TIME_LIMIT;
+	lavaInterval = START_LAVA_INTERVAL;
 }
 
 // Prepare and go to title screen.
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
-	removeBoardEvents();
-	removeLevelSelectEvents();
+	clearEvents();
 	addTitleEvents();
 	titleScreen();
 }
@@ -462,8 +528,7 @@ function goToLevelSelect(){
 	cheatCount = 0;
 	cheat = false;
 	resetGameObjects();
-	removeBoardEvents();
-	removeTitleEvents();
+	clearEvents();
 	addLevelSelectEvents();
 	levelSelectScreen();
 }
