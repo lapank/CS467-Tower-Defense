@@ -14,8 +14,6 @@ class Goblin extends Enemy{
 		this.maxFrame = 7;
 		this.spriteWidth = 66;
 		this.spriteHeight = 64;
-		this.goldValue = 10;
-		this.pointValue = 10;
 		
 	}
 
