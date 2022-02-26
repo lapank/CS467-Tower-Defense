@@ -23,6 +23,8 @@ class Enemy{
 		this.attacking = false;
 		this.walking = true;
 		this.visible = false;
+		this.goldValue = 10;
+		this.pointValue = 10;
 	}
 	// Move the enemy
 	update(){
@@ -47,12 +49,21 @@ class Enemy{
 	}
 	// Draw the enemy
 	draw(textColor){
-		//context.fillStyle = bodyColor;
-		//context.fillRect(this.x, this.y, this.width, this.height);
-		//context.fillStyle = textColor;
-		//context.font = '20px Orbitron';
-		strokedText(Math.floor(this.health).toString(),this.x + 15, this.y + 30, '20px', textColor);
-		//context.fillText(Math.floor(this.health),this.x + 15, this.y + 30);
+		// display health bar when damaged 
+		if ((this.health < this.maxHealth) && (this.health != 0)){
+			// Prevent from showing negative bar value
+			if (this.health < 0) this.health = 0;
+			// Fill with percentage health
+			context.fillStyle = 'red';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30);
+			context.fillStyle = 'green';
+			context.fillRect(this.x + 15, this.y + 40, 10, -30*(this.health/this.maxHealth));
+			// Outline in black
+			context.strokeStyle = 'black';
+			context.lineWidth = '1';
+			context.rect(this.x + 15, this.y + 40, 10, -30);
+			context.stroke();
+		}
 
 		// Display fire status when on fire
 		if (this.onFire)
