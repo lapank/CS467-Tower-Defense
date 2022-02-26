@@ -1,11 +1,8 @@
 let enemiesInterval = 2000;		// frames between enemy spawns
 let frame = 0; 					// increment that determines resource/enemy spawns
 const enemies = [];				// array of existing enemies
-const enemyPositions = {};		// map of enemy vertical/row positions
-// fill pre-fill vertical coordinates for enemy positions in the map.
-for (let i = 1; i <= 5; i++){
-	enemyPositions[i * cellSize + cellGap] = 0;
-}
+const enemyPositions = [];		// array of enemy vertical/row positions
+
 
 class Enemy{
 	constructor(verticalPosition, speed, health, delay){
@@ -25,7 +22,6 @@ class Enemy{
 		this.goldValue = 10;
 		this.pointValue = 10;
 		this.visible = false;
-
 	}
 	// Move the enemy
 	update(){
@@ -44,9 +40,6 @@ class Enemy{
 		if (this.onFire && !this.dying){       //damage over time if on fire
 			this.health -= 0.1; 
 		}
-
-		// Makes enemy visible to towers when it moves onto the screen
-		if (!(this.visible) && this.x < canvas.width) this.makeVisible();
 	}
 	// Draw the enemy
 	draw(textColor){
@@ -72,10 +65,6 @@ class Enemy{
 			context.fillStyle = "red";
 			context.fillText("FIRE", this.x, this.y + 80);
 		}
-	}
-	// Makes the enemy visible to towers when they move onto the screen.
-	makeVisible(){
-		this.visible = true;
-		enemyPositions[this.y] += 1;
+
 	}
 }
