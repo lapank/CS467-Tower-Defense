@@ -49,7 +49,7 @@ function updateTowers(){
 		towers[i].draw();
 		towers[i].update();
 		// Disable Tower when no Enemies (and when dying)
-		if(enemyPositions.indexOf(towers[i].y) !== -1 && !towers[i].dying){
+		if(enemyPositions[towers[i].y] > 0 && !towers[i].dying){
 			towers[i].shooting = true;
 		}else{
 			towers[i].shooting = false;

@@ -1,21 +1,20 @@
-lavaInterval = 600; 	
+let lavaInterval = START_LAVA_INTERVAL;	
 const lavaTarget = [];
-//const lavaBall = [];
 const lavaPosition = [];
 const lava = new Image();
+const lavaSpawnTimes = [50, 100, 200, 300];
 lava.src = 'sprites/lava.png';
 
 class Lava{
 	constructor(horizontalPosition){
-		//this.x = Math.random() * (canvas.width - cellSize);
-		this.x = 100 * Math.floor(Math.random() * 9);
-		this.y = 100;
-		//this.targetY = (Math.floor(Math.random() *5)+1) *cellSize+25;
-		this.targetY = 100 * Math.floor(Math.random() * 6);
+		this.targetY = 100 + 100 * Math.floor(Math.random() * 5);
 		this.width = cellSize - cellGap * 2;
 		this.height = cellSize - cellGap * 2;
 		this.speed = 0.4;
 		this.movement = this.speed;
+
+		this.x = 100 * Math.floor(Math.random() * 9);
+		this.y = this.targetY - cellSize * 2;
 
 		this.frameX = 0;//# of frames in sprite sheet
 		this.frameY = 0; //1st row of sprite sheet
@@ -78,7 +77,7 @@ function spawnLava(){
 		// Add enemy row position to the array
 		lavaPosition.push(horizontalPosition);
 
-		// Speed up rate that enemies appear.
-		if (lavaInterval > 120) lavaInterval -= 100;
+		// Randomize rate that lava appears.
+		lavaInterval = lavaSpawnTimes[Math.floor(Math.random()*lavaSpawnTimes.length)];
 	}
 }
