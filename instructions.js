@@ -98,7 +98,7 @@ function goToInstructionScreen(){
     select = -2;
     waveMessageDisplay = 0;
     clearEvents();
-    addInstructionEvents()
+    addInstructionEvents();
     instructionScreen();    
 }
 
