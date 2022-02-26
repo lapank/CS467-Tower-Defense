@@ -74,11 +74,12 @@ function titleScreen(){
 	// Button Displays
 	drawButton(titleButton1);
 	drawButton(titleButton2);
+	drawButton(titleButton3);
 
 	if (select === 0) requestAnimationFrame(titleScreen);
 }
 
-// Title Screen game loop
+// Level Select Screen game loop
 function levelSelectScreen(){
 	// Draw the Title Screen
 	context.fillStyle = 'blue';
@@ -155,26 +156,31 @@ function startGame() {
 	if (collision(mouse, levelButton1)) {
 		select = 1;
 		resetGameObjects();
-		removeTitleEvents();
-		removeLevelSelectEvents();
+		clearEvents();
 		addBoardEvents();
 		level1();
 	} else if (collision(mouse, levelButton2) && (rank > 1 || cheat)) {
 		select = 2;
 		resetGameObjects();
 		levelTime = SLOW_TIME;	// Reduced level time for level 2
-		removeTitleEvents();
-		removeLevelSelectEvents();
+		clearEvents();
 		addBoardEvents();
 		level2();
 	} else if (collision(mouse, levelButton3) && (rank > 2 || cheat)) {
 		select = 3;
 		resetGameObjects();
-		removeTitleEvents();
-		removeLevelSelectEvents();
+		clearEvents();
 		addBoardEvents();
 		level3();
 	}
+}
+
+// Clears all possible events
+function clearEvents(){
+	removeTitleEvents();
+	removeLevelSelectEvents();	
+	removeBoardEvents();
+	removeInstructionEvents();
 }
 
 // Quits active game and goes to level select on click
@@ -259,11 +265,13 @@ function removeBoardEvents(){
 // Initiate Event Listeners for Title Screen
 function addTitleEvents(){
 	canvas.addEventListener('click', newLoadGame);
+	canvas.addEventListener('click', instruction_press);
 }
 
 // Terminate Event Listeners for Title Screen
 function removeTitleEvents(){
 	canvas.removeEventListener('click', newLoadGame);
+	canvas.removeEventListener('click', instruction_press);
 }
 
 // Initiate Event Listeners for Level Select Screen
