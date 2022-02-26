@@ -13,7 +13,7 @@ function updateEnemies(){
 			// End game if playerHealth depleted
 			if (playerHealth <= 0) gameOver = true;
 		}
-		// Handle enemy Death
+
 		//Handle Enemy Death
 		if(enemies[i] && enemies[i].health <=0){
 			// Start Death animation
@@ -23,12 +23,12 @@ function updateEnemies(){
 
 		if(enemies[i] && enemies[i].dead){
 			// Increase player resources and score
-			let gainedResources = enemies[i].maxHealth/10;
+			let gainedResources = enemies[i].goldValue;
 			numberOfResources += gainedResources;
-			score += gainedResources; 
-			// Decrease count of enemies in row 
-			if (enemies[i].visible) enemyPositions[enemies[i].y] -= 1;
-			// Remove Enemy from the array
+			score += enemies[i].pointValue; 
+			// Remove enemy row position from the array 
+			const findThisIndex = enemyPositions.indexOf(enemies[i].y);
+			enemyPositions.splice(findThisIndex, 1);
 			enemies.splice(i, 1);
 			i--;
 		}
