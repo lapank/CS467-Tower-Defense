@@ -51,6 +51,22 @@ const titleButton2 = {
 	borderColor: "black",
 };
 
+const titleButton3 = {
+	// text attributes
+	x2: 100,
+	y2: 570 ,
+	fontSize: 60,
+	textColor: "black",
+	text: 'Instructions',
+	// button attributes
+	x: 90,
+	y: 510,
+	width: 410,
+	height: 80,
+	color: "white", 
+	borderColor: "black",
+};
+
 const levelButton1 = {
 	// button attributes
 	x: 40,
@@ -202,6 +218,54 @@ const rushButton = {
 	height: 35,
 	color: "black", 
 	borderColor: "red",
+};
+
+const backButton = {
+	// text attributes
+	x2: 20,
+	y2: 35,
+	fontSize: 20,
+	textColor: "black",
+	text: 'Back to Title',
+	// button attributes
+	x: 10,
+	y: 10,
+	width: 140,
+	height: 35,
+	color: "red", 
+	borderColor: "black",
+};
+
+const nextButton = {
+	// text attributes
+	x2: 20 + 800 - 50,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '>>',
+	// button attributes
+	x: 10 + 800 - 50,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
+};
+
+const previousButton = {
+	// text attributes
+	x2: 40,
+	y2: 35 + 600,
+	fontSize: 80,
+	textColor: "gold",
+	text: '<<',
+	// button attributes
+	x: 30,
+	y: 10 + 600 - 35,
+	width: 120,
+	height: 70,
+	color: "blue", 
+	borderColor: "blue",
 };
 
 // Button where users select tower type
@@ -441,8 +505,7 @@ function resetGameObjects(){
 function goToTitle(){
 	select = 0;
 	resetGameObjects();
-	removeBoardEvents();
-	removeLevelSelectEvents();
+	clearEvents();
 	addTitleEvents();
 	titleScreen();
 }
@@ -453,8 +516,7 @@ function goToLevelSelect(){
 	cheatCount = 0;
 	cheat = false;
 	resetGameObjects();
-	removeBoardEvents();
-	removeTitleEvents();
+	clearEvents();
 	addLevelSelectEvents();
 	levelSelectScreen();
 }
