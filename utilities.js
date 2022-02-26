@@ -446,7 +446,7 @@ function updateTimes(){
 	// Calculate remaining seconds and minutes
 	secs = Math.floor( remaining % 60 );
 	mins = Math.floor( (remaining - secs) / 60 );
-	return remaining
+	return remaining;
 }
 
 // Pads an integer with zeros to two places
