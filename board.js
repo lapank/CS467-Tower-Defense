@@ -6,8 +6,12 @@ canvas.height = 700;
 //Lava Level
 const lavaBackground = new Image();
 lavaBackground.src = 'sprites/lava-background.jpg';
+//Grass Level
 const grassBackground = new Image();
 grassBackground.src = 'sprites/grass-background.jpg';
+//Mountain Level
+const mountainBackground = new Image();
+mountainBackground.src = 'sprites/mountains-background.png';
 
 // Global Variables
 const cellSize = 100;
