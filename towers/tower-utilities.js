@@ -64,16 +64,7 @@ function updateTowers(){
 				//Only deal damage to living towers
 				//And only allow living enemies to deal damage
 				if (towers[i].health > 0 && !enemies[j].dying){
-					// Damage dealt varies by enemy
-					if (enemies[j] instanceof Goblin){
-						towers[i].health -= 0.2; 
-					}
-					else if (enemies[j] instanceof Vampire){
-						towers[i].health -= 0.4; 
-					}
-					else if (enemies[j] instanceof Troll){
-						towers[i].health -= 0.8; 
-					}
+					towers[i].health -= enemies[j].damage;
 				}
 			}
 		}
