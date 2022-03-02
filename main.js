@@ -28,6 +28,7 @@ function level1(){
 // Level 2-related game loop.
 function level2(){
 	drawMenu('gray');
+	context.drawImage(mountainBackground, 0, 100, 900, 500);
 	// Update Game Objects 
 	updateGameGrid();
 	updateTowers();
@@ -93,6 +94,7 @@ function levelSelectScreen(){
 	context.drawImage(grassBackground, 40, 210, 256, 256);
 	strokedText('Level 1', 50, 460, '70px', 'white');
 	drawButton(levelButton2);
+	context.drawImage(mountainBackground, 316, 210, 256, 256);
 	strokedText('Level 2', 326, 460, '70px', 'white');
 	drawButton(levelButton3);
 	context.drawImage(lavaBackground, 592, 210, 256, 256);
