@@ -361,15 +361,33 @@ function spawnNewEnemies3(){
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
-				placeEnemy(Goblin, 1, 60*0);
-				placeEnemy(Goblin, 3, 60*1);
-				placeEnemy(Goblin, 5, 60*2);
+				for (let i = 0; i < 40; i += 10){
+					placeEnemy(Goblin, 1, 60*0 + 60*i);
+					placeEnemy(Goblin, 3, 60*1 + 60*i);
+					placeEnemy(Goblin, 5, 60*2 + 60*i);
+
+					placeEnemy(Goblin, 2, 60*4 + 60*i);
+					placeEnemy(Goblin, 4, 60*5 + 60*i);
+					placeEnemy(Goblin, 5, 60*6 + 60*i);
+
+					placeEnemy(Goblin, 3, 60*8 + 60*i);
+					placeEnemy(Goblin, 1, 60*9 + 60*i);
+					placeEnemy(Goblin, 2, 60*10 + 60*i);
+				}
 				break;
 			case 2:
 				// Enemies in 2nd wave
 				placeEnemy(Vampire, 2, 60*1);
 				placeEnemy(Vampire, 3, 60*0);
 				placeEnemy(Vampire, 4, 60*1);
+
+				placeEnemy(Vampire, 1, 60*8);
+				placeEnemy(Vampire, 2, 60*7);
+				placeEnemy(Vampire, 3, 60*8);
+
+				placeEnemy(Vampire, 3, 60*14);
+				placeEnemy(Vampire, 4, 60*13);
+				placeEnemy(Vampire, 5, 60*14);
 				break;
 			case 3:
 				// Enemies in 3rd wave
