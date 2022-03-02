@@ -422,7 +422,14 @@ function spawnNewEnemies3(){
 				break;
 			case 10:
 				// Enemies in 10th wave
-				placeEnemy(Vampire, 2, 60*3);
+				lavaFieldWipe();
+				for (let i=1; i <= 5; i++){
+					for (let j=0; j<8; j++){
+						placeEnemy(Goblin, i, 280 + 400*j);
+					} 
+				}
+				placeEnemy(Vampire, 1, 280 + 400*9);
+				placeEnemy(Vampire, 5, 280 + 400*9);
 				break;
 		}
 		waves -= 1;

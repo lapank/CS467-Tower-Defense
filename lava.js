@@ -61,7 +61,7 @@ function updateLava(){
 			i--;
 		}
 	}
-	//spawnLava();
+	spawnLava();
 }
 
 
