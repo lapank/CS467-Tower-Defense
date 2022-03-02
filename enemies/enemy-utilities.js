@@ -180,15 +180,15 @@ function spawnNewEnemies1(){
 				break;
 			case 8:
 				// Enemies in 8th wave
-				placeEnemy(Troll, 3, 60*1); // Make these into super-fast Trolls
-				placeEnemy(Troll, 3, 60*1);
-				placeEnemy(Troll, 3, 60*1);
-				placeEnemy(Troll, 5, 60*6);
-				placeEnemy(Troll, 5, 60*6);
-				placeEnemy(Troll, 5, 60*6);
-				placeEnemy(Troll, 1, 60*2);
-				placeEnemy(Troll, 1, 60*2);
-				placeEnemy(Troll, 1, 60*2);
+				placeEnemy(SuperTroll, 3, 60*1); // Make these into super-fast Trolls
+				placeEnemy(SuperTroll, 3, 60*1);
+				placeEnemy(SuperTroll, 3, 60*1);
+				placeEnemy(SuperTroll, 5, 60*6);
+				placeEnemy(SuperTroll, 5, 60*6);
+				placeEnemy(SuperTroll, 5, 60*6);
+				placeEnemy(SuperTroll, 1, 60*2);
+				placeEnemy(SuperTroll, 1, 60*2);
+				placeEnemy(SuperTroll, 1, 60*2);
 				break;
 			case 9:
 				// Enemies in 9th wave
