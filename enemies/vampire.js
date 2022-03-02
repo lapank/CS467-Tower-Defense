@@ -16,6 +16,7 @@ class Vampire extends Enemy{
 		this.spriteHeight = 74;
 		this.goldValue = 10;
 		this.pointValue = 20;
+		this.damage = .4;
 	}
 
 	update(){

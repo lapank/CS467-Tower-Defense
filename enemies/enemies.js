@@ -31,6 +31,7 @@ class Enemy{
 		this.goldValue = 10;
 		this.pointValue = 10;
 		this.fireFrame = 0;
+		this.damage = .2;  // damage dealt when enemy collides with tower.
 	}
 	// Move the enemy
 	update(){

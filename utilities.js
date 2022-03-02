@@ -498,6 +498,7 @@ function resetGameObjects(){
 	}
 	projectiles.splice(0, projectiles.length);
 	towers.splice(0, towers.length);
+	resources.splice(0, resources.length);
 	lavaTarget.splice(0, lavaTarget.length);
 	lavaPosition.splice(0, lavaPosition.length);
 	victory = false;
