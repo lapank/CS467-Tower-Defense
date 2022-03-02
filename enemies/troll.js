@@ -19,6 +19,7 @@ class Troll extends Enemy{
 		this.spriteHeight = 1002;
 		this.goldValue = 40;
 		this.pointValue = 40;
+		this.damage = .8;
 	}
 
 	update(){

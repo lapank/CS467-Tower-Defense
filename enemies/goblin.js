@@ -16,7 +16,7 @@ class Goblin extends Enemy{
 		this.spriteHeight = 64;
 		this.goldValue = 10;
 		this.pointValue = 10;
-		
+		this.damage = .2;
 	}
 
 	update(){
