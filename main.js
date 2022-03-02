@@ -171,6 +171,7 @@ function startGame() {
 	} else if (collision(mouse, levelButton3) && (rank > 2 || cheat)) {
 		select = 3;
 		resetGameObjects();
+		interval = 300;
 		clearEvents();
 		addBoardEvents();
 		level3();

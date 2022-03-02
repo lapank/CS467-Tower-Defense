@@ -2,7 +2,7 @@ let lavaInterval = START_LAVA_INTERVAL;
 const lavaTarget = [];
 const lavaPosition = [];
 const lava = new Image();
-const lavaSpawnTimes = [50, 100, 200, 300];
+const lavaSpawnTimes = [25, 50, 100, 200];
 lava.src = 'sprites/lava.png';
 
 class Lava{
