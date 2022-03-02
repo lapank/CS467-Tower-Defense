@@ -514,6 +514,7 @@ function resetGameObjects(){
 	startTime = performance.now();
 	levelTime = TIME_LIMIT;
 	lavaInterval = START_LAVA_INTERVAL;
+	interval = RESOURCE_INTERVAL;
 }
 
 // Prepare and go to title screen.
