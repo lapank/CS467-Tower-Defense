@@ -5,7 +5,7 @@ const enemyPositions = {};		// map of enemy vertical/row positions
 
 //Enemy On-Fire Animation
 const onFireImage = new Image();
-onFireImage.src = 'sprites/onFIre.png';
+onFireImage.src = 'sprites/onFire.png';
 
 // fill pre-fill vertical coordinates for enemy positions in the map.
 for (let i = 1; i <= 5; i++){
