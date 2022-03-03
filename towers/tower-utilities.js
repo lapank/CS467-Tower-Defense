@@ -95,7 +95,7 @@ function explodeTower(i){
 	// Retrieve tower stats
 	let towerX = towers[i].x;
 	let towerY = towers[i].y;
-	let towerHealth = Math.floor(towers[i].health); 
+	let towerHealth = towers[i].maxHealth; 
 	// Set explosion range to 3*3 square with tower as center
 	let explodeRange = {
 		x:towerX - cellSize, 
