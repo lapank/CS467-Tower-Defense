@@ -329,7 +329,7 @@ class TowerButton{
 			plainText('Wizard', this.x+90, this.y+20, '20px', 'black');
 			plainText( 'Cost: ' + WIZARD_COST.toString() + 'g', this.x+90, this.y+40,'12px', 'black');
 			plainText( 'HP: ' + Wizard.staticHealth.toString(), this.x+90, this.y+55,'12px', 'black');
-			plainText( 'Effect: Freeze', this.x+90, this.y+70,'12px', 'black');
+			plainText( 'Effect: Slow', this.x+90, this.y+70,'12px', 'black');
 		}
 
 		context.strokeStyle = this.stroke;
@@ -514,6 +514,7 @@ function resetGameObjects(){
 	startTime = performance.now();
 	levelTime = TIME_LIMIT;
 	lavaInterval = START_LAVA_INTERVAL;
+	interval = RESOURCE_INTERVAL;
 }
 
 // Prepare and go to title screen.

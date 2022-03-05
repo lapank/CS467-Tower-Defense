@@ -2,7 +2,7 @@ let lavaInterval = START_LAVA_INTERVAL;
 const lavaTarget = [];
 const lavaPosition = [];
 const lava = new Image();
-const lavaSpawnTimes = [50, 100, 200, 300];
+const lavaSpawnTimes = [25, 50, 100, 200];
 lava.src = 'sprites/lava.png';
 
 class Lava{
@@ -74,10 +74,27 @@ function spawnLava(){
 			lavaTarget.push(new Lava(horizontalPosition));
 
 	
-		// Add enemy row position to the array
+		// Add lava row position to the array
 		lavaPosition.push(horizontalPosition);
 
 		// Randomize rate that lava appears.
 		lavaInterval = lavaSpawnTimes[Math.floor(Math.random()*lavaSpawnTimes.length)];
+	}
+}
+
+// Summons lava on every square and wipes out everything.
+function lavaFieldWipe(){
+	for (let i = 1; i <= 5; i++){
+		let newVertical = i * 100;
+		for (let j = 0; j < 9; j++){
+			let newHorizontal = j * 100;
+			let trashVar = 0;
+			let newLava = new Lava(trashVar);
+			newLava.x = newHorizontal;
+			newLava.targetY = newVertical;
+			newLava.y = newLava.targetY - cellSize * 1;
+			lavaTarget.push(newLava);
+			lavaPosition.push(trashVar);
+		}
 	}
 }

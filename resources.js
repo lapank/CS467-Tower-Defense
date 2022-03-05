@@ -1,7 +1,8 @@
 let score = 0;
 const resources = [];		// array of existing resources
 const amounts = [10,20,30]; // array of possible resource ammounts
-const interval = 500;		// How often resources appear
+const RESOURCE_INTERVAL = 500;
+let interval = RESOURCE_INTERVAL;		// How often resources appear
 
 const coin = new Image();
 coin.src = 'sprites/coin.png';

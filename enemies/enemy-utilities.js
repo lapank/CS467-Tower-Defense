@@ -57,6 +57,13 @@ function placeEnemy(type, row, delay){
 			enemies.push(new type(eRow(row), delay));
 		}
 
+// Take enemyType, row, delay, quantity, and spacing. Place a line of enemies of specified length.
+function placeEnemyLine(type, row, delay, quantity, spacing){
+	for (let i=0; i<quantity; i++){
+		placeEnemy(type, row, delay+(i*spacing) );
+	}
+}
+
 // Takes a message and displays that message on the screen.
 function displayBanner(msg){
 	context.font = 'bold 80px Arial';
@@ -181,14 +188,11 @@ function spawnNewEnemies1(){
 			case 8:
 				// Enemies in 8th wave
 				placeEnemy(SuperTroll, 3, 60*1); // Make these into super-fast Trolls
-				placeEnemy(SuperTroll, 3, 60*1);
-				placeEnemy(SuperTroll, 3, 60*1);
+				placeEnemy(SuperTroll, 3, 60*2);
 				placeEnemy(SuperTroll, 5, 60*6);
-				placeEnemy(SuperTroll, 5, 60*6);
-				placeEnemy(SuperTroll, 5, 60*6);
+				placeEnemy(SuperTroll, 5, 60*7);
 				placeEnemy(SuperTroll, 1, 60*2);
-				placeEnemy(SuperTroll, 1, 60*2);
-				placeEnemy(SuperTroll, 1, 60*2);
+				placeEnemy(SuperTroll, 1, 60*3);
 				break;
 			case 9:
 				// Enemies in 9th wave
@@ -281,8 +285,6 @@ function spawnNewEnemies2(){
 				// Enemies in 3rd wave
 				placeEnemy(Troll, 2, 60*0);
 				placeEnemy(Troll, 3, 60*0);
-				placeEnemy(Troll, 2, 60*1);
-				placeEnemy(Troll, 3, 60*1);
 				break;
 			case 4:
 				// Enemies in 4th wave
@@ -361,15 +363,46 @@ function spawnNewEnemies3(){
 		switch(current_wave){
 			case 1:
 				// Enemies in 1st wave
-				placeEnemy(Goblin, 1, 60*0);
-				placeEnemy(Goblin, 3, 60*1);
-				placeEnemy(Goblin, 5, 60*2);
+				for (let i = 0; i <= 30; i += 10){
+					placeEnemy(Goblin, 1, 60*0 + 60*i);
+					placeEnemy(Goblin, 3, 60*1 + 60*i);
+					placeEnemy(Goblin, 5, 60*2 + 60*i);
+
+					placeEnemy(Goblin, 2, 60*4 + 60*i);
+					placeEnemy(Goblin, 4, 60*5 + 60*i);
+					placeEnemy(Goblin, 5, 60*6 + 60*i);
+
+					placeEnemy(Goblin, 3, 60*8 + 60*i);
+					placeEnemy(Goblin, 1, 60*9 + 60*i);
+					placeEnemy(Goblin, 2, 60*10 + 60*i);
+				}
 				break;
 			case 2:
 				// Enemies in 2nd wave
 				placeEnemy(Vampire, 2, 60*1);
 				placeEnemy(Vampire, 3, 60*0);
 				placeEnemy(Vampire, 4, 60*1);
+
+				placeEnemy(Vampire, 1, 60*8);
+				placeEnemy(Vampire, 2, 60*7);
+				placeEnemy(Vampire, 3, 60*8);
+
+				placeEnemy(Vampire, 3, 60*14);
+				placeEnemy(Vampire, 4, 60*13);
+				placeEnemy(Vampire, 5, 60*14);
+
+				placeEnemy(Vampire, 2, 60*17);
+				placeEnemy(Vampire, 3, 60*16);
+				placeEnemy(Vampire, 4, 60*17);
+
+				placeEnemy(Vampire, 1, 60*24);
+				placeEnemy(Vampire, 2, 60*23);
+				placeEnemy(Vampire, 3, 60*24);
+
+				placeEnemy(Vampire, 3, 60*31);
+				placeEnemy(Vampire, 4, 60*30);
+				placeEnemy(Vampire, 5, 60*31);
+
 				break;
 			case 3:
 				// Enemies in 3rd wave
@@ -377,34 +410,113 @@ function spawnNewEnemies3(){
 				placeEnemy(Troll, 3, 60*0);
 				placeEnemy(Troll, 2, 60*1);
 				placeEnemy(Troll, 3, 60*1);
+				placeEnemy(Goblin, 1, 60*4);
+				placeEnemy(Goblin, 4, 60*4);
+				placeEnemy(Goblin, 5, 60*4);
+				placeEnemy(Vampire, 1, 60*8);
+				placeEnemy(Vampire, 4, 60*8);
+				placeEnemy(Vampire, 5, 60*8);
 				break;
 			case 4:
 				// Enemies in 4th wave
-				placeEnemy(Goblin, 5, 60*3);
+				for (let i=1; i <= 5; i++){
+					for (let j=1; j<=8; j++){
+						if (j % 3 === 0) placeEnemy(Vampire, i, 120*j);
+						else placeEnemy(Goblin, i, 120*j);
+					} 
+				}
 				break;
 			case 5:
 				// Enemies in 5th wave
-				placeEnemy(Vampire, 2, 60*3);
+				for (let i = 0; i <= 30; i += 10){
+					placeEnemy(Goblin, 1, 60*0 + 60*i);
+					placeEnemy(Vampire, 3, 60*1 + 60*i);
+					placeEnemy(Goblin, 5, 60*2 + 60*i);
+
+					placeEnemy(Goblin, 2, 60*4 + 60*i);
+					placeEnemy(Goblin, 4, 60*5 + 60*i);
+					placeEnemy(Vampire, 5, 60*6 + 60*i);
+
+					placeEnemy(Goblin, 3, 60*8 + 60*i);
+					placeEnemy(Troll, 1, 60*9 + 60*i);
+					placeEnemy(Goblin, 2, 60*10 + 60*i);
+				}
 				break;
 			case 6:
 				// Enemies in 6th wave
-				placeEnemy(Troll, 5, 60*3);
+				for (let i=1; i <= 5; i++){
+					for (let j=1; j<=8; j++){
+						if (j % 2 === 0) placeEnemy(Vampire, i, 120*j);
+						else placeEnemy(Goblin, i, 120*j);
+					} 
+				}
 				break;
 			case 7:
 				// Enemies in 7th wave
-				placeEnemy(Goblin, 5, 60*3);
+				for (let i = 0; i<3; i++){
+					placeEnemy(Goblin, 1, 120*3 + i*120*5);
+					placeEnemy(Goblin, 2, 120*2 + i*120*5);
+					placeEnemy(Goblin, 3, 120*1 + i*120*5);
+					placeEnemy(Goblin, 4, 120*2 + i*120*5);
+					placeEnemy(Goblin, 5, 120*3 + i*120*5);
+				}
+				
+				placeEnemyLine(Vampire, 4, 60*3, 3, 60);
+				placeEnemyLine(Vampire, 1, 60*3, 5, 60);
+				
+				placeEnemyLine(Vampire, 2, 60*8, 3, 60);
+				placeEnemyLine(Vampire, 3, 60*8, 4, 60);
+				placeEnemyLine(Vampire, 1, 60*8, 2, 60);
+				
+				placeEnemyLine(Goblin, 5, 60*8, 3, 60);
+				placeEnemyLine(Goblin, 1, 60*17, 3, 60);
+				placeEnemyLine(Goblin, 4, 60*22, 3, 60);
+
+				placeEnemyLine(Vampire, 5, 60*13, 3, 60);
+				placeEnemyLine(Vampire, 1, 60*20, 3, 60);
+				placeEnemyLine(Vampire, 4, 60*27, 3, 60);
+
 				break;
 			case 8:
 				// Enemies in 8th wave
-				placeEnemy(Vampire, 2, 60*3);
+				placeEnemy(Troll, 2, 60*1);
+				placeEnemy(Goblin, 4, 60*6);
+				placeEnemy(Goblin, 1, 60*14);
+				placeEnemy(Troll, 5, 60*20);
+
+				placeEnemyLine(Vampire, 2, 60*3, 10, 60);
+				placeEnemyLine(Vampire, 4, 60*8, 10, 60);
+				placeEnemyLine(Vampire, 1, 60*16, 10, 60);
+				placeEnemyLine(Vampire, 5, 60*25, 10, 60);
 				break;
 			case 9:
 				// Enemies in 9th wave
-				placeEnemy(Troll, 5, 60*3);
+				for (let i=0; i<6; i++){
+					let j = i % 3;
+					placeEnemy(Vampire, 1+j, 60*1 + 200*i);
+					placeEnemy(Vampire, 1+j, 60*2 + 200*i);
+					placeEnemy(Vampire, 1+j, 60*3 + 200*i);
+					placeEnemy(Vampire, 2+j, 60*3 + 200*i);
+					placeEnemy(Vampire, 3+j, 60*1 + 200*i);
+					placeEnemy(Vampire, 3+j, 60*2 + 200*i);
+					placeEnemy(Vampire, 3+j, 60*3 + 200*i);	
+				}
 				break;
 			case 10:
 				// Enemies in 10th wave
-				placeEnemy(Vampire, 2, 60*3);
+				lavaFieldWipe();
+				for (let i=1; i <= 5; i++){
+					for (let j=0; j<8; j++){
+						placeEnemy(Vampire, i, 280 + 400*j);
+						placeEnemy(Vampire, i, 280 + 400*j+60);
+					} 
+				}
+				placeEnemy(Vampire, 1, 280 + 400*8);
+				placeEnemy(Vampire, 1, 280 + 400*8+60);
+				placeEnemy(Vampire, 1, 280 + 400*8+120);
+				placeEnemy(Vampire, 5, 280 + 400*8);
+				placeEnemy(Vampire, 5, 280 + 400*8+60);
+				placeEnemy(Vampire, 5, 280 + 400*8+120);
 				break;
 		}
 		waves -= 1;
