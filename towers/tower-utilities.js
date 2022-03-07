@@ -111,4 +111,8 @@ function explodeTower(i){
 	}
 	// Reduce tower health to zero
 	towers[i].health = 0;
+
+	//handle animation
+	towers[i].exploding = true;
+	towers[i].explodeFrame = 0;
 }

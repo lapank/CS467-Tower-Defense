@@ -31,6 +31,12 @@ class Dragon extends Tower{
             else this.frameX = this.minFrame;
         }
 
+		// Cycle through explosion sprite
+		if (frame % 15 === 0){
+            if (this.explodeFrame < 6) this.explodeFrame++;
+            else this.fireFrame = 0;
+        }
+
 		// Cycle through attack animation
 		if(this.shooting){
 			//attack animation frames

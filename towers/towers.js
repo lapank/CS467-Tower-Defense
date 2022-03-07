@@ -2,6 +2,10 @@ let numberOfResources = MAX_RESOURCES;	// player's starting resources
 const towers = [];						// array of existing towers
 let towerSelector = 1;					// initialize variable for menu button
 
+//Tower Explosion Animation
+const explosion = new Image();
+explosion.src = 'sprites/explosion.png';
+
 // Tower to shoot projectiles and destroy enemies
 class Tower{
 	constructor(x,y, health, timer, fireSpeed){
@@ -18,6 +22,8 @@ class Tower{
 		this.dying = false;
 		this.dead = false;
 		this.cost = TOWER_COST;
+		this.exploding = false;
+		this.explodeFrame = 0;
 	}
 	// Draw Tower on board
 	draw(textColor){
@@ -35,6 +41,11 @@ class Tower{
 			context.lineWidth = '1';
 			context.rect(this.x + 15, this.y + 40, 10, -30);
 			context.stroke();
+		}
+		
+		//draw explosion animation
+		if(this.exploding){
+			context.drawImage(explosion, this.explodeFrame * 322, 0, 322, 322, this.x - 40, this.y - 40, this.width*2, this.height*2 );
 		}
 	}
 	// Take a projectile class. Increment timer and fire projectile.
